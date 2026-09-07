@@ -1,0 +1,39 @@
+{% comment %}
+  Quote Banner Section - Moments By Amoraki
+  Editorial quote with handcrafted botanical floral drawing accent
+{% endcomment %}
+
+<section class="quote-section" id="QuoteBanner">
+  <div class="container">
+    <div class="quote-container">
+      <div class="quote-content">
+        <blockquote class="quote-text">
+          {{ section.settings.quote_text | default: 'Because the smallest moments often leave the deepest imprint.' }}
+        </blockquote>
+      </div>
+
+      <div class="quote-botanical" aria-hidden="true">
+        {% render 'icon-botanical', size: 130 %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quote Banner",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote_text",
+      "label": "Quote Text",
+      "default": "Because the smallest moments often leave the deepest imprint."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quote Banner"
+    }
+  ]
+}
+{% endschema %}

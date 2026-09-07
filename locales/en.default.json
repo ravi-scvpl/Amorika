@@ -1,0 +1,19 @@
+{
+  "general": {
+    "cart": {
+      "view": "View Cart",
+      "checkout": "Proceed to Checkout",
+      "empty": "Your curated bag is empty"
+    },
+    "newsletter": {
+      "button_label": "Subscribe"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Send this Moment",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable"
+    }
+  }
+}

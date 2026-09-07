@@ -1,0 +1,88 @@
+{
+  "sections": {
+    "hero_banner": {
+      "type": "hero-banner",
+      "settings": {
+        "brand_name": "Amoraki",
+        "tagline": "A Moment Wrapped.",
+        "subheader": "HOME OF INTENTIONAL GIFTING • SUSTAINABLY CURATED",
+        "heading": "Life is a collection of moments.",
+        "description": "Designed to be felt long after it's unwrapped.",
+        "cta_label": "Explore Collection",
+        "cta_link": "#moment-of-care"
+      }
+    },
+    "moments_pillars": {
+      "type": "moments-pillars",
+      "settings": {
+        "heading": "Not every meaningful moment arrives with an invitation."
+      }
+    },
+    "brand_philosophy": {
+      "type": "brand-philosophy",
+      "settings": {
+        "eyebrow": "OUR PHILOSOPHY",
+        "heading": "The World of Moments",
+        "paragraph_1": "Occasions have their place. They bring us together and give us reasons to celebrate.",
+        "paragraph_2": "But life happens between the occasions. In the little details. The quiet gestures. The unspoken support.",
+        "paragraph_3": "We believe every one of those moments matters. And every one of them deserves to be honoured.",
+        "link_label": "Discover our philosophy",
+        "link_url": "#bespoke-gifting"
+      }
+    },
+    "featured_product": {
+      "type": "featured-product",
+      "settings": {
+        "eyebrow": "FIRST COLLECTION • HAND ASSEMBLED • LIMITED RELEASE",
+        "title": "Moment of Care",
+        "subtitle": "A gentle reminder that care doesn't always need a reason.",
+        "description": "Intentionally curated hamper to bring comfort, calm & a little warmth to the everyday.",
+        "price": "₹5,490",
+        "delivery_text": "Hand/Personally Delivered across Delhi NCR: + ₹200 delivery"
+      }
+    },
+    "elements_purpose": {
+      "type": "elements-purpose",
+      "settings": {
+        "heading": "Every element has a purpose."
+      }
+    },
+    "quote_banner": {
+      "type": "quote-banner",
+      "settings": {
+        "quote_text": "Because the smallest moments often leave the deepest imprint."
+      }
+    },
+    "upcoming_collections": {
+      "type": "upcoming-collections",
+      "settings": {
+        "heading": "On the Horizon"
+      }
+    },
+    "journal_grid": {
+      "type": "journal-grid",
+      "settings": {
+        "heading": "Journal",
+        "subheading": "Thoughts on intentional gifting, sensory experiences and everyday rituals.",
+        "link_label": "Slow Reads"
+      }
+    },
+    "custom_gifting": {
+      "type": "custom-gifting",
+      "settings": {
+        "title": "Bespoke Gifting"
+      }
+    }
+  },
+  "order": [
+    "hero_banner",
+    "moments_pillars",
+    "brand_philosophy",
+    "featured_product",
+    "elements_purpose",
+    "quote_banner",
+    "upcoming_collections",
+    "journal_grid",
+    "custom_gifting"
+  ]
+}

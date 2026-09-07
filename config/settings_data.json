@@ -1,0 +1,26 @@
+{
+  "current": {
+    "color_bg": "#FAF7F2",
+    "color_text": "#25211E",
+    "color_accent": "#A37B42",
+    "social_instagram_link": "https://instagram.com",
+    "social_linkedin_link": "https://linkedin.com",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_text": "Amoraki",
+          "cta_label": "Send a Moment",
+          "cta_link": "#moment-of-care"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "tagline": "consciously wrapped.",
+          "location": "Delhi NCR Delivery"
+        }
+      }
+    }
+  }
+}

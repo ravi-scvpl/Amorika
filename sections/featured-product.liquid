@@ -1,0 +1,189 @@
+{% comment %}
+  Featured Product Section - Moments By Amoraki
+  "Moment of Care" with exact pricing (₹5,490 + ₹200 delivery), delivery guarantee note & "Inside the Collection" accordion gallery
+{% endcomment %}
+
+<section class="featured-product-section" id="moment-of-care">
+  <div class="container">
+    <div class="featured-product-grid">
+      <!-- Left Media -->
+      <div class="featured-product-media">
+        <img src="{{ 'moment-of-care.jpg' | asset_url }}" alt="Moment of Care Signature Hamper" loading="lazy" width="700" height="520" />
+      </div>
+
+      <!-- Right Content & Pricing -->
+      <div class="featured-product-content">
+        <span class="eyebrow eyebrow--no-line" style="color: var(--color-accent); font-weight: 700;">
+          {{ section.settings.eyebrow | default: 'FIRST COLLECTION • HAND ASSEMBLED • LIMITED RELEASE' }}
+        </span>
+
+        <h2 class="featured-product-title" style="margin-top: 0.5rem; margin-bottom: 0.75rem;">
+          {{ section.settings.title | default: 'Moment of Care' }}
+        </h2>
+
+        <p style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--color-text-muted); margin-bottom: 1rem;">
+          {{ section.settings.subtitle | default: "A gentle reminder that care doesn't always need a reason." }}
+        </p>
+
+        <p class="featured-product-desc" style="margin-bottom: 1.5rem;">
+          {{ section.settings.description | default: 'Intentionally curated hamper to bring comfort, calm & a little warmth to the everyday.' }}
+        </p>
+
+        <div class="featured-product-price" style="font-size: 2rem; color: var(--color-text);">
+          {{ section.settings.price | default: '₹5,490' }}
+        </div>
+
+        <div class="featured-product-meta" style="margin-bottom: 1.5rem;">
+          <span style="font-weight: 600; color: var(--color-text);">
+            {{ section.settings.delivery_text | default: 'Hand/Personally Delivered across Delhi NCR: + ₹200 delivery' }}
+          </span>
+          <p style="font-size: 0.78125rem; font-style: italic; color: var(--color-text-muted); margin-top: 0.35rem;">
+            <em>Thoughtfully hand-delivered. No cartons, no couriers, no compromise on how the moment arrives.</em>
+          </p>
+        </div>
+
+        <div class="featured-product-actions">
+          <button 
+            type="button" 
+            class="btn btn--primary js-add-to-cart" 
+            data-variant-id="moment-of-care-5490"
+            data-product-title="Moment of Care"
+            data-product-price="₹5,490"
+            data-product-image="{{ 'moment-of-care.jpg' | asset_url }}"
+          >
+            Send/Gift a Moment of Care &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inside the Collection Accordion Section -->
+    <div class="inside-collection-wrap" style="margin-top: 5rem; padding-top: 4rem; border-top: 1px solid var(--color-border);">
+      <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">
+        <span class="eyebrow">INSIDE THE COLLECTION</span>
+        <h3 class="h2" style="margin-top: 0.5rem;">Little Intentions, waiting to unfold</h3>
+      </div>
+
+      <div class="inside-accordion-grid" style="display: flex; flex-direction: column; gap: 1.25rem; max-width: 900px; margin: 0 auto;">
+        
+        <!-- Element 1: Basket -->
+        <details class="accordion-item" open style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
+          <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
+            <span>Basket | Warm. Woven. Rooted</span>
+            <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
+          </summary>
+          <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
+            <p>Handcrafted from natural kauna grass in Manipur. A beautiful, time-honoured craft bringing warmth and character into any space.</p>
+            <br>
+            <p>A tactile piece with a life beyond the hamper. A place for memorabilia, letters, keepsakes, picnic essentials or everyday treasures. A beautiful reminder that even the simplest things can be worth keeping close.</p>
+          </div>
+        </details>
+
+        <!-- Element 2: Singing Bowl -->
+        <details class="accordion-item" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
+          <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
+            <span>Singing Bowl | Resonant. Grounding. Timeless</span>
+            <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
+          </summary>
+          <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
+            <p>Shaped through repeated hammering, its deep resonance creates a moment of pause. A gentle invitation towards stillness, grounding and coming back to the present.</p>
+            <br>
+            <p>A sound that fades slowly. A little more quiet left behind in the moment.</p>
+          </div>
+        </details>
+
+        <!-- Element 3: Flower Tea -->
+        <details class="accordion-item" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
+          <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
+            <span>Flower Tea With Glass Infuser | Gentle. Floral. Soothing</span>
+            <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
+          </summary>
+          <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
+            <p>Carefully picked chamomile, blue corn & rose buds flower tea, paired with a glass infuser for moments when slowing down and breathing a little easier feels just right.</p>
+            <br>
+            <p>Flowers unfolding in warm water. A gentle floral aroma. A slow sip. A softer moment around the day.</p>
+          </div>
+        </details>
+
+        <!-- Element 4: Wax Sachets -->
+        <details class="accordion-item" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
+          <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
+            <span>Wax Sachets | Aromatic. Comforting. Atmospheric</span>
+            <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
+          </summary>
+          <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
+            <p>Hand-poured fragrant soy wax sachets created to gently change the feeling of spaces around the home.</p>
+            <div style="margin: 1rem 0; padding-left: 1rem; border-left: 2px solid var(--color-accent);">
+              <p><strong>Rainforest:</strong> Fresh, earthy and calming.</p>
+              <p><strong>Coffee:</strong> Warm, rich and familiar.</p>
+            </div>
+            <p>A little aromatic comfort for linens, wardrobes, drawers, restrooms or even cars. A softer atmosphere wherever a little lift is needed.</p>
+          </div>
+        </details>
+
+        <!-- Element 5: Linen Cotton Napkins -->
+        <details class="accordion-item" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
+          <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
+            <span>Linen Cotton Napkins | Natural. Textured. Everyday</span>
+            <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
+          </summary>
+          <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
+            <p>A beautiful & tactile cotton-linen weave, chosen to bring a little more warmth and ease to the everyday table.</p>
+            <br>
+            <p>For morning tea, a slow meal, coffee with someone worth talking to. Small everyday gatherings, made a little more special through texture, warmth and shared presence.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FIRST COLLECTION • HAND ASSEMBLED • LIMITED RELEASE"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Moment of Care"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle Quote",
+      "default": "A gentle reminder that care doesn't always need a reason."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Intentionally curated hamper to bring comfort, calm & a little warmth to the everyday."
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price",
+      "default": "₹5,490"
+    },
+    {
+      "type": "text",
+      "id": "delivery_text",
+      "label": "Delivery Text",
+      "default": "Hand/Personally Delivered across Delhi NCR: + ₹200 delivery"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product"
+    }
+  ]
+}
+{% endschema %}

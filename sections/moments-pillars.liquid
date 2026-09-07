@@ -1,0 +1,138 @@
+{% comment %}
+  Moments Pillars Section - Moments By Amoraki
+  3-Column emotional purpose & gifting intention cards
+{% endcomment %}
+
+<section class="pillars-section" id="MomentsPillars">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <div class="pillars-header">
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="pillars-grid">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="pillar-card" {{ block.shopify_attributes }}>
+            <div class="pillar-card__icon">
+              {%- case block.settings.icon -%}
+                {%- when 'beginnings' -%}
+                  {% render 'icon-beginnings', size: 42 %}
+                {%- when 'pauses' -%}
+                  {% render 'icon-pauses', size: 42 %}
+                {%- when 'presence' -%}
+                  {% render 'icon-presence', size: 42 %}
+                {%- else -%}
+                  {% render 'icon-beginnings', size: 42 %}
+              {%- endcase -%}
+            </div>
+            <h3 class="pillar-card__title">{{ block.settings.title }}</h3>
+            <p class="pillar-card__desc">{{ block.settings.description }}</p>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Default Preset Pillars -->
+        <div class="pillar-card">
+          <div class="pillar-card__icon">
+            {% render 'icon-beginnings', size: 42 %}
+          </div>
+          <h3 class="pillar-card__title">For new beginnings</h3>
+          <p class="pillar-card__desc">For the courage it takes to start all over again.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-card__icon">
+            {% render 'icon-pauses', size: 42 %}
+          </div>
+          <h3 class="pillar-card__title">For quiet pauses</h3>
+          <p class="pillar-card__desc">For the moments when the world feels a little too loud.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-card__icon">
+            {% render 'icon-presence', size: 42 %}
+          </div>
+          <h3 class="pillar-card__title">For simply being there</h3>
+          <p class="pillar-card__desc">For letting someone know, they are not alone.</p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Moments Pillars",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Not every meaningful moment arrives with an invitation."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pillar Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "beginnings", "label": "For New Beginnings (Window)" },
+            { "value": "pauses", "label": "For Quiet Pauses (Tea Sipper)" },
+            { "value": "presence", "label": "For Simply Being There (Holding Hands)" }
+          ],
+          "default": "beginnings"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "For new beginnings"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "For the courage it takes to start all over again."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Moments Pillars",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "icon": "beginnings",
+            "title": "For new beginnings",
+            "description": "For the courage it takes to start all over again."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "icon": "pauses",
+            "title": "For quiet pauses",
+            "description": "For the moments when the world feels a little too loud."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "icon": "presence",
+            "title": "For simply being there",
+            "description": "For letting someone know, they are not alone."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

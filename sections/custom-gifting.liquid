@@ -1,0 +1,97 @@
+{% comment %}
+  Bespoke Gifting Section - Moments By Amoraki
+  Updated with exact specifications: Start a Conversation + Simple Form & MOQ / Lead time notes
+{% endcomment %}
+
+<section class="custom-gifting-section" id="bespoke-gifting">
+  <div class="container">
+    <div class="custom-gifting-grid">
+      <!-- Left Content -->
+      <div class="custom-gifting-content">
+        <span class="eyebrow">CUSTOM CURATIONS</span>
+        <h2 class="custom-gifting-title" style="margin-top: 0.5rem;">Bespoke Gifting</h2>
+        <p class="custom-gifting-desc" style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--color-text-muted); font-style: italic;">
+          Designed around your intent, never from a catalogue.
+        </p>
+
+        <div style="margin-top: 2rem; padding: 2rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm);">
+          <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.75rem;">Start a Conversation</h3>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.7;">
+            Whether celebrating an organizational milestone, hosting an intimate retreat, or thanking cherishing partners, we co-create sensory hampers tailored strictly around your story.
+          </p>
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.8125rem; color: var(--color-text);">
+            <div><strong>Email:</strong> hello@momentsbyamoraki.com</div>
+            <div><strong>Personal Concierge:</strong> +91 (Delhi NCR)</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; font-size: 0.8125rem; font-weight: 600; color: var(--color-text-muted); letter-spacing: 0.05em;">
+          <span>MOQ 100pcs | Lead time - 20-25 working days</span>
+        </div>
+      </div>
+
+      <!-- Right Form -->
+      <div class="custom-gifting-form-wrap" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 2.5rem; box-shadow: var(--shadow-subtle);">
+        <h3 style="font-family: var(--font-serif); font-size: 1.65rem; margin-bottom: 1.5rem; text-align: center;">Inquire for Bespoke Curations</h3>
+
+        <form class="bespoke-form" onsubmit="event.preventDefault(); showToast('Thank you. Our gifting concierge will connect with you shortly.');">
+          <div style="display: flex; flex-direction: column; gap: 1.125rem;">
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Full Name</label>
+              <input type="text" class="newsletter-input" style="width: 100%;" placeholder="Your name" required>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Work / Personal Email</label>
+              <input type="email" class="newsletter-input" style="width: 100%;" placeholder="your@email.com" required>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Phone Number</label>
+              <input type="tel" class="newsletter-input" style="width: 100%;" placeholder="+91 98765 43210" required>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Occasion / Intent</label>
+              <select class="newsletter-input" style="width: 100%;">
+                <option>Corporate & Executive Gifting</option>
+                <option>Weddings & Celebrations</option>
+                <option>Events & Retreats</option>
+                <option>Milestone Gifts</option>
+                <option>Other Bespoke Inquiry</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Share Your Vision (Optional)</label>
+              <textarea class="newsletter-input" style="width: 100%; height: 90px; resize: vertical;" placeholder="Tell us about the occasion, estimated quantity or timeline..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 0.5rem;">
+              Send Inquiry &rarr;
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bespoke Gifting",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Bespoke Gifting"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bespoke Gifting"
+    }
+  ]
+}
+{% endschema %}

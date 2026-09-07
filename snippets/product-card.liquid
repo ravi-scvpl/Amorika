@@ -1,0 +1,43 @@
+{% comment %}
+  Renders a luxury product card
+  Accepts:
+  - product: {Object} Shopify Product Object
+  - image: {String} Fallback image URL
+  - title: {String} Fallback title
+  - price: {Number} Fallback price
+  - subtitle: {String} Short description / note
+{% endcomment %}
+
+<div class="product-card" data-product-id="{{ product.id }}">
+  <a href="{{ product.url | default: '#' }}" class="product-card__media-wrap">
+    {%- if product.featured_image -%}
+      <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" loading="lazy" class="product-card__image" />
+    {%- elsif image -%}
+      <img src="{{ image }}" alt="{{ title | escape }}" loading="lazy" class="product-card__image" />
+    {%- else -%}
+      <div class="product-card__placeholder"></div>
+    {%- endif -%}
+    <span class="product-card__badge">Curated</span>
+  </a>
+
+  <div class="product-card__content">
+    <h3 class="product-card__title">
+      <a href="{{ product.url | default: '#' }}">{{ product.title | default: title }}</a>
+    </h3>
+    {%- if subtitle != blank -%}
+      <p class="product-card__subtitle">{{ subtitle }}</p>
+    {%- endif -%}
+    <div class="product-card__footer">
+      <div class="product-card__price">
+        {%- if product -%}
+          {% render 'price', product: product %}
+        {%- else -%}
+          <span class="price-item">{{ price | default: '₹3,450' }}</span>
+        {%- endif -%}
+      </div>
+      <button type="button" class="btn btn--outline btn--sm js-quick-add" data-variant-id="{{ product.selected_or_first_available_variant.id | default: 'default-variant' }}">
+        Send this Moment
+      </button>
+    </div>
+  </div>
+</div>

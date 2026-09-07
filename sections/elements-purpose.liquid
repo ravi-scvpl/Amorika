@@ -1,0 +1,140 @@
+{% comment %}
+  Elements Purpose Section - Moments By Amoraki
+  6-item sensory breakdown grid with fine-line icons
+{% endcomment %}
+
+<section class="elements-section" id="ElementsPurpose">
+  <div class="container">
+    <div class="elements-header">
+      <h2>{{ section.settings.heading | default: 'Every element has a purpose.' }}</h2>
+      <div class="elements-header-divider"></div>
+    </div>
+
+    <div class="elements-grid">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="element-item" {{ block.shopify_attributes }}>
+            <div class="element-item__icon">
+              {%- case block.settings.icon -%}
+                {%- when 'basket' -%}
+                  {% render 'icon-basket', size: 36 %}
+                {%- when 'tea' -%}
+                  {% render 'icon-tea', size: 36 %}
+                {%- when 'aroma' -%}
+                  {% render 'icon-aroma', size: 36 %}
+                {%- when 'sound' -%}
+                  {% render 'icon-sound', size: 36 %}
+                {%- when 'treat' -%}
+                  {% render 'icon-treat', size: 36 %}
+                {%- when 'linen' -%}
+                  {% render 'icon-linen', size: 36 %}
+                {%- else -%}
+                  {% render 'icon-basket', size: 36 %}
+              {%- endcase -%}
+            </div>
+            <h3 class="element-item__name">{{ block.settings.title }}</h3>
+            <p class="element-item__desc">{{ block.settings.description }}</p>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Default 6 Sensory Elements -->
+        <div class="element-item">
+          <div class="element-item__icon">{% render 'icon-basket', size: 36 %}</div>
+          <h3 class="element-item__name">Basket</h3>
+          <p class="element-item__desc">Made to hold what matters.</p>
+        </div>
+
+        <div class="element-item">
+          <div class="element-item__icon">{% render 'icon-tea', size: 36 %}</div>
+          <h3 class="element-item__name">Tea</h3>
+          <p class="element-item__desc">A warm pause in your day.</p>
+        </div>
+
+        <div class="element-item">
+          <div class="element-item__icon">{% render 'icon-aroma', size: 36 %}</div>
+          <h3 class="element-item__name">Aroma</h3>
+          <p class="element-item__desc">To linger, long after.</p>
+        </div>
+
+        <div class="element-item">
+          <div class="element-item__icon">{% render 'icon-sound', size: 36 %}</div>
+          <h3 class="element-item__name">Sound</h3>
+          <p class="element-item__desc">To calm the mind and heart.</p>
+        </div>
+
+        <div class="element-item">
+          <div class="element-item__icon">{% render 'icon-treat', size: 36 %}</div>
+          <h3 class="element-item__name">Sweet Treat</h3>
+          <p class="element-item__desc">For a moment of joy.</p>
+        </div>
+
+        <div class="element-item">
+          <div class="element-item__icon">{% render 'icon-linen', size: 36 %}</div>
+          <h3 class="element-item__name">Linen</h3>
+          <p class="element-item__desc">Softness in every detail.</p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Elements Purpose",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Every element has a purpose."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "element",
+      "name": "Sensory Element",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "basket", "label": "Basket (Hamper)" },
+            { "value": "tea", "label": "Tea (Cup)" },
+            { "value": "aroma", "label": "Aroma (Lavender)" },
+            { "value": "sound", "label": "Sound (Singing Bowl)" },
+            { "value": "treat", "label": "Sweet Treat (Delicacy)" },
+            { "value": "linen", "label": "Linen (Folded Fabric)" }
+          ],
+          "default": "basket"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Element Name",
+          "default": "Basket"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Made to hold what matters."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Elements Purpose",
+      "blocks": [
+        { "type": "element", "settings": { "icon": "basket", "title": "Basket", "description": "Made to hold what matters." } },
+        { "type": "element", "settings": { "icon": "tea", "title": "Tea", "description": "A warm pause in your day." } },
+        { "type": "element", "settings": { "icon": "aroma", "title": "Aroma", "description": "To linger, long after." } },
+        { "type": "element", "settings": { "icon": "sound", "title": "Sound", "description": "To calm the mind and heart." } },
+        { "type": "element", "settings": { "icon": "treat", "title": "Sweet Treat", "description": "For a moment of joy." } },
+        { "type": "element", "settings": { "icon": "linen", "title": "Linen", "description": "Softness in every detail." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

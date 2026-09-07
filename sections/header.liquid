@@ -1,0 +1,82 @@
+{% comment %}
+  Header Section - Moments By Amoraki
+  With Collections Dropdown containing: Moment of Care, Moment of Play (Coming soon), Moment of Synergy (Coming soon)
+{% endcomment %}
+
+<header class="site-header" id="SiteHeader">
+  <div class="container container--wide">
+    <div class="site-header__inner">
+      <!-- Logo on Left -->
+      <a href="{{ routes.root_url | default: '/' }}" class="site-header__logo">
+        {{ section.settings.logo_text | default: 'Amoraki' }}
+      </a>
+
+      <!-- Navigation Menu -->
+      <nav class="site-header__nav" aria-label="Main Navigation">
+        <ul class="site-nav">
+          
+          <!-- Collections Dropdown -->
+          <li class="site-nav__item site-nav__item--dropdown">
+            <a href="#HeroBanner" class="site-nav__link site-nav__link--has-dropdown">
+              <span>Collections</span>
+              <span class="dropdown-caret">&#9660;</span>
+            </a>
+            <ul class="site-nav__dropdown">
+              <li class="site-nav__dropdown-item">
+                <a href="#moment-of-care" class="site-nav__dropdown-link">
+                  <span>Moment of Care</span>
+                </a>
+              </li>
+              <li class="site-nav__dropdown-item">
+                <a href="#upcoming-collections" class="site-nav__dropdown-link">
+                  <span>Moment of Play</span>
+                  <small>Coming soon</small>
+                </a>
+              </li>
+              <li class="site-nav__dropdown-item">
+                <a href="#upcoming-collections" class="site-nav__dropdown-link">
+                  <span>Moment of Synergy</span>
+                  <small>Coming soon</small>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li><a href="#journal" class="site-nav__link">Journal</a></li>
+          <li><a href="#bespoke-gifting" class="site-nav__link">Bespoke Gifting</a></li>
+          <li><a href="#Newsletter" class="site-nav__link">Connect</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Actions: Cart & Hamburger Button -->
+      <div class="site-header__actions">
+        <button type="button" class="header-cart-btn js-open-cart" aria-label="Open Cart Drawer">
+          {% render 'icon-cart', size: 20 %}
+          <span class="header-cart-badge" id="CartCount">1</span>
+        </button>
+
+        <a href="#moment-of-care" class="btn btn--primary btn--sm">
+          Send a Moment
+        </a>
+
+        <button type="button" class="mobile-menu-toggle js-mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+          {% render 'icon-menu', size: 24 %}
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "Amoraki"
+    }
+  ]
+}
+{% endschema %}

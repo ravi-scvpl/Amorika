@@ -1,0 +1,103 @@
+{% comment %}
+  Journal Grid Section - Moments By Amoraki
+  Updated with exact Website Flow & Content article titles
+{% endcomment %}
+
+<section class="journal-section" id="journal">
+  <div class="container">
+    <div class="journal-header">
+      <div class="journal-header-left">
+        <span class="eyebrow">JOURNAL</span>
+        <h2>{{ section.settings.heading | default: 'Journal' }}</h2>
+        <p style="color: var(--color-text-muted); font-size: 1rem; margin-top: 0.5rem;">
+          {{ section.settings.subheading | default: 'Thoughts on intentional gifting, sensory experiences and everyday rituals.' }}
+        </p>
+      </div>
+
+      <div class="journal-header-right">
+        <a href="/blogs/journal" class="link-arrow">
+          <span>{{ section.settings.link_label | default: 'Slow Reads' }}</span>
+          {% render 'icon-arrow', size: 14 %}
+        </a>
+      </div>
+    </div>
+
+    <div class="journal-grid">
+      <article class="journal-card">
+        <a href="/blogs/journal/why-presence-outlasts-presents" class="journal-card__image-wrap">
+          <img src="{{ 'journal-1.jpg' | asset_url }}" alt="Why Presence Outlasts Presents" class="journal-card__image" loading="lazy" width="400" height="250" />
+        </a>
+        <div class="journal-card__body">
+          <h3 class="journal-card__title">
+            <a href="/blogs/journal/why-presence-outlasts-presents">Why Presence Outlasts Presents</a>
+          </h3>
+          <a href="/blogs/journal/why-presence-outlasts-presents" class="link-arrow">
+            <span>Read story</span>
+            {% render 'icon-arrow', size: 12 %}
+          </a>
+        </div>
+      </article>
+
+      <article class="journal-card">
+        <a href="/blogs/journal/the-art-of-slow-gifting" class="journal-card__image-wrap">
+          <img src="{{ 'journal-2.jpg' | asset_url }}" alt="The Art of Slow Gifting" class="journal-card__image" loading="lazy" width="400" height="250" />
+        </a>
+        <div class="journal-card__body">
+          <h3 class="journal-card__title">
+            <a href="/blogs/journal/the-art-of-slow-gifting">The Art of Slow Gifting</a>
+          </h3>
+          <a href="/blogs/journal/the-art-of-slow-gifting" class="link-arrow">
+            <span>Read story</span>
+            {% render 'icon-arrow', size: 12 %}
+          </a>
+        </div>
+      </article>
+
+      <article class="journal-card">
+        <a href="/blogs/journal/beyond-the-occasion" class="journal-card__image-wrap">
+          <img src="{{ 'journal-3.jpg' | asset_url }}" alt="Beyond the Occasion" class="journal-card__image" loading="lazy" width="400" height="250" />
+        </a>
+        <div class="journal-card__body">
+          <h3 class="journal-card__title">
+            <a href="/blogs/journal/beyond-the-occasion">Beyond the Occasion</a>
+          </h3>
+          <a href="/blogs/journal/beyond-the-occasion" class="link-arrow">
+            <span>Read story</span>
+            {% render 'icon-arrow', size: 12 %}
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Journal Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Journal"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Thoughts on intentional gifting, sensory experiences and everyday rituals."
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "CTA Link Label",
+      "default": "Slow Reads"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Journal Grid"
+    }
+  ]
+}
+{% endschema %}

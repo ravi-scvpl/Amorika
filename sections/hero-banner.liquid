@@ -1,0 +1,120 @@
+{% comment %}
+  Hero Banner Section - Moments By Amoraki
+  Updated with exact Website Flow & Content specifications
+{% endcomment %}
+
+<section class="hero-section" id="HeroBanner">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left Content -->
+      <div class="hero-content">
+        <div class="hero-brand-header">
+          <span class="hero-brand-name">{{ section.settings.brand_name | default: 'Amoraki' }}</span>
+          <span class="hero-tagline"><em>{{ section.settings.tagline | default: 'A Moment Wrapped.' }}</em></span>
+        </div>
+
+        <span class="eyebrow eyebrow--no-line" style="margin-top: 0.75rem; display: block; color: var(--color-accent); font-weight: 700; letter-spacing: 0.14em;">
+          {{ section.settings.subheader | default: 'HOME OF INTENTIONAL GIFTING • SUSTAINABLY CURATED' }}
+        </span>
+
+        <h1 class="hero-title" style="margin-top: 1rem; margin-bottom: 1.25rem;">
+          {{ section.settings.heading | default: 'Life is a collection of moments.' }}
+        </h1>
+
+        <p class="hero-desc" style="margin-bottom: 1.75rem; font-size: 1.0625rem; color: var(--color-text-muted);">
+          {{ section.settings.description | default: "Designed to be felt long after it's unwrapped." }}
+        </p>
+
+        <div class="btn-group">
+          <a href="{{ section.settings.cta_link | default: '#moment-of-care' }}" class="btn btn--primary">
+            {{ section.settings.cta_label | default: 'Explore Collection' }}
+          </a>
+        </div>
+
+        <!-- RTBs (Reasons To Believe) -->
+        <div class="rtb-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.75rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+          <div class="rtb-item">
+            <h4 style="font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.35rem;">Thoughtfully Chosen</h4>
+            <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.5;">Every object earns its place inside the hamper.</p>
+          </div>
+          <div class="rtb-item">
+            <h4 style="font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.35rem;">Made Slowly</h4>
+            <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.5;">Hand-poured, hand-hammered, hand-tied. Small batches, not mass production.</p>
+          </div>
+          <div class="rtb-item">
+            <h4 style="font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.35rem;">Wrapped With Intention</h4>
+            <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.5;">Presentation is part of the gift, not packaging as an afterthought.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Image -->
+      <div class="hero-media">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 1200 }}" alt="Amoraki A Moment Wrapped" loading="eager" width="800" height="600" />
+        {%- else -%}
+          <img src="{{ 'hero-hamper.jpg' | asset_url }}" alt="Amoraki A Moment Wrapped" loading="eager" width="800" height="600" />
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Name",
+      "default": "Amoraki"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "A Moment Wrapped."
+    },
+    {
+      "type": "text",
+      "id": "subheader",
+      "label": "Subheader Badge",
+      "default": "HOME OF INTENTIONAL GIFTING • SUSTAINABLY CURATED"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Life is a collection of moments."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Designed to be felt long after it's unwrapped."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Button Label",
+      "default": "Explore Collection"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

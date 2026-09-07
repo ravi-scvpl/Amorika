@@ -1,0 +1,34 @@
+{% comment %}
+  Main Collection Section - Moments By Amoraki
+{% endcomment %}
+
+<section class="main-collection-section" style="padding: clamp(3rem, 6vw, 5rem) 0;">
+  <div class="container">
+    <div style="text-align: center; max-width: 600px; margin: 0 auto clamp(2rem, 4vw, 3.5rem);">
+      <span class="eyebrow">CURATED GIFTS</span>
+      <h1 class="h2">{{ collection.title | default: 'The World of Moments' }}</h1>
+      {%- if collection.description != blank -%}
+        <p style="color: var(--color-text-muted); margin-top: 1rem;">{{ collection.description }}</p>
+      {%- endif -%}
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+      {%- if collection.products.size > 0 -%}
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        {% render 'product-card', title: 'Moment of Care', price: '₹3,450', image: 'moment-of-care.jpg', subtitle: 'To bring comfort, calm and warmth' %}
+        {% render 'product-card', title: 'World of Moments Hamper', price: '₹5,200', image: 'hero-hamper.jpg', subtitle: 'Our signature full sensory hamper' %}
+        {% render 'product-card', title: 'Custom Gifting Box', price: '₹4,100', image: 'custom-gifting.jpg', subtitle: 'Bespoke corporate and wedding gifting' %}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main Collection",
+  "settings": []
+}
+{% endschema %}

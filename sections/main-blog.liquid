@@ -1,0 +1,42 @@
+{% comment %}
+  Main Blog Section - Moments By Amoraki
+{% endcomment %}
+
+<section class="main-blog-section" style="padding: clamp(3rem, 6vw, 5rem) 0;">
+  <div class="container">
+    <div style="text-align: center; max-width: 600px; margin: 0 auto clamp(2rem, 4vw, 3.5rem);">
+      <span class="eyebrow">JOURNAL</span>
+      <h1 class="h2">{{ blog.title | default: 'Reflections & Stories' }}</h1>
+    </div>
+
+    <div class="journal-grid">
+      {%- if blog.articles.size > 0 -%}
+        {%- for article in blog.articles -%}
+          <article class="journal-card">
+            <a href="{{ article.url }}" class="journal-card__image-wrap">
+              {%- if article.image -%}
+                <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title | escape }}" class="journal-card__image" loading="lazy" />
+              {%- endif -%}
+            </a>
+            <div class="journal-card__body">
+              <h3 class="journal-card__title">
+                <a href="{{ article.url }}">{{ article.title }}</a>
+              </h3>
+              <a href="{{ article.url }}" class="link-arrow">
+                <span>Read more</span>
+                {% render 'icon-arrow', size: 12 %}
+              </a>
+            </div>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main Blog",
+  "settings": []
+}
+{% endschema %}

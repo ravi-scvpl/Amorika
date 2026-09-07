@@ -1,0 +1,25 @@
+{% comment %}
+  Renders a formatted price
+  Accepts:
+  - product: {Object} Product Liquid object (optional)
+  - price: {Number} Custom price integer (optional)
+  - compare_at_price: {Number} Custom compare at price (optional)
+{% endcomment %}
+{%- liquid
+  if product
+    assign target_price = product.price
+    assign target_compare = product.compare_at_price
+  else
+    assign target_price = price | default: 0
+    assign target_compare = compare_at_price
+  endif
+-%}
+
+<div class="price-wrapper">
+  {%- if target_compare > target_price -%}
+    <span class="price-item price-item--sale">{{ target_price | money }}</span>
+    <s class="price-item price-item--regular">{{ target_compare | money }}</s>
+  {%- else -%}
+    <span class="price-item price-item--regular">{{ target_price | money }}</span>
+  {%- endif -%}
+</div>

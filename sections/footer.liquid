@@ -1,0 +1,80 @@
+{% comment %}
+  Footer Section - Moments By Amoraki
+  Clean luxury footer with location badge, FAQs, navigation & social links (duplicate newsletter removed)
+{% endcomment %}
+
+<footer class="site-footer" id="SiteFooter">
+  <div class="container">
+    <div class="footer-top">
+      <!-- Brand & Tagline -->
+      <div class="footer-brand">
+        <a href="{{ routes.root_url | default: '/' }}" class="site-logo">Amoraki</a>
+        <p class="footer-tagline"><em>A Moment Wrapped.</em></p>
+        <div class="footer-location" style="margin-top: 1rem;">
+          <span class="location-badge" style="font-weight: 600;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Delivering Across Delhi NCR only
+          </span>
+        </div>
+        <p class="footer-copyright" style="margin-top: 1.25rem;">
+          &copy; 2025 Amoraki. All rights reserved.
+        </p>
+      </div>
+
+      <!-- FAQs Column -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">FAQs</h4>
+        <p style="font-size: 0.78125rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">Things you may want to know</p>
+        <ul class="footer-links">
+          <li><a href="/pages/faqs#delivery" class="footer-link">Hand Delivery Policy</a></li>
+          <li><a href="/pages/faqs#bespoke" class="footer-link">Bespoke Lead Times</a></li>
+          <li><a href="/pages/faqs#care" class="footer-link">Sensory Hamper Care</a></li>
+        </ul>
+      </div>
+
+      <!-- Explore Navigation Column -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Explore</h4>
+        <ul class="footer-links">
+          <li><a href="#HeroBanner" class="footer-link">Collections</a></li>
+          <li><a href="#moment-of-care" class="footer-link">Moment of Care</a></li>
+          <li><a href="#upcoming-collections" class="footer-link">Moment of Play</a></li>
+          <li><a href="#upcoming-collections" class="footer-link">Moment of Synergy</a></li>
+          <li><a href="#journal" class="footer-link">Journal</a></li>
+          <li><a href="#bespoke-gifting" class="footer-link">Bespoke Gifting</a></li>
+        </ul>
+      </div>
+
+      <!-- Stay Close Column (Social & Contact Links) -->
+      <div class="footer-col" style="grid-column: span 2;">
+        <h4 class="footer-col-title">Stay Close</h4>
+        <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">Stay updated on new collections and reads.</p>
+        
+        <!-- Social Icons & Email -->
+        <div class="footer-socials" style="display: flex; align-items: center; gap: 1rem; font-size: 0.8125rem; flex-wrap: wrap;">
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-link">Instagram</a>
+          <span>|</span>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-link">FB</a>
+          <span>|</span>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+          <span>|</span>
+          <a href="mailto:hello@momentsbyamoraki.com" class="footer-social-link">hello@momentsbyamoraki.com</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Legal Bar -->
+    <div class="footer-bottom">
+      <a href="/policies/privacy-policy">Privacy</a>
+      <span>|</span>
+      <a href="/policies/terms-of-service">Terms</a>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,54 @@
+{% comment %}
+  Main Product Section - Moments By Amoraki
+  Full customizable OS 2.0 product detail page
+{% endcomment %}
+
+<section class="main-product-section" style="padding: clamp(3rem, 6vw, 5rem) 0;">
+  <div class="container">
+    <div class="featured-product-grid">
+      <!-- Media Gallery -->
+      <div class="featured-product-media">
+        {%- if product.featured_image -%}
+          <img src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.title | escape }}" loading="eager" />
+        {%- else -%}
+          <img src="{{ 'moment-of-care.jpg' | asset_url }}" alt="Moments By Amoraki" loading="eager" />
+        {%- endif -%}
+      </div>
+
+      <!-- Product Form & Info -->
+      <div class="featured-product-content">
+        <span class="eyebrow">CURATED SENSORY MOMENT</span>
+        <h1 class="featured-product-title">{{ product.title | default: 'Moment of Care' }}</h1>
+        <div class="featured-product-price">
+          {% render 'price', product: product, price: '₹3,450' %}
+        </div>
+
+        <div class="featured-product-meta">
+          <span>Shipping calculated separately</span>
+          <span class="location-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Delivering across Delhi NCR
+          </span>
+        </div>
+
+        <div class="product-description" style="color: var(--color-text-muted); margin-bottom: 2rem; line-height: 1.8;">
+          {{ product.description | default: "A gentle reminder that care doesn't always need a reason. Thoughtfully curated to bring comfort, calm and a little warmth to the everyday." }}
+        </div>
+
+        {%- form 'product', product -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id | default: '456789' }}">
+          <button type="button" class="btn btn--primary js-add-to-cart" style="width: 100%; max-width: 320px;">
+            Send this Moment
+          </button>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main Product",
+  "settings": []
+}
+{% endschema %}

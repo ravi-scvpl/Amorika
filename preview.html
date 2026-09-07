@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amoraki — A Moment Wrapped. Home of Intentional Gifting</title>
+  <link rel="stylesheet" href="assets/amoraki-theme.css">
+</head>
+<body class="template-index">
+
+  <!-- ==================== 1. NAVIGATION / HEADER ==================== -->
+  <header class="site-header" id="SiteHeader">
+    <div class="container container--wide">
+      <div class="site-header__inner">
+        <!-- Logo on Left -->
+        <a href="#" class="site-header__logo">Amoraki</a>
+
+        <!-- Menu / Links -->
+        <nav class="site-header__nav" aria-label="Main Navigation">
+          <ul class="site-nav">
+            <!-- Collections Dropdown -->
+            <li class="site-nav__item site-nav__item--dropdown">
+              <a href="#HeroBanner" class="site-nav__link site-nav__link--has-dropdown">
+                <span>Collections</span>
+                <span class="dropdown-caret">&#9660;</span>
+              </a>
+              <ul class="site-nav__dropdown">
+                <li class="site-nav__dropdown-item">
+                  <a href="#moment-of-care" class="site-nav__dropdown-link">
+                    <span>Moment of Care</span>
+                  </a>
+                </li>
+                <li class="site-nav__dropdown-item">
+                  <a href="#upcoming-collections" class="site-nav__dropdown-link">
+                    <span>Moment of Play</span>
+                    <small>Coming soon</small>
+                  </a>
+                </li>
+                <li class="site-nav__dropdown-item">
+                  <a href="#upcoming-collections" class="site-nav__dropdown-link">
+                    <span>Moment of Synergy</span>
+                    <small>Coming soon</small>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li><a href="#journal" class="site-nav__link">Journal</a></li>
+            <li><a href="#bespoke-gifting" class="site-nav__link">Bespoke Gifting</a></li>
+            <li><a href="#Newsletter" class="site-nav__link">Connect</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right Actions -->
+        <div class="site-header__actions">
+          <button type="button" class="header-cart-btn js-open-cart" aria-label="Open Cart Drawer">
+            <svg class="icon icon-cart" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="header-cart-badge" id="CartCount">1</span>
+          </button>
+
+          <a href="#moment-of-care" class="btn btn--primary btn--sm">
+            Send a Moment
+          </a>
+
+          <button type="button" class="mobile-menu-toggle js-mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+            <svg class="icon icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="MainContent">
+
+    <!-- ==================== SECTION 1 — HERO & RTBS ==================== -->
+    <section class="hero-section" id="HeroBanner">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div style="margin-bottom: 0.5rem;">
+              <span style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; letter-spacing: 0.04em;">Amoraki</span>
+              <span style="font-family: var(--font-serif); font-size: 1.5rem; font-style: italic; color: var(--color-accent); margin-left: 0.75rem;">A Moment Wrapped.</span>
+            </div>
+
+            <span class="eyebrow eyebrow--no-line" style="color: var(--color-accent); font-weight: 700; letter-spacing: 0.14em; margin-bottom: 1rem; display: block;">
+              HOME OF INTENTIONAL GIFTING • SUSTAINABLY CURATED
+            </span>
+
+            <h1 class="hero-title" style="margin-bottom: 1.25rem;">Life is a collection of moments.</h1>
+
+            <p class="hero-desc" style="font-size: 1.1rem; color: var(--color-text-muted); margin-bottom: 2rem;">
+              Designed to be felt long after it's unwrapped.
+            </p>
+
+            <div class="btn-group">
+              <a href="#moment-of-care" class="btn btn--primary">Explore Collection</a>
+            </div>
+
+            <!-- RTBs (Reasons to Believe) -->
+            <div class="rtb-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+              <div class="rtb-item">
+                <h4 style="font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.35rem;">Thoughtfully Chosen</h4>
+                <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.55;">Every object earns its place inside the hamper.</p>
+              </div>
+              <div class="rtb-item">
+                <h4 style="font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.35rem;">Made Slowly</h4>
+                <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.55;">Hand-poured, hand-hammered, hand-tied. Small batches, not mass production.</p>
+              </div>
+              <div class="rtb-item">
+                <h4 style="font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.35rem;">Wrapped With Intention</h4>
+                <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.55;">Presentation is part of the gift, not packaging as an afterthought.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-media">
+            <img src="assets/hero-hamper.jpg" alt="Amoraki Intentional Gifting Hamper" width="800" height="600">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BRAND PHILOSOPHY / PILLARS ==================== -->
+    <section class="pillars-section" id="MomentsPillars">
+      <div class="container">
+        <div class="pillars-header">
+          <h2>Not every meaningful moment arrives with an invitation.</h2>
+        </div>
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-card__icon">
+              <svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="10" y="8" width="28" height="32" rx="1" />
+                <line x1="24" y1="8" x2="24" y2="40" />
+                <line x1="10" y1="22" x2="38" y2="22" />
+                <path d="M28 36h8l-1.5 4h-5z" fill="currentColor" fill-opacity="0.1" />
+                <path d="M32 36c0-3 2-6 5-7-1 4-2 7-5 7z" />
+                <line x1="14" y1="12" x2="18" y2="16" stroke-dasharray="1 1" />
+              </svg>
+            </div>
+            <h3 class="pillar-card__title">For new beginnings</h3>
+            <p class="pillar-card__desc">For the courage it takes to start all over again.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-card__icon">
+              <svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="24" cy="14" r="4.5" />
+                <path d="M15 36c1-7 4-12 9-13 5 1 8 6 9 13" />
+                <path d="M19 27c2 2 3 3 5 3s3-1 5-3" />
+              </svg>
+            </div>
+            <h3 class="pillar-card__title">For quiet pauses</h3>
+            <p class="pillar-card__desc">For the moments when the world feels a little too loud.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-card__icon">
+              <svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 28c3 4 8 8 12 8s9-4 12-8" />
+                <path d="M14 24c3 3 6 6 10 6s7-3 10-6" />
+                <path d="M18 18c1.5 2 3 4 6 4s4.5-2 6-4" />
+              </svg>
+            </div>
+            <h3 class="pillar-card__title">For simply being there</h3>
+            <p class="pillar-card__desc">For letting someone know, they are not alone.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2 — FIRST HAMPER ("Moment of Care") ==================== -->
+    <section class="featured-product-section" id="moment-of-care">
+      <div class="container">
+        <div class="featured-product-grid">
+          <div class="featured-product-media">
+            <img src="assets/moment-of-care.jpg" alt="Moment of Care Hamper" width="700" height="520">
+          </div>
+          <div class="featured-product-content">
+            <span class="eyebrow eyebrow--no-line" style="color: var(--color-accent); font-weight: 700;">
+              FIRST COLLECTION • HAND ASSEMBLED • LIMITED RELEASE
+            </span>
+            <h2 class="featured-product-title" style="margin-top: 0.5rem;">Moment of Care</h2>
+            <p style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--color-text-muted); margin-bottom: 1rem;">
+              A gentle reminder that care doesn’t always need a reason.
+            </p>
+            <p class="featured-product-desc" style="margin-bottom: 1.5rem;">
+              Intentionally curated hamper to bring comfort, calm & a little warmth to the everyday.
+            </p>
+            
+            <div class="featured-product-price" style="font-size: 2rem; color: var(--color-text);">
+              ₹5,490
+            </div>
+
+            <div class="featured-product-meta" style="margin-bottom: 1.75rem;">
+              <span style="font-weight: 600; color: var(--color-text);">Hand/Personally Delivered across Delhi NCR: + ₹200 delivery</span>
+              <p style="font-size: 0.8125rem; font-style: italic; color: var(--color-text-muted); margin-top: 0.35rem;">
+                <em>Thoughtfully hand-delivered. No cartons, no couriers, no compromise on how the moment arrives.</em>
+              </p>
+            </div>
+
+            <div class="featured-product-actions">
+              <button type="button" class="btn btn--primary js-add-to-cart" data-variant-id="moment-of-care-5490">
+                Send/Gift a Moment of Care &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inside the Collection Accordion Carousel -->
+        <div class="inside-collection-wrap" style="margin-top: 5rem; padding-top: 4rem; border-top: 1px solid var(--color-border);">
+          <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">
+            <span class="eyebrow">INSIDE THE COLLECTION</span>
+            <h3 class="h2" style="margin-top: 0.5rem;">Little Intentions, waiting to unfold</h3>
+          </div>
+
+          <div class="inside-accordion-grid" style="display: flex; flex-direction: column; gap: 1.25rem; max-width: 900px; margin: 0 auto;">
+            
+            <!-- Item 1 -->
+            <details class="accordion-item" open style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
+              <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
+                <span>Basket | Warm. Woven. Rooted</span>
+                <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
+              </summary>
+              <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
+                <p>Handcrafted from natural kauna grass in Manipur. A beautiful, time-honoured craft bringing warmth and character into any space.</p>
+                <br>
+                <p>A tactile piece with a life beyond the hamper. A place for memorabilia, letters, keepsakes, picnic essentials or everyday treasures. A beautiful reminder that even the simplest things can be worth keeping close.</p>
+              </div>
+            </details>
+
+            <!-- Item 2 -->
+            <details class="accordion-item" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
+              <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
+                <span>Singing Bowl | Resonant. Grounding. Timeless</span>
+                <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
+              </summary>
+              <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
+                <p>Shaped through repeated hammering, its deep resonance creates a moment of pause. A gentle invitation towards stillness, grounding and coming back to the present.</p>
+                <br>
+                <p>A sound that fades slowly. A little more quiet left behind in the moment.</p>
+              </div>
+            </details>
+
+            <!-- Item 3 -->
+            <details class="accordion-item" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
+              <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
+                <span>Flower Tea With Glass Infuser | Gentle. Floral. Soothing</span>
+                <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
+              </summary>
+              <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
+                <p>Carefully picked chamomile, blue corn & rose buds flower tea, paired with a glass infuser for moments when slowing down and breathing a little easier feels just right.</p>
+                <br>
+                <p>Flowers unfolding in warm water. A gentle floral aroma. A slow sip. A softer moment around the day.</p>
+              </div>
+            </details>
+
+            <!-- Item 4 -->
+            <details class="accordion-item" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
+              <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
+                <span>Wax Sachets | Aromatic. Comforting. Atmospheric</span>
+                <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
+              </summary>
+              <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
+                <p>Hand-poured fragrant soy wax sachets created to gently change the feeling of spaces around the home.</p>
+                <div style="margin: 1rem 0; padding-left: 1rem; border-left: 2px solid var(--color-accent);">
+                  <p><strong>Rainforest:</strong> Fresh, earthy and calming.</p>
+                  <p><strong>Coffee:</strong> Warm, rich and familiar.</p>
+                </div>
+                <p>A little aromatic comfort for linens, wardrobes, drawers, restrooms or even cars. A softer atmosphere wherever a little lift is needed.</p>
+              </div>
+            </details>
+
+            <!-- Item 5 -->
+            <details class="accordion-item" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
+              <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
+                <span>Linen Cotton Napkins | Natural. Textured. Everyday</span>
+                <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
+              </summary>
+              <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
+                <p>A beautiful & tactile cotton-linen weave, chosen to bring a little more warmth and ease to the everyday table.</p>
+                <br>
+                <p>For morning tea, a slow meal, coffee with someone worth talking to. Small everyday gatherings, made a little more special through texture, warmth and shared presence.</p>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3 — NEXT CATEGORIES ("On the Horizon") ==================== -->
+    <section class="upcoming-section" id="upcoming-collections" style="padding: var(--section-pad-y) 0; background: var(--color-bg);">
+      <div class="container">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 3.5rem;">
+          <span class="eyebrow">NEXT CATEGORIES</span>
+          <h2 class="h2">On the Horizon</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; max-width: 960px; margin: 0 auto;">
+          <!-- Card 1 -->
+          <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 3rem 2.5rem; text-align: center; box-shadow: var(--shadow-subtle);">
+            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); font-weight: 600;">COMING SOON</span>
+            <h3 style="font-family: var(--font-serif); font-size: 2rem; margin: 0.75rem 0 1.25rem;">Moment of Play</h3>
+            <p style="color: var(--color-text-muted); font-size: 0.9375rem; margin-bottom: 2rem; max-width: 320px; margin-left: auto; margin-right: auto;">
+              Curated rituals designed to spark joyful discovery, lighthearted togetherness, and creative pause.
+            </p>
+            <button type="button" class="btn btn--outline" onclick="showToast('You will be notified when Moment of Play launches!');">
+              Notify Me
+            </button>
+          </div>
+
+          <!-- Card 2 -->
+          <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 3rem 2.5rem; text-align: center; box-shadow: var(--shadow-subtle);">
+            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); font-weight: 600;">COMING SOON</span>
+            <h3 style="font-family: var(--font-serif); font-size: 2rem; margin: 0.75rem 0 1.25rem;">Moment of Synergy</h3>
+            <p style="color: var(--color-text-muted); font-size: 0.9375rem; margin-bottom: 2rem; max-width: 320px; margin-left: auto; margin-right: auto;">
+              Thoughtful experiences created for collaborative bonds, shared milestones, and meaningful harmony.
+            </p>
+            <button type="button" class="btn btn--outline" onclick="showToast('You will be notified when Moment of Synergy launches!');">
+              Notify Me
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4 — JOURNAL ==================== -->
+    <section class="journal-section" id="journal">
+      <div class="container">
+        <div class="journal-header">
+          <div class="journal-header-left">
+            <span class="eyebrow">JOURNAL</span>
+            <h2>Journal</h2>
+            <p style="color: var(--color-text-muted); font-size: 1rem; margin-top: 0.5rem;">
+              Thoughts on intentional gifting, sensory experiences and everyday rituals.
+            </p>
+          </div>
+          <div class="journal-header-right">
+            <a href="#journal" class="link-arrow">
+              <span>Slow Reads</span>
+              <svg class="icon icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="journal-grid">
+          <article class="journal-card">
+            <a href="#story-1" class="journal-card__image-wrap">
+              <img src="assets/journal-1.jpg" alt="Why Presence Outlasts Presents" class="journal-card__image" loading="lazy">
+            </a>
+            <div class="journal-card__body">
+              <h3 class="journal-card__title"><a href="#story-1">Why Presence Outlasts Presents</a></h3>
+              <a href="#story-1" class="link-arrow">
+                <span>Read story</span>
+                <svg class="icon icon-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="journal-card">
+            <a href="#story-2" class="journal-card__image-wrap">
+              <img src="assets/journal-2.jpg" alt="The Art of Slow Gifting" class="journal-card__image" loading="lazy">
+            </a>
+            <div class="journal-card__body">
+              <h3 class="journal-card__title"><a href="#story-2">The Art of Slow Gifting</a></h3>
+              <a href="#story-2" class="link-arrow">
+                <span>Read story</span>
+                <svg class="icon icon-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="journal-card">
+            <a href="#story-3" class="journal-card__image-wrap">
+              <img src="assets/journal-3.jpg" alt="Beyond the Occasion" class="journal-card__image" loading="lazy">
+            </a>
+            <div class="journal-card__body">
+              <h3 class="journal-card__title"><a href="#story-3">Beyond the Occasion</a></h3>
+              <a href="#story-3" class="link-arrow">
+                <span>Read story</span>
+                <svg class="icon icon-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5 — BESPOKE GIFTING ==================== -->
+    <section class="custom-gifting-section" id="bespoke-gifting">
+      <div class="container">
+        <div class="custom-gifting-grid">
+          <div class="custom-gifting-content">
+            <span class="eyebrow">CUSTOM CURATIONS</span>
+            <h2 class="custom-gifting-title" style="margin-top: 0.5rem;">Bespoke Gifting</h2>
+            <p style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--color-text-muted); font-style: italic; margin-bottom: 2rem;">
+              Designed around your intent, never from a catalogue.
+            </p>
+
+            <div style="padding: 2rem; background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); box-shadow: var(--shadow-subtle);">
+              <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.75rem;">Start a Conversation</h3>
+              <p style="font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.7;">
+                Whether celebrating an organizational milestone, hosting an intimate retreat, or thanking cherishing partners, we co-create sensory hampers tailored strictly around your story.
+              </p>
+              <div style="margin-top: 1.5rem; font-size: 0.8125rem; color: var(--color-text);">
+                <p style="margin-bottom: 0.35rem;"><strong>Email:</strong> hello@momentsbyamoraki.com</p>
+                <p><strong>Personal Concierge:</strong> +91 (Delhi NCR)</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; font-size: 0.8125rem; font-weight: 600; color: var(--color-text-muted); letter-spacing: 0.05em;">
+              MOQ 100pcs | Lead time - 20-25 working days
+            </div>
+          </div>
+
+          <!-- Right Form -->
+          <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 2.5rem; box-shadow: var(--shadow-subtle);">
+            <h3 style="font-family: var(--font-serif); font-size: 1.65rem; margin-bottom: 1.5rem; text-align: center;">Inquire for Bespoke Curations</h3>
+
+            <form onsubmit="event.preventDefault(); showToast('Thank you. Our gifting concierge will connect with you shortly.');">
+              <div style="display: flex; flex-direction: column; gap: 1.125rem;">
+                <div>
+                  <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Full Name</label>
+                  <input type="text" class="newsletter-input" style="width: 100%;" placeholder="Your name" required>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Work / Personal Email</label>
+                  <input type="email" class="newsletter-input" style="width: 100%;" placeholder="your@email.com" required>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Phone Number</label>
+                  <input type="tel" class="newsletter-input" style="width: 100%;" placeholder="+91 98765 43210" required>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Occasion / Intent</label>
+                  <select class="newsletter-input" style="width: 100%;">
+                    <option>Corporate & Executive Gifting</option>
+                    <option>Weddings & Celebrations</option>
+                    <option>Events & Retreats</option>
+                    <option>Milestone Gifts</option>
+                    <option>Other Bespoke Inquiry</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Share Your Vision (Optional)</label>
+                  <textarea class="newsletter-input" style="width: 100%; height: 90px; resize: vertical;" placeholder="Tell us about the occasion, estimated quantity or timeline..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 0.5rem;">
+                  Send Inquiry &rarr;
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer" id="SiteFooter">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="site-logo">Amoraki</a>
+          <p class="footer-tagline"><em>A Moment Wrapped.</em></p>
+          <div class="footer-location" style="margin-top: 1rem;">
+            <span class="location-badge" style="font-weight: 600;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Delivering Across Delhi NCR only
+            </span>
+          </div>
+          <p class="footer-copyright" style="margin-top: 1.25rem;">
+            &copy; 2025 Amoraki. All rights reserved.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">FAQs</h4>
+          <p style="font-size: 0.78125rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">Things you may want to know</p>
+          <ul class="footer-links">
+            <li><a href="#faqs" class="footer-link">Hand Delivery Policy</a></li>
+            <li><a href="#faqs" class="footer-link">Bespoke Lead Times</a></li>
+            <li><a href="#faqs" class="footer-link">Sensory Hamper Care</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="#HeroBanner" class="footer-link">Collections</a></li>
+            <li><a href="#moment-of-care" class="footer-link">Moment of Care</a></li>
+            <li><a href="#upcoming-collections" class="footer-link">Moment of Play</a></li>
+            <li><a href="#upcoming-collections" class="footer-link">Moment of Synergy</a></li>
+            <li><a href="#journal" class="footer-link">Journal</a></li>
+            <li><a href="#bespoke-gifting" class="footer-link">Bespoke Gifting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col" style="grid-column: span 2;">
+          <h4 class="footer-col-title">Stay Close</h4>
+          <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">Stay updated on new collections and reads.</p>
+
+          <div class="footer-socials" style="display: flex; align-items: center; gap: 1rem; font-size: 0.8125rem; flex-wrap: wrap;">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-link">Instagram</a>
+            <span>|</span>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-link">FB</a>
+            <span>|</span>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+            <span>|</span>
+            <a href="mailto:hello@momentsbyamoraki.com" class="footer-social-link">hello@momentsbyamoraki.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <a href="#privacy">Privacy</a>
+        <span>|</span>
+        <a href="#terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== CART DRAWER & OVERLAY ==================== -->
+  <div class="cart-overlay" id="CartOverlay"></div>
+
+  <aside class="cart-drawer" id="CartDrawer" role="dialog" aria-modal="true" aria-label="Curated Bag">
+    <div class="cart-drawer__header">
+      <h3 class="cart-drawer__title">Your Curated Moments</h3>
+      <button type="button" class="cart-drawer__close js-close-cart" aria-label="Close Cart">
+        <svg class="icon icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-drawer__items" id="CartDrawerItems">
+      <div class="cart-drawer__item">
+        <img src="assets/moment-of-care.jpg" alt="Moment of Care Hamper" class="cart-drawer__item-img">
+        <div>
+          <h4 class="cart-drawer__item-title">Moment of Care</h4>
+          <div class="cart-drawer__item-price">₹5,490</div>
+          <div class="cart-drawer__item-qty">
+            <button type="button" class="cart-drawer__qty-btn">-</button>
+            <span class="cart-drawer__qty-val">1</span>
+            <button type="button" class="cart-drawer__qty-btn">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span>Subtotal</span>
+        <span id="CartSubtotal">₹5,490</span>
+      </div>
+      <p class="cart-drawer__note">Hand/Personally Delivered across Delhi NCR (+ ₹200 delivery).</p>
+      <button type="button" class="btn btn--primary" style="width: 100%;" onclick="showToast('Connecting to Shopify Checkout...');">
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+  <script src="assets/amoraki-theme.js"></script>
+</body>
+</html>

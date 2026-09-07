@@ -1,0 +1,66 @@
+{% comment %}
+  Cart Drawer Section - Moments By Amoraki
+  Slide-out AJAX cart drawer with luxury item list, subtotal & checkout
+{% endcomment %}
+
+<div class="cart-overlay" id="CartOverlay"></div>
+
+<aside class="cart-drawer" id="CartDrawer" role="dialog" aria-modal="true" aria-label="Curated Bag">
+  <div class="cart-drawer__header">
+    <h3 class="cart-drawer__title">Your Curated Moments</h3>
+    <button type="button" class="cart-drawer__close js-close-cart" aria-label="Close Cart">
+      {% render 'icon-close', size: 20 %}
+    </button>
+  </div>
+
+  <div class="cart-drawer__items" id="CartDrawerItems">
+    {%- if cart.item_count > 0 -%}
+      {%- for item in cart.items -%}
+        <div class="cart-drawer__item" data-line="{{ forloop.index }}">
+          <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" class="cart-drawer__item-img" />
+          <div>
+            <h4 class="cart-drawer__item-title">{{ item.product.title }}</h4>
+            <div class="cart-drawer__item-price">{{ item.final_price | money }}</div>
+            <div class="cart-drawer__item-qty">
+              <button type="button" class="cart-drawer__qty-btn js-qty-minus">-</button>
+              <span class="cart-drawer__qty-val">{{ item.quantity }}</span>
+              <button type="button" class="cart-drawer__qty-btn js-qty-plus">+</button>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <!-- Demo Default Item matching Moment of Care -->
+      <div class="cart-drawer__item">
+        <img src="{{ 'moment-of-care.jpg' | asset_url }}" alt="Moment of Care Hamper" class="cart-drawer__item-img" />
+        <div>
+          <h4 class="cart-drawer__item-title">Moment of Care</h4>
+          <div class="cart-drawer__item-price">₹3,450</div>
+          <div class="cart-drawer__item-qty">
+            <button type="button" class="cart-drawer__qty-btn">-</button>
+            <span class="cart-drawer__qty-val">1</span>
+            <button type="button" class="cart-drawer__qty-btn">+</button>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="cart-drawer__footer">
+    <div class="cart-drawer__subtotal">
+      <span>Subtotal</span>
+      <span id="CartSubtotal">{{ cart.total_price | money | default: '₹3,450' }}</span>
+    </div>
+    <p class="cart-drawer__note">Taxes and shipping calculated at checkout.</p>
+    <a href="/checkout" class="btn btn--primary" style="width: 100%;">
+      Proceed to Checkout
+    </a>
+  </div>
+</aside>
+
+{% schema %}
+{
+  "name": "Cart Drawer",
+  "settings": []
+}
+{% endschema %}

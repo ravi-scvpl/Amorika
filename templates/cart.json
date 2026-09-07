@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "cart_page": {
+      "type": "cart-drawer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "cart_page"
+  ]
+}

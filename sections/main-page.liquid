@@ -1,0 +1,19 @@
+{% comment %}
+  Main Page Section - Moments By Amoraki
+{% endcomment %}
+
+<section class="main-page-section" style="padding: clamp(3rem, 6vw, 5rem) 0;">
+  <div class="container" style="max-width: 800px;">
+    <h1 class="h2" style="text-align: center; margin-bottom: 2.5rem;">{{ page.title }}</h1>
+    <div class="page-content" style="line-height: 1.85; color: var(--color-text-muted);">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main Page",
+  "settings": []
+}
+{% endschema %}

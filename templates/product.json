@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "main_product": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "elements_purpose": {
+      "type": "elements-purpose",
+      "settings": {
+        "heading": "Every element in this moment has a purpose."
+      }
+    },
+    "quote_banner": {
+      "type": "quote-banner",
+      "settings": {
+        "quote_text": "Because the smallest moments often leave the deepest imprint."
+      }
+    }
+  },
+  "order": [
+    "main_product",
+    "elements_purpose",
+    "quote_banner"
+  ]
+}

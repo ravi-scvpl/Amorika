@@ -1,64 +1,76 @@
 {% comment %}
   Hero Banner Section - Moments By Amoraki
-  Updated with exact Website Flow & Content specifications
+  Updated with exact Website Flow & Content specifications and dynamic Hero-to-Header Scroll Animation
 {% endcomment %}
 
-<section class="hero-section" id="HeroBanner">
-  <div class="container">
-    <div class="hero-grid">
-      <!-- Left Content -->
-      <div class="hero-content">
-        <div class="hero-brand-header">
-          <span class="hero-brand-name">{{ section.settings.brand_name | default: 'Amoraki' }}</span>
-          <span class="hero-tagline"><em>{{ section.settings.tagline | default: 'A Moment Wrapped.' }}</em></span>
-        </div>
+<section class="hero" id="HeroBanner" style="position:relative; min-height: 80vh; display:flex; align-items:flex-end; background: var(--color-bg); padding-top: 90px; padding-bottom: 70px;">
+  <div class="container container--wide" style="width: 100%;">
+    <div class="hero-content" style="max-width: 900px;">
+      <h1 class="hero-h1" style="font-family: var(--font-serif); font-weight: 400; color: var(--color-text); font-size: clamp(52px, 8vw, 96px); line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 0;">
+        <span class="hero-brand-word">{{ section.settings.brand_name | default: 'Amoraki' }}</span>
+        <span class="script" style="display: block; font-family: 'Mrs Saint Delafield', cursive; font-weight: 400; color: var(--color-accent); font-size: clamp(36px, 6vw, 62px); margin-top: 4px; line-height: 1.1;">{{ section.settings.tagline | default: 'A Moment Wrapped.' }}</span>
+      </h1>
 
-        <span class="eyebrow eyebrow--no-line" style="margin-top: 0.75rem; display: block; color: var(--color-accent); font-weight: 700; letter-spacing: 0.14em;">
+      <div class="hero-eyebrow" style="margin-top: 22px; margin-bottom: 0;">
+        <span class="hero-subtitle" style="font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-text); display: inline-flex; align-items: center; flex-wrap: wrap; gap: 14px; padding: 0; background: none; border: none; border-radius: 0; box-shadow: none; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);">
           {{ section.settings.subheader | default: 'HOME OF INTENTIONAL GIFTING • SUSTAINABLY CURATED' }}
         </span>
-
-        <h1 class="hero-title" style="margin-top: 1rem; margin-bottom: 1.25rem;">
-          {{ section.settings.heading | default: 'Life is a collection of moments.' }}
-        </h1>
-
-        <p class="hero-desc" style="margin-bottom: 1.75rem; font-size: 1.0625rem; color: var(--color-text-muted);">
-          {{ section.settings.description | default: "Designed to be felt long after it's unwrapped." }}
-        </p>
-
-        <div class="btn-group">
-          <a href="{{ section.settings.cta_link | default: '#moment-of-care' }}" class="btn btn--primary">
-            {{ section.settings.cta_label | default: 'Explore Collection' }}
-          </a>
-        </div>
-
-        <!-- RTBs (Reasons To Believe) -->
-        <div class="rtb-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.75rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
-          <div class="rtb-item">
-            <h4 style="font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.35rem;">Thoughtfully Chosen</h4>
-            <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.5;">Every object earns its place inside the hamper.</p>
-          </div>
-          <div class="rtb-item">
-            <h4 style="font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.35rem;">Made Slowly</h4>
-            <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.5;">Hand-poured, hand-hammered, hand-tied. Small batches, not mass production.</p>
-          </div>
-          <div class="rtb-item">
-            <h4 style="font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.35rem;">Wrapped With Intention</h4>
-            <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.5;">Presentation is part of the gift, not packaging as an afterthought.</p>
-          </div>
-        </div>
       </div>
 
-      <!-- Right Image -->
-      <div class="hero-media">
-        {%- if section.settings.image != blank -%}
-          <img src="{{ section.settings.image | image_url: width: 1200 }}" alt="Amoraki A Moment Wrapped" loading="eager" width="800" height="600" />
-        {%- else -%}
-          <img src="{{ 'hero-hamper.jpg' | asset_url }}" alt="Amoraki A Moment Wrapped" loading="eager" width="800" height="600" />
-        {%- endif -%}
+      <p class="hero-sub" style="color: var(--color-text-muted); font-size: 1.125rem; max-width: 480px; margin: 24px 0 36px; line-height: 1.6;">
+        {{ section.settings.description | default: "Designed to be felt long after it's unwrapped." }}
+      </p>
+
+      <div class="btn-group" style="margin-top: 0;">
+        <a href="{{ section.settings.cta_link | default: '#moment-of-care' }}" class="btn btn--primary" style="padding: 16px 32px; font-size: 12.5px; letter-spacing: 0.12em;">
+          {{ section.settings.cta_label | default: 'Explore Collection' }} &rarr;
+        </a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- RTB Strip -->
+<div class="rtb-strip" style="background: #FFFFFF; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+  <div class="container container--wide">
+    <div class="rtb-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;">
+      <div class="rtb-item" style="padding: 36px 28px; text-align: center; border-right: 1px solid var(--color-border-subtle); display: flex; flex-direction: column; align-items: center;">
+        <div class="rtb-mark" style="width: 32px; height: 32px; margin-bottom: 14px; color: var(--color-accent);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--color-text); margin-bottom: 0.4rem;">Thoughtfully Chosen</h4>
+        <p style="font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.6; max-width: 260px; margin: 0 auto;">Every object earns its place inside the hamper.</p>
+      </div>
+      <div class="rtb-item" style="padding: 36px 28px; text-align: center; border-right: 1px solid var(--color-border-subtle); display: flex; flex-direction: column; align-items: center;">
+        <div class="rtb-mark" style="width: 32px; height: 32px; margin-bottom: 14px; color: var(--color-accent);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"></path>
+            <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v6"></path>
+            <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"></path>
+            <path d="M18 8a2 2 0 0 1 2 2v4a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6v-1.5"></path>
+          </svg>
+        </div>
+        <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--color-text); margin-bottom: 0.4rem;">Made Slowly</h4>
+        <p style="font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.6; max-width: 260px; margin: 0 auto;">Hand-poured, hand-hammered, hand-tied. Small batches, not mass production.</p>
+      </div>
+      <div class="rtb-item" style="padding: 36px 28px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <div class="rtb-mark" style="width: 32px; height: 32px; margin-bottom: 14px; color: var(--color-accent);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 12 20 22 4 22 4 12"></polyline>
+            <rect x="2" y="7" width="20" height="5"></rect>
+            <line x1="12" y1="22" x2="12" y2="7"></line>
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+          </svg>
+        </div>
+        <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--color-text); margin-bottom: 0.4rem;">Wrapped With Intention</h4>
+        <p style="font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.6; max-width: 260px; margin: 0 auto;">Presentation is part of the gift, not packaging as an afterthought.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% schema %}
 {

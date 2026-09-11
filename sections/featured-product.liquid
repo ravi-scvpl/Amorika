@@ -1,139 +1,112 @@
 {% comment %}
-  Featured Product Section - Moments By Amoraki
-  "Moment of Care" with exact pricing (₹5,490 + ₹200 delivery), delivery guarantee note & "Inside the Collection" accordion gallery
+  Moment of Care - Featured Product Section (Exact Match preview.html)
 {% endcomment %}
 
-<section class="featured-product-section" id="moment-of-care">
-  <div class="container">
-    <div class="featured-product-grid">
-      <!-- Left Media -->
-      <div class="featured-product-media">
-        <img src="{{ 'moment-of-care.jpg' | asset_url }}" alt="Moment of Care Signature Hamper" loading="lazy" width="700" height="520" />
+<section class="moc reveal" id="moment-of-care">
+  <div class="wrap">
+    <div class="moc-grid">
+      <div class="moc-left">
+        <div class="eyebrow-row" style="justify-content: flex-start;">
+          <span class="tag tag--kauna">Collection 01</span>
+        </div>
+        <h2>{{ section.settings.title | default: 'Moment of Care' }}</h2>
+        <span class="moc-tagline">{{ section.settings.tagline | default: 'A GIFT OF STILLNESS & MINDFULNESS' }}</span>
+        
+        <p class="moc-sub">{{ section.settings.description | default: 'A slow-living hamper curated to bring quiet luxury and sensory relaxation into daily life.' }}</p>
+
+        <div class="moc-price-row">
+          <span class="moc-price">&#8377;{{ section.settings.price | default: '4,850' }}</span>
+          <span class="moc-delivery">Free Delivery across Delhi NCR</span>
+        </div>
+
+        <p class="moc-delivery-note">Hand-wrapped in signature linen box with custom wax seal & personal note.</p>
+
+        <div class="moc-links">
+          <a href="#custom-gifting" class="btn btn--primary" style="padding: 14px 28px;">
+            Order This Moment &rarr;
+          </a>
+        </div>
       </div>
 
-      <!-- Right Content & Pricing -->
-      <div class="featured-product-content">
-        <span class="eyebrow eyebrow--no-line" style="color: var(--color-accent); font-weight: 700;">
-          {{ section.settings.eyebrow | default: 'FIRST COLLECTION • HAND ASSEMBLED • LIMITED RELEASE' }}
-        </span>
-
-        <h2 class="featured-product-title" style="margin-top: 0.5rem; margin-bottom: 0.75rem;">
-          {{ section.settings.title | default: 'Moment of Care' }}
-        </h2>
-
-        <p style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--color-text-muted); margin-bottom: 1rem;">
-          {{ section.settings.subtitle | default: "A gentle reminder that care doesn't always need a reason." }}
-        </p>
-
-        <p class="featured-product-desc" style="margin-bottom: 1.5rem;">
-          {{ section.settings.description | default: 'Intentionally curated hamper to bring comfort, calm & a little warmth to the everyday.' }}
-        </p>
-
-        <div class="featured-product-price" style="font-size: 2rem; color: var(--color-text);">
-          {{ section.settings.price | default: '₹5,490' }}
-        </div>
-
-        <div class="featured-product-meta" style="margin-bottom: 1.5rem;">
-          <span style="font-weight: 600; color: var(--color-text);">
-            {{ section.settings.delivery_text | default: 'Hand/Personally Delivered across Delhi NCR: + ₹200 delivery' }}
-          </span>
-          <p style="font-size: 0.78125rem; font-style: italic; color: var(--color-text-muted); margin-top: 0.35rem;">
-            <em>Thoughtfully hand-delivered. No cartons, no couriers, no compromise on how the moment arrives.</em>
-          </p>
-        </div>
-
-        <div class="featured-product-actions">
-          <button 
-            type="button" 
-            class="btn btn--primary js-add-to-cart" 
-            data-variant-id="moment-of-care-5490"
-            data-product-title="Moment of Care"
-            data-product-price="₹5,490"
-            data-product-image="{{ 'moment-of-care.jpg' | asset_url }}"
-          >
-            Send/Gift a Moment of Care &rarr;
-          </button>
-        </div>
+      <div class="moc-right">
+        <img class="moc-right-img"
+          src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=1200&auto=format&fit=crop"
+          alt="Moment of Care Hamper">
       </div>
     </div>
 
-    <!-- Inside the Collection Accordion Section -->
-    <div class="inside-collection-wrap" style="margin-top: 5rem; padding-top: 4rem; border-top: 1px solid var(--color-border);">
-      <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">
-        <span class="eyebrow">INSIDE THE COLLECTION</span>
-        <h3 class="h2" style="margin-top: 0.5rem;">Little Intentions, waiting to unfold</h3>
+    <!-- Inside the Hamper Carousel -->
+    <div class="inside-block">
+      <div class="eyebrow-row" style="justify-content: flex-start;">
+        <span class="tag tag--dark">Curated Elements</span>
       </div>
+      <h3 class="inside-headline">Inside the Hamper</h3>
 
-      <div class="inside-accordion-grid" style="display: flex; flex-direction: column; gap: 1.25rem; max-width: 900px; margin: 0 auto;">
-        
-        <!-- Element 1: Basket -->
-        <details class="accordion-item" open style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
-          <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
-            <span>Basket | Warm. Woven. Rooted</span>
-            <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
-          </summary>
-          <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
-            <p>Handcrafted from natural kauna grass in Manipur. A beautiful, time-honoured craft bringing warmth and character into any space.</p>
-            <br>
-            <p>A tactile piece with a life beyond the hamper. A place for memorabilia, letters, keepsakes, picnic essentials or everyday treasures. A beautiful reminder that even the simplest things can be worth keeping close.</p>
-          </div>
-        </details>
+      <div class="inside-carousel">
+        <button class="carousel-arrow carousel-arrow--prev" aria-label="Previous element">&lsaquo;</button>
+        <button class="carousel-arrow carousel-arrow--next" aria-label="Next element">&rsaquo;</button>
 
-        <!-- Element 2: Singing Bowl -->
-        <details class="accordion-item" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
-          <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
-            <span>Singing Bowl | Resonant. Grounding. Timeless</span>
-            <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
-          </summary>
-          <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
-            <p>Shaped through repeated hammering, its deep resonance creates a moment of pause. A gentle invitation towards stillness, grounding and coming back to the present.</p>
-            <br>
-            <p>A sound that fades slowly. A little more quiet left behind in the moment.</p>
-          </div>
-        </details>
-
-        <!-- Element 3: Flower Tea -->
-        <details class="accordion-item" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
-          <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
-            <span>Flower Tea With Glass Infuser | Gentle. Floral. Soothing</span>
-            <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
-          </summary>
-          <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
-            <p>Carefully picked chamomile, blue corn & rose buds flower tea, paired with a glass infuser for moments when slowing down and breathing a little easier feels just right.</p>
-            <br>
-            <p>Flowers unfolding in warm water. A gentle floral aroma. A slow sip. A softer moment around the day.</p>
-          </div>
-        </details>
-
-        <!-- Element 4: Wax Sachets -->
-        <details class="accordion-item" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
-          <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
-            <span>Wax Sachets | Aromatic. Comforting. Atmospheric</span>
-            <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
-          </summary>
-          <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
-            <p>Hand-poured fragrant soy wax sachets created to gently change the feeling of spaces around the home.</p>
-            <div style="margin: 1rem 0; padding-left: 1rem; border-left: 2px solid var(--color-accent);">
-              <p><strong>Rainforest:</strong> Fresh, earthy and calming.</p>
-              <p><strong>Coffee:</strong> Warm, rich and familiar.</p>
+        <div class="inside-track" id="insideTrack">
+          <!-- Card 1 -->
+          <div class="inside-card" tabindex="0">
+            <img class="inside-img"
+              src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=800&auto=format&fit=crop"
+              alt="Brass singing bowl and mallet on slate">
+            <div class="inside-overlay">
+              <span class="inside-title">Singing Bowl</span>
+              <span class="inside-sub">Resonant &middot; Grounding &middot; Timeless</span>
+              <p class="inside-desc">Shaped through repeated hammering, its deep resonance creates a moment of pause — a gentle invitation towards stillness and coming back to the present.</p>
             </div>
-            <p>A little aromatic comfort for linens, wardrobes, drawers, restrooms or even cars. A softer atmosphere wherever a little lift is needed.</p>
           </div>
-        </details>
 
-        <!-- Element 5: Linen Cotton Napkins -->
-        <details class="accordion-item" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.5rem 2rem;">
-          <summary style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: var(--color-text);">
-            <span>Linen Cotton Napkins | Natural. Textured. Everyday</span>
-            <span style="color: var(--color-accent); font-size: 1.2rem;">+</span>
-          </summary>
-          <div style="margin-top: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.8;">
-            <p>A beautiful & tactile cotton-linen weave, chosen to bring a little more warmth and ease to the everyday table.</p>
-            <br>
-            <p>For morning tea, a slow meal, coffee with someone worth talking to. Small everyday gatherings, made a little more special through texture, warmth and shared presence.</p>
+          <!-- Card 2 -->
+          <div class="inside-card" tabindex="0">
+            <img class="inside-img"
+              src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop"
+              alt="Kansa cup with warm tea">
+            <div class="inside-overlay">
+              <span class="inside-title">Hand-Hammered Kansa Cup</span>
+              <span class="inside-sub">Ayurvedic &middot; Artisanal &middot; Warm</span>
+              <p class="inside-desc">Forged in traditional bronze alloy, celebrated in Ayurveda for its healing properties. Designed for slow sips of warm tea or botanical infusions.</p>
+            </div>
           </div>
-        </details>
 
+          <!-- Card 3 -->
+          <div class="inside-card" tabindex="0">
+            <img class="inside-img"
+              src="https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=800&auto=format&fit=crop"
+              alt="Soy candle in brass vessel">
+            <div class="inside-overlay">
+              <span class="inside-title">Hand-Poured Soy Candle</span>
+              <span class="inside-sub">Botanical &middot; Calming &middot; Pure</span>
+              <p class="inside-desc">Infused with natural essential oils, poured in small batches into a reusable brass vessel. Fills the room with subtle, grounding aromatics.</p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="inside-card" tabindex="0">
+            <img class="inside-img"
+              src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop"
+              alt="Brass incense holder and incense smoke">
+            <div class="inside-overlay">
+              <span class="inside-title">Brass Incense Holder</span>
+              <span class="inside-sub">Mindful &middot; Elegant &middot; Ritual</span>
+              <p class="inside-desc">Minimalist solid brass holder paired with hand-rolled incense sticks. A daily ritual to clear the mind and mark the transition into rest.</p>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="inside-card" tabindex="0">
+            <img class="inside-img"
+              src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=800&auto=format&fit=crop"
+              alt="Loose herbal tea leaves and dried botanicals">
+            <div class="inside-overlay">
+              <span class="inside-title">Organic Herbal Tea Blend</span>
+              <span class="inside-sub">Soothe &middot; Nourish &middot; Rest</span>
+              <p class="inside-desc">Custom blend of whole-leaf chamomile, dried lavender, and rose petals. Sourced directly from organic Himalayan tea estates.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -141,48 +114,36 @@
 
 {% schema %}
 {
-  "name": "Featured Product",
+  "name": "Moment of Care",
   "settings": [
     {
       "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "FIRST COLLECTION • HAND ASSEMBLED • LIMITED RELEASE"
-    },
-    {
-      "type": "text",
       "id": "title",
-      "label": "Title",
+      "label": "Collection Title",
       "default": "Moment of Care"
     },
     {
       "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle Quote",
-      "default": "A gentle reminder that care doesn't always need a reason."
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "A GIFT OF STILLNESS & MINDFULNESS"
     },
     {
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "Intentionally curated hamper to bring comfort, calm & a little warmth to the everyday."
+      "default": "A slow-living hamper curated to bring quiet luxury and sensory relaxation into daily life."
     },
     {
       "type": "text",
       "id": "price",
       "label": "Price",
-      "default": "₹5,490"
-    },
-    {
-      "type": "text",
-      "id": "delivery_text",
-      "label": "Delivery Text",
-      "default": "Hand/Personally Delivered across Delhi NCR: + ₹200 delivery"
+      "default": "4,850"
     }
   ],
   "presets": [
     {
-      "name": "Featured Product"
+      "name": "Moment of Care"
     }
   ]
 }

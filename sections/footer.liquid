@@ -1,75 +1,99 @@
 {% comment %}
-  Footer Section - Moments By Amoraki
-  Clean luxury footer with location badge, FAQs, navigation & social links (duplicate newsletter removed)
+  Luxury Footer Section (Exact Match preview.html)
 {% endcomment %}
 
-<footer class="site-footer" id="SiteFooter">
-  <div class="container">
+<footer id="contact">
+  <div class="wrap">
     <div class="footer-top">
-      <!-- Brand & Tagline -->
+      <!-- Footer Brand Column -->
       <div class="footer-brand">
-        <a href="{{ routes.root_url | default: '/' }}" class="site-logo">Amoraki</a>
-        <p class="footer-tagline"><em>A Moment Wrapped.</em></p>
-        <div class="footer-location" style="margin-top: 1rem;">
-          <span class="location-badge" style="font-weight: 600;">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            Delivering Across Delhi NCR only
-          </span>
-        </div>
-        <p class="footer-copyright" style="margin-top: 1.25rem;">
-          &copy; 2025 Amoraki. All rights reserved.
+        <a href="#top" class="nav-logo">amoraki</a>
+        <span class="script">A Moment Wrapped.</span>
+        <p class="deliver">
+          <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 21s-7-4.35-7-10.5a7 7 0 1 1 14 0C19 16.65 12 21 12 21z" />
+            <circle cx="12" cy="10.5" r="2.5" />
+          </svg>
+          Delivering thoughtfully packaged moments across Delhi NCR and select pan-India locations.
         </p>
       </div>
 
-      <!-- FAQs Column -->
-      <div class="footer-col">
-        <h4 class="footer-col-title">FAQs</h4>
-        <p style="font-size: 0.78125rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">Things you may want to know</p>
-        <ul class="footer-links">
-          <li><a href="/pages/faqs#delivery" class="footer-link">Hand Delivery Policy</a></li>
-          <li><a href="/pages/faqs#bespoke" class="footer-link">Bespoke Lead Times</a></li>
-          <li><a href="/pages/faqs#care" class="footer-link">Sensory Hamper Care</a></li>
-        </ul>
-      </div>
+      <!-- FAQ Accordion Column -->
+      <div>
+        <h4>Questions &amp; Care</h4>
+        <button class="faq-teaser" id="faqTeaser">
+          Have questions about delivery, contents, or custom orders?
+          <br>
+          <span class="arrow">View Frequent Enquiries &rarr;</span>
+        </button>
 
-      <!-- Explore Navigation Column -->
-      <div class="footer-col">
-        <h4 class="footer-col-title">Explore</h4>
-        <ul class="footer-links">
-          <li><a href="#HeroBanner" class="footer-link">Collections</a></li>
-          <li><a href="#moment-of-care" class="footer-link">Moment of Care</a></li>
-          <li><a href="#upcoming-collections" class="footer-link">Moment of Play</a></li>
-          <li><a href="#upcoming-collections" class="footer-link">Moment of Synergy</a></li>
-          <li><a href="#journal" class="footer-link">Journal</a></li>
-          <li><a href="#bespoke-gifting" class="footer-link">Bespoke Gifting</a></li>
-        </ul>
-      </div>
+        <div class="collapse" id="faqList">
+          <div style="margin-top: 18px;">
+            <div class="faq-item">
+              <button class="faq-q"><span>Where do you deliver?</span><span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>We provide same-day &amp; scheduled hand-delivery across Delhi NCR. Pan-India shipping is available for non-perishable hampers via express courier.</p>
+              </div>
+            </div>
 
-      <!-- Stay Close Column (Social & Contact Links) -->
-      <div class="footer-col" style="grid-column: span 2;">
-        <h4 class="footer-col-title">Stay Close</h4>
-        <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">Stay updated on new collections and reads.</p>
-        
-        <!-- Social Icons & Email -->
-        <div class="footer-socials" style="display: flex; align-items: center; gap: 1rem; font-size: 0.8125rem; flex-wrap: wrap;">
-          <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-link">Instagram</a>
-          <span>|</span>
-          <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-link">FB</a>
-          <span>|</span>
-          <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
-          <span>|</span>
-          <a href="mailto:hello@momentsbyamoraki.com" class="footer-social-link">hello@momentsbyamoraki.com</a>
+            <div class="faq-item">
+              <button class="faq-q"><span>Can I personalize the hamper note?</span><span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Yes. Every hamper includes a handwritten card with your personalized message sealed in custom wax.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q"><span>What is the lead time for custom orders?</span><span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Bespoke &amp; corporate orders require 7-14 business days depending on quantity and customization degree.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Newsletter Column -->
+      <div>
+        <h4>Stay Connected</h4>
+        <p class="stay-copy">Receive private previews of upcoming moment curations and seasonal edits.</p>
+        <form class="stay" id="stayForm">
+          <input type="email" id="stayEmail" placeholder="Enter your email" required>
+          <button type="submit" class="stay-btn" aria-label="Subscribe">&rarr;</button>
+        </form>
+      </div>
     </div>
 
-    <!-- Bottom Legal Bar -->
+    <!-- Footer Bottom Row -->
     <div class="footer-bottom">
-      <a href="/policies/privacy-policy">Privacy</a>
-      <span>|</span>
-      <a href="/policies/terms-of-service">Terms</a>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+        </a>
+        <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer-email">
+        <a href="mailto:hello@amoraki.in">hello@amoraki.in</a>
+      </div>
+
+      <div class="footer-copy">
+        &copy; {{ 'now' | date: "%Y" }} Amoraki. All rights reserved.
+      </div>
     </div>
   </div>
+
+  <svg class="footer-sprig" viewBox="0 0 100 160" fill="none" stroke="currentColor" stroke-width="1">
+    <path d="M50 150Q45 100 50 10M50 120Q30 110 20 90M50 90Q70 80 80 60M50 60Q35 50 25 35M50 35Q65 25 75 10" />
+  </svg>
 </footer>
 
 {% schema %}

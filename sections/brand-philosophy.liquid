@@ -1,52 +1,17 @@
 {% comment %}
-  Brand Philosophy Section - Moments By Amoraki
-  "The World of Moments" editorial philosophy split section
+  Brand Philosophy Section (Exact Match preview.html)
 {% endcomment %}
 
-<section class="philosophy-section" id="world-of-moments">
-  <div class="container">
-    <div class="philosophy-grid">
-      <!-- Left Content -->
-      <div class="philosophy-content">
-        {%- if section.settings.eyebrow != blank -%}
-          <span class="eyebrow">{{ section.settings.eyebrow }}</span>
-        {%- endif -%}
-
-        <h2 class="philosophy-title">
-          {{ section.settings.heading | default: 'The World of Moments' }}
-        </h2>
-
-        <div class="philosophy-body">
-          <p>
-            {{ section.settings.paragraph_1 | default: 'Occasions have their place. They bring us together and give us reasons to celebrate.' }}
-          </p>
-          <br />
-          <p>
-            {{ section.settings.paragraph_2 | default: 'But life happens between the occasions. In the little details. The quiet gestures. The unspoken support.' }}
-          </p>
-          <br />
-          <p>
-            {{ section.settings.paragraph_3 | default: 'We believe every one of those moments matters. And every one of them deserves to be honoured.' }}
-          </p>
-        </div>
-
-        {%- if section.settings.link_label != blank -%}
-          <a href="{{ section.settings.link_url | default: '/pages/about' }}" class="link-arrow">
-            <span>{{ section.settings.link_label }}</span>
-            {% render 'icon-arrow', size: 14 %}
-          </a>
-        {%- endif -%}
-      </div>
-
-      <!-- Right Atmospheric Media -->
-      <div class="philosophy-media">
-        {%- if section.settings.image != blank -%}
-          <img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.heading | escape }}" loading="lazy" width="700" height="520" />
-        {%- else -%}
-          <img src="{{ 'philosophy-vase.jpg' | asset_url }}" alt="Amoraki Philosophy - The World of Moments" loading="lazy" width="700" height="520" />
-        {%- endif -%}
-      </div>
-    </div>
+<section class="philosophy reveal">
+  <div class="wrap">
+    <div class="rule"></div>
+    <blockquote>
+      {{ section.settings.quote_before | default: "We don't sell hampers. We curate " }}<em>{{ section.settings.quote_em | default: "moments." }}</em>
+    </blockquote>
+    <p style="font-size: 15.5px; color: var(--taupe); max-width: 520px; margin: 0 auto; line-height: 1.7;">
+      {{ section.settings.subtitle | default: "Every element is chosen for how it feels, smells, sounds, and stays." }}
+    </p>
+    <div class="rule-bottom"></div>
   </div>
 </section>
 
@@ -56,49 +21,21 @@
   "settings": [
     {
       "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "OUR PHILOSOPHY"
+      "id": "quote_before",
+      "label": "Quote Text Before Accent",
+      "default": "We don't sell hampers. We curate "
     },
     {
       "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "The World of Moments"
+      "id": "quote_em",
+      "label": "Accented Word",
+      "default": "moments."
     },
     {
       "type": "textarea",
-      "id": "paragraph_1",
-      "label": "Paragraph 1",
-      "default": "Occasions have their place. They bring us together and give us reasons to celebrate."
-    },
-    {
-      "type": "textarea",
-      "id": "paragraph_2",
-      "label": "Paragraph 2",
-      "default": "But life happens between the occasions. In the little details. The quiet gestures. The unspoken support."
-    },
-    {
-      "type": "textarea",
-      "id": "paragraph_3",
-      "label": "Paragraph 3",
-      "default": "We believe every one of those moments matters. And every one of them deserves to be honoured."
-    },
-    {
-      "type": "text",
-      "id": "link_label",
-      "label": "Link Label",
-      "default": "Discover our philosophy"
-    },
-    {
-      "type": "url",
-      "id": "link_url",
-      "label": "Link URL"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Philosophy Image"
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Every element is chosen for how it feels, smells, sounds, and stays."
     }
   ],
   "presets": [

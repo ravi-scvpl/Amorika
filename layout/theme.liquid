@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="#FAF7F2">
+    <meta name="theme-color" content="#F1E9DD">
     <link rel="canonical" href="{{ canonical_url }}">
     
     <title>
@@ -18,9 +18,13 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
     {{ content_for_header }}
 
-    <!-- Amoraki Luxury Design System -->
+    <!-- Amoraki Luxury Design System CSS (Exact Match preview.html) -->
     {{ 'amoraki-theme.css' | asset_url | stylesheet_tag }}
   </head>
 
@@ -35,11 +39,9 @@
       {{ content_for_layout }}
     </main>
 
-    {% section 'newsletter' %}
     {% section 'footer' %}
-    {% section 'cart-drawer' %}
 
-    <!-- Amoraki Theme JavaScript -->
+    <!-- Amoraki Theme JavaScript (Exact Match preview.html) -->
     <script src="{{ 'amoraki-theme.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

@@ -1,71 +1,54 @@
 {% comment %}
-  Header Section - Moments By Amoraki
-  With Collections Dropdown containing: Moment of Care, Moment of Play (Coming soon), Moment of Synergy (Coming soon)
+  Header Section - Moments By Amoraki (Exact Match preview.html)
 {% endcomment %}
 
-<header class="site-header" id="SiteHeader">
-  <div class="container container--wide">
-    <div class="site-header__inner">
-      <!-- Logo on Left -->
-      <a href="{{ routes.root_url | default: '/' }}" class="site-header__logo nav-logo">
-        {{ section.settings.logo_text | default: 'Amoraki' }}
-      </a>
+<div class="nav-scrim" id="navScrim"></div>
 
-      <!-- Navigation Menu -->
-      <nav class="site-header__nav" aria-label="Main Navigation">
-        <ul class="site-nav">
-          
-          <!-- Collections Dropdown -->
-          <li class="site-nav__item site-nav__item--dropdown">
-            <a href="#HeroBanner" class="site-nav__link site-nav__link--has-dropdown">
-              <span>Collections</span>
-              <span class="dropdown-caret">&#9660;</span>
-            </a>
-            <ul class="site-nav__dropdown">
-              <li class="site-nav__dropdown-item">
-                <a href="#moment-of-care" class="site-nav__dropdown-link">
-                  <span>Moment of Care</span>
-                </a>
-              </li>
-              <li class="site-nav__dropdown-item">
-                <a href="#upcoming-collections" class="site-nav__dropdown-link">
-                  <span>Moment of Play</span>
-                  <small>Coming soon</small>
-                </a>
-              </li>
-              <li class="site-nav__dropdown-item">
-                <a href="#upcoming-collections" class="site-nav__dropdown-link">
-                  <span>Moment of Synergy</span>
-                  <small>Coming soon</small>
-                </a>
-              </li>
-            </ul>
-          </li>
+<nav class="nav" id="mainNav">
+  <div class="wrap">
+    <a href="{{ routes.root_url | default: '#top' }}" class="nav-logo">amoraki</a>
 
-          <li><a href="#journal" class="site-nav__link">Journal</a></li>
-          <li><a href="#bespoke-gifting" class="site-nav__link">Bespoke Gifting</a></li>
-          <li><a href="#Newsletter" class="site-nav__link">Connect</a></li>
-        </ul>
-      </nav>
-
-      <!-- Right Actions: Cart & Hamburger Button -->
-      <div class="site-header__actions">
-        <button type="button" class="header-cart-btn js-open-cart" aria-label="Open Cart Drawer">
-          {% render 'icon-cart', size: 20 %}
-          <span class="header-cart-badge" id="CartCount">1</span>
+    <div class="nav-inline">
+      <div class="nav-dropdown" id="navDropdown">
+        <button class="nav-dropdown-btn" id="navDropdownBtn" aria-haspopup="true" aria-expanded="false">
+          Collections
         </button>
-
-        <a href="#moment-of-care" class="btn btn--primary btn--sm">
-          Send a Moment
-        </a>
-
-        <button type="button" class="mobile-menu-toggle js-mobile-menu-toggle" aria-label="Toggle Navigation Menu">
-          {% render 'icon-menu', size: 24 %}
-        </button>
+        <div class="nav-dropdown-menu">
+          <a href="#moment-of-care">Moment of Care</a>
+          <a href="#on-the-horizon">Moment of Play <span class="soon">Coming Soon</span></a>
+          <a href="#on-the-horizon">Moment of Synergy <span class="soon">Coming Soon</span></a>
+        </div>
       </div>
+      <a href="#journal">Journal</a>
+      <a href="#custom-gifting">Bespoke Gifting</a>
+      <a href="#contact">Connect</a>
     </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
   </div>
-</header>
+</nav>
+
+<div class="nav-panel" id="navPanel">
+  <button class="nav-panel-close" id="navClose">Close ✕</button>
+  <div class="nav-links">
+    <div class="nav-link-group">
+      <span class="nav-link nav-link--head">Collections</span>
+      <a href="#moment-of-care" class="nav-sublink">Moment of Care</a>
+      <a href="#on-the-horizon" class="nav-sublink">Moment of Play <em>Coming Soon</em></a>
+      <a href="#on-the-horizon" class="nav-sublink">Moment of Synergy <em>Coming Soon</em></a>
+    </div>
+    <a href="#journal" class="nav-link">Journal</a>
+    <a href="#custom-gifting" class="nav-link">Bespoke Gifting</a>
+    <a href="#contact" class="nav-link">Connect</a>
+  </div>
+  <div class="nav-panel-foot">
+    hello@amoraki.in<br>Delivering across Delhi NCR
+  </div>
+</div>
+
+<div id="top"></div>
 
 {% schema %}
 {
@@ -75,7 +58,7 @@
       "type": "text",
       "id": "logo_text",
       "label": "Logo Text",
-      "default": "Amoraki"
+      "default": "amoraki"
     }
   ]
 }

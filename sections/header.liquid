@@ -1,12 +1,19 @@
 {% comment %}
-  Header Section - Moments By Amoraki (Exact Match preview.html)
+  Header Section - Moments By Amoraki
+  Fully customizable via Shopify Customizer.
 {% endcomment %}
 
 <div class="nav-scrim" id="navScrim"></div>
 
 <nav class="nav" id="mainNav">
   <div class="wrap">
-    <a href="{{ routes.root_url | default: '#top' }}" class="nav-logo">amoraki</a>
+    <a href="{{ routes.root_url | default: '#top' }}" class="nav-logo">
+      {% if section.settings.logo_image != blank %}
+        <img src="{{ section.settings.logo_image | image_url: height: 48 }}" alt="{{ shop.name }}" style="height:28px; width:auto;">
+      {% else %}
+        {{ section.settings.logo_text | default: 'amoraki' }}
+      {% endif %}
+    </a>
 
     <div class="nav-inline">
       <div class="nav-dropdown" id="navDropdown">
@@ -44,7 +51,8 @@
     <a href="#contact" class="nav-link">Connect</a>
   </div>
   <div class="nav-panel-foot">
-    hello@amoraki.in<br>Delivering across Delhi NCR
+    {{ section.settings.contact_email | default: 'hello@amoraki.in' }}<br>
+    {{ section.settings.delivery_area | default: 'Delivering across Delhi NCR' }}
   </div>
 </div>
 
@@ -59,6 +67,23 @@
       "id": "logo_text",
       "label": "Logo Text",
       "default": "amoraki"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image (Optional)"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact Email",
+      "default": "hello@amoraki.in"
+    },
+    {
+      "type": "text",
+      "id": "delivery_area",
+      "label": "Delivery Area Text",
+      "default": "Delivering across Delhi NCR"
     }
   ]
 }

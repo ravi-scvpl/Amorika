@@ -1,11 +1,18 @@
 {% comment %}
-  Hero Banner Section - Moments By Amoraki (Exact Match preview.html)
+  Hero Banner Section - Moments By Amoraki
+  Fully configurable via Shopify Customizer with image_picker and text options.
 {% endcomment %}
 
 <section class="hero">
-  <img class="hero-img"
-    src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=2000&auto=format&fit=crop"
-    alt="{{ section.settings.image_alt | default: 'Brass singing bowl and mallet on slate' }}">
+  {% if section.settings.hero_image != blank %}
+    <img class="hero-img"
+      src="{{ section.settings.hero_image | image_url: width: 2000 }}"
+      alt="{{ section.settings.hero_image.alt | default: section.settings.brand_name }}">
+  {% else %}
+    <img class="hero-img"
+      src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=2000&auto=format&fit=crop"
+      alt="{{ section.settings.brand_name }}">
+  {% endif %}
   
   <div class="hero-scrim"></div>
 
@@ -13,24 +20,38 @@
     <div class="wrap">
       <h1>
         <span class="hero-brand-word">{{ section.settings.brand_name | default: 'amoraki' }}</span>
-        <span class="script">{{ section.settings.tagline | default: 'A Moment Wrapped.' }}</span>
+        {% if section.settings.tagline != blank %}
+          <span class="script">{{ section.settings.tagline }}</span>
+        {% endif %}
       </h1>
 
-      <div class="hero-eyebrow">
-        <span class="hero-subtitle">
-          <span>{{ section.settings.subtitle_left | default: 'HOME OF INTENTIONAL GIFTING' }}</span>
-          <span class="sub-dot">&bull;</span>
-          <span>{{ section.settings.subtitle_right | default: 'SUSTAINABLY CURATED' }}</span>
-        </span>
-      </div>
+      {% if section.settings.subtitle_left != blank or section.settings.subtitle_right != blank %}
+        <div class="hero-eyebrow">
+          <span class="hero-subtitle">
+            {% if section.settings.subtitle_left != blank %}
+              <span>{{ section.settings.subtitle_left }}</span>
+            {% endif %}
+            {% if section.settings.subtitle_left != blank and section.settings.subtitle_right != blank %}
+              <span class="sub-dot">&bull;</span>
+            {% endif %}
+            {% if section.settings.subtitle_right != blank %}
+              <span>{{ section.settings.subtitle_right }}</span>
+            {% endif %}
+          </span>
+        </div>
+      {% endif %}
 
-      <p class="hero-sub">{{ section.settings.description | default: "Designed to be felt long after it's unwrapped." }}</p>
+      {% if section.settings.description != blank %}
+        <p class="hero-sub">{{ section.settings.description }}</p>
+      {% endif %}
 
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <a href="{{ section.settings.cta_link | default: '#moment-of-care' }}" class="btn btn--primary">
-          {{ section.settings.cta_label | default: 'Explore Collection' }} &rarr;
-        </a>
-      </div>
+      {% if section.settings.cta_label != blank %}
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="{{ section.settings.cta_link | default: '#moment-of-care' }}" class="btn btn--primary">
+            {{ section.settings.cta_label }} &rarr;
+          </a>
+        </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -40,15 +61,20 @@
   "name": "Hero Banner",
   "settings": [
     {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Background Image"
+    },
+    {
       "type": "text",
       "id": "brand_name",
-      "label": "Brand Name",
+      "label": "Brand Name / Travelling Logo Text",
       "default": "amoraki"
     },
     {
       "type": "text",
       "id": "tagline",
-      "label": "Tagline",
+      "label": "Script Tagline",
       "default": "A Moment Wrapped."
     },
     {
@@ -66,19 +92,19 @@
     {
       "type": "textarea",
       "id": "description",
-      "label": "Description",
+      "label": "Description Paragraph",
       "default": "Designed to be felt long after it's unwrapped."
     },
     {
       "type": "text",
       "id": "cta_label",
-      "label": "CTA Label",
+      "label": "CTA Button Label",
       "default": "Explore Collection"
     },
     {
       "type": "url",
       "id": "cta_link",
-      "label": "CTA Link"
+      "label": "CTA Button Link"
     }
   ],
   "presets": [

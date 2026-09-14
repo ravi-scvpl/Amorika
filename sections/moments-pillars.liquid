@@ -1,93 +1,141 @@
 {% comment %}
-  RTB Strip / Moments Pillars (Exact Match preview.html)
+  RTB Strip / Moments Pillars
+  Fully customizable via Shopify Customizer with repeatable pillar blocks.
 {% endcomment %}
 
 <div class="rtb">
   <div class="wrap">
-    <div class="rtb-item">
-      <div class="rtb-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="12" cy="12" r="9" />
-          <path d="M12 7v5l3 3" />
-        </svg>
-      </div>
-      <div>
-        <h3>{{ section.settings.pillar1_title | default: 'Thoughtfully Chosen' }}</h3>
-        <p>{{ section.settings.pillar1_desc | default: 'Every object earns its place inside the hamper.' }}</p>
-      </div>
-    </div>
+    {% if section.blocks.size > 0 %}
+      <style>
+        .rtb .wrap {
+          display: grid;
+          grid-template-columns: repeat({{ section.blocks.size }}, 1fr);
+          gap: 0;
+        }
+        @media(max-width:768px) {
+          .rtb .wrap {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    {% endif %}
 
-    <div class="rtb-item">
-      <div class="rtb-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        </svg>
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        <div class="rtb-item" {{ block.shopify_attributes }}>
+          <div class="rtb-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              {% case forloop.index %}
+                {% when 1 %}
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 3" />
+                {% when 2 %}
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                {% else %}
+                  <rect x="3" y="8" width="18" height="13" rx="2" />
+                  <path d="M12 8V3M8 3h8" />
+              {% endcase %}
+            </svg>
+          </div>
+          <div>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <!-- Default Fallback Pillars -->
+      <div class="rtb-item">
+        <div class="rtb-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 7v5l3 3" />
+          </svg>
+        </div>
+        <div>
+          <h3>Thoughtfully Chosen</h3>
+          <p>Every object earns its place inside the hamper.</p>
+        </div>
       </div>
-      <div>
-        <h3>{{ section.settings.pillar2_title | default: 'Made Slowly' }}</h3>
-        <p>{{ section.settings.pillar2_desc | default: 'Hand-poured, hand-hammered, hand-tied. Small batches, not mass production.' }}</p>
-      </div>
-    </div>
 
-    <div class="rtb-item">
-      <div class="rtb-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="8" width="18" height="13" rx="2" />
-          <path d="M12 8V3M8 3h8" />
-        </svg>
+      <div class="rtb-item">
+        <div class="rtb-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <div>
+          <h3>Made Slowly</h3>
+          <p>Hand-poured, hand-hammered, hand-tied. Small batches, not mass production.</p>
+        </div>
       </div>
-      <div>
-        <h3>{{ section.settings.pillar3_title | default: 'Wrapped With Intention' }}</h3>
-        <p>{{ section.settings.pillar3_desc | default: 'Presentation is part of the gift, not packaging as an afterthought.' }}</p>
+
+      <div class="rtb-item">
+        <div class="rtb-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="8" width="18" height="13" rx="2" />
+            <path d="M12 8V3M8 3h8" />
+          </svg>
+        </div>
+        <div>
+          <h3>Wrapped With Intention</h3>
+          <p>Presentation is part of the gift, not packaging as an afterthought.</p>
+        </div>
       </div>
-    </div>
+    {% endif %}
   </div>
 </div>
 
 {% schema %}
 {
   "name": "Moments Pillars",
-  "settings": [
+  "settings": [],
+  "blocks": [
     {
-      "type": "text",
-      "id": "pillar1_title",
-      "label": "Pillar 1 Title",
-      "default": "Thoughtfully Chosen"
-    },
-    {
-      "type": "textarea",
-      "id": "pillar1_desc",
-      "label": "Pillar 1 Description",
-      "default": "Every object earns its place inside the hamper."
-    },
-    {
-      "type": "text",
-      "id": "pillar2_title",
-      "label": "Pillar 2 Title",
-      "default": "Made Slowly"
-    },
-    {
-      "type": "textarea",
-      "id": "pillar2_desc",
-      "label": "Pillar 2 Description",
-      "default": "Hand-poured, hand-hammered, hand-tied. Small batches, not mass production."
-    },
-    {
-      "type": "text",
-      "id": "pillar3_title",
-      "label": "Pillar 3 Title",
-      "default": "Wrapped With Intention"
-    },
-    {
-      "type": "textarea",
-      "id": "pillar3_desc",
-      "label": "Pillar 3 Description",
-      "default": "Presentation is part of the gift, not packaging as an afterthought."
+      "type": "pillar",
+      "name": "Pillar Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Pillar Title",
+          "default": "Thoughtfully Chosen"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Pillar Description",
+          "default": "Every object earns its place inside the hamper."
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Moments Pillars"
+      "name": "Moments Pillars",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Thoughtfully Chosen",
+            "description": "Every object earns its place inside the hamper."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Made Slowly",
+            "description": "Hand-poured, hand-hammered, hand-tied. Small batches, not mass production."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Wrapped With Intention",
+            "description": "Presentation is part of the gift, not packaging as an afterthought."
+          }
+        }
+      ]
     }
   ]
 }

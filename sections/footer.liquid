@@ -1,5 +1,6 @@
 {% comment %}
-  Luxury Footer Section (Exact Match preview.html)
+  Luxury Footer Section
+  Fully customizable via Shopify Customizer with repeatable FAQ blocks.
 {% endcomment %}
 
 <footer id="contact">
@@ -7,56 +8,70 @@
     <div class="footer-top">
       <!-- Footer Brand Column -->
       <div class="footer-brand">
-        <a href="#top" class="nav-logo">amoraki</a>
-        <span class="script">A Moment Wrapped.</span>
-        <p class="deliver">
-          <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 21s-7-4.35-7-10.5a7 7 0 1 1 14 0C19 16.65 12 21 12 21z" />
-            <circle cx="12" cy="10.5" r="2.5" />
-          </svg>
-          Delivering thoughtfully packaged moments across Delhi NCR and select pan-India locations.
-        </p>
+        <a href="#top" class="nav-logo">{{ section.settings.logo_text | default: 'amoraki' }}</a>
+        {% if section.settings.tagline != blank %}
+          <span class="script">{{ section.settings.tagline }}</span>
+        {% endif %}
+        {% if section.settings.delivery_note != blank %}
+          <p class="deliver">
+            <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 21s-7-4.35-7-10.5a7 7 0 1 1 14 0C19 16.65 12 21 12 21z" />
+              <circle cx="12" cy="10.5" r="2.5" />
+            </svg>
+            {{ section.settings.delivery_note }}
+          </p>
+        {% endif %}
       </div>
 
       <!-- FAQ Accordion Column -->
       <div>
-        <h4>Questions &amp; Care</h4>
+        <h4>{{ section.settings.faq_heading | default: 'Questions & Care' }}</h4>
         <button class="faq-teaser" id="faqTeaser">
-          Have questions about delivery, contents, or custom orders?
+          {{ section.settings.faq_teaser_text | default: 'Have questions about delivery, contents, or custom orders?' }}
           <br>
           <span class="arrow">View Frequent Enquiries &rarr;</span>
         </button>
 
         <div class="collapse" id="faqList">
           <div style="margin-top: 18px;">
-            <div class="faq-item">
-              <button class="faq-q"><span>Where do you deliver?</span><span class="plus">+</span></button>
-              <div class="faq-a">
-                <p>We provide same-day &amp; scheduled hand-delivery across Delhi NCR. Pan-India shipping is available for non-perishable hampers via express courier.</p>
+            {% if section.blocks.size > 0 %}
+              {% for block in section.blocks %}
+                <div class="faq-item" {{ block.shopify_attributes }}>
+                  <button class="faq-q"><span>{{ block.settings.question }}</span><span class="plus">+</span></button>
+                  <div class="faq-a">
+                    <p>{{ block.settings.answer }}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            {% else %}
+              <!-- Default Fallback FAQ Items -->
+              <div class="faq-item">
+                <button class="faq-q"><span>Where do you deliver?</span><span class="plus">+</span></button>
+                <div class="faq-a">
+                  <p>We provide same-day &amp; scheduled hand-delivery across Delhi NCR. Pan-India shipping is available for non-perishable hampers via express courier.</p>
+                </div>
               </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q"><span>Can I personalize the hamper note?</span><span class="plus">+</span></button>
-              <div class="faq-a">
-                <p>Yes. Every hamper includes a handwritten card with your personalized message sealed in custom wax.</p>
+              <div class="faq-item">
+                <button class="faq-q"><span>Can I personalize the hamper note?</span><span class="plus">+</span></button>
+                <div class="faq-a">
+                  <p>Yes. Every hamper includes a handwritten card with your personalized message sealed in custom wax.</p>
+                </div>
               </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q"><span>What is the lead time for custom orders?</span><span class="plus">+</span></button>
-              <div class="faq-a">
-                <p>Bespoke &amp; corporate orders require 7-14 business days depending on quantity and customization degree.</p>
+              <div class="faq-item">
+                <button class="faq-q"><span>What is the lead time for custom orders?</span><span class="plus">+</span></button>
+                <div class="faq-a">
+                  <p>Bespoke &amp; corporate orders require 7-14 business days depending on quantity and customization degree.</p>
+                </div>
               </div>
-            </div>
+            {% endif %}
           </div>
         </div>
       </div>
 
       <!-- Newsletter Column -->
       <div>
-        <h4>Stay Connected</h4>
-        <p class="stay-copy">Receive private previews of upcoming moment curations and seasonal edits.</p>
+        <h4>{{ section.settings.newsletter_heading | default: 'Stay Connected' }}</h4>
+        <p class="stay-copy">{{ section.settings.newsletter_copy | default: 'Receive private previews of upcoming moment curations and seasonal edits.' }}</p>
         <form class="stay" id="stayForm">
           <input type="email" id="stayEmail" placeholder="Enter your email" required>
           <button type="submit" class="stay-btn" aria-label="Subscribe">&rarr;</button>
@@ -67,26 +82,30 @@
     <!-- Footer Bottom Row -->
     <div class="footer-bottom">
       <div class="footer-social">
-        <a href="#" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="2" y="2" width="20" height="20" rx="5" />
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-          </svg>
-        </a>
-        <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-          </svg>
-        </a>
+        {% if section.settings.instagram_link != blank %}
+          <a href="{{ section.settings.instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+          </a>
+        {% endif %}
+        {% if section.settings.whatsapp_link != blank %}
+          <a href="{{ section.settings.whatsapp_link }}" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+            </svg>
+          </a>
+        {% endif %}
       </div>
 
       <div class="footer-email">
-        <a href="mailto:hello@amoraki.in">hello@amoraki.in</a>
+        <a href="mailto:{{ section.settings.contact_email | default: 'hello@amoraki.in' }}">{{ section.settings.contact_email | default: 'hello@amoraki.in' }}</a>
       </div>
 
       <div class="footer-copy">
-        &copy; {{ 'now' | date: "%Y" }} Amoraki. All rights reserved.
+        &copy; {{ 'now' | date: "%Y" }} {{ section.settings.copyright_text | default: 'Amoraki. All rights reserved.' }}
       </div>
     </div>
   </div>
@@ -99,6 +118,119 @@
 {% schema %}
 {
   "name": "Footer",
-  "settings": []
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "amoraki"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "A Moment Wrapped."
+    },
+    {
+      "type": "textarea",
+      "id": "delivery_note",
+      "label": "Delivery Note",
+      "default": "Delivering thoughtfully packaged moments across Delhi NCR and select pan-India locations."
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "FAQ Column Heading",
+      "default": "Questions & Care"
+    },
+    {
+      "type": "textarea",
+      "id": "faq_teaser_text",
+      "label": "FAQ Teaser Text",
+      "default": "Have questions about delivery, contents, or custom orders?"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter Heading",
+      "default": "Stay Connected"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_copy",
+      "label": "Newsletter Copy",
+      "default": "Receive private previews of upcoming moment curations and seasonal edits."
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact Email",
+      "default": "hello@amoraki.in"
+    },
+    {
+      "type": "url",
+      "id": "instagram_link",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "whatsapp_link",
+      "label": "WhatsApp URL"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "Amoraki. All rights reserved."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Where do you deliver?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "We provide same-day & scheduled hand-delivery across Delhi NCR."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where do you deliver?",
+            "answer": "We provide same-day & scheduled hand-delivery across Delhi NCR. Pan-India shipping is available for non-perishable hampers via express courier."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I personalize the hamper note?",
+            "answer": "Yes. Every hamper includes a handwritten card with your personalized message sealed in custom wax."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the lead time for custom orders?",
+            "answer": "Bespoke & corporate orders require 7-14 business days depending on quantity and customization degree."
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

@@ -1,111 +1,147 @@
 {% comment %}
-  Moment of Care - Featured Product Section (Exact Match preview.html)
+  Moment of Care - Featured Product Section
+  Fully customizable via Shopify Customizer with image_picker settings & repeatable blocks for "Inside the Hamper" elements.
 {% endcomment %}
 
 <section class="moc reveal" id="moment-of-care">
   <div class="wrap">
     <div class="moc-grid">
       <div class="moc-left">
-        <div class="eyebrow-row" style="justify-content: flex-start;">
-          <span class="tag tag--kauna">Collection 01</span>
-        </div>
+        {% if section.settings.collection_tag != blank %}
+          <div class="eyebrow-row" style="justify-content: flex-start;">
+            <span class="tag tag--kauna">{{ section.settings.collection_tag }}</span>
+          </div>
+        {% endif %}
+
         <h2>{{ section.settings.title | default: 'Moment of Care' }}</h2>
-        <span class="moc-tagline">{{ section.settings.tagline | default: 'A GIFT OF STILLNESS & MINDFULNESS' }}</span>
         
-        <p class="moc-sub">{{ section.settings.description | default: 'A slow-living hamper curated to bring quiet luxury and sensory relaxation into daily life.' }}</p>
+        {% if section.settings.tagline != blank %}
+          <span class="moc-tagline">{{ section.settings.tagline }}</span>
+        {% endif %}
+        
+        {% if section.settings.description != blank %}
+          <p class="moc-sub">{{ section.settings.description }}</p>
+        {% endif %}
 
         <div class="moc-price-row">
-          <span class="moc-price">&#8377;{{ section.settings.price | default: '4,850' }}</span>
-          <span class="moc-delivery">Free Delivery across Delhi NCR</span>
+          {% if section.settings.price != blank %}
+            <span class="moc-price">&#8377;{{ section.settings.price }}</span>
+          {% endif %}
+          {% if section.settings.delivery_text != blank %}
+            <span class="moc-delivery">{{ section.settings.delivery_text }}</span>
+          {% endif %}
         </div>
 
-        <p class="moc-delivery-note">Hand-wrapped in signature linen box with custom wax seal & personal note.</p>
+        {% if section.settings.delivery_note != blank %}
+          <p class="moc-delivery-note">{{ section.settings.delivery_note }}</p>
+        {% endif %}
 
-        <div class="moc-links">
-          <a href="#custom-gifting" class="btn btn--primary" style="padding: 14px 28px;">
-            Order This Moment &rarr;
-          </a>
-        </div>
+        {% if section.settings.cta_label != blank %}
+          <div class="moc-links">
+            <a href="{{ section.settings.cta_link | default: '#custom-gifting' }}" class="btn btn--primary" style="padding: 14px 28px;">
+              {{ section.settings.cta_label }} &rarr;
+            </a>
+          </div>
+        {% endif %}
       </div>
 
       <div class="moc-right">
-        <img class="moc-right-img"
-          src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=1200&auto=format&fit=crop"
-          alt="Moment of Care Hamper">
+        {% if section.settings.featured_image != blank %}
+          <img class="moc-right-img"
+            src="{{ section.settings.featured_image | image_url: width: 1200 }}"
+            alt="{{ section.settings.featured_image.alt | default: section.settings.title }}">
+        {% else %}
+          <img class="moc-right-img"
+            src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=1200&auto=format&fit=crop"
+            alt="Moment of Care Hamper">
+        {% endif %}
       </div>
     </div>
 
-    <!-- Inside the Hamper Carousel -->
+    <!-- Inside the Hamper Carousel (Customizable Blocks) -->
     <div class="inside-block">
-      <div class="eyebrow-row" style="justify-content: flex-start;">
-        <span class="tag tag--dark">Curated Elements</span>
-      </div>
-      <h3 class="inside-headline">Inside the Hamper</h3>
+      {% if section.settings.carousel_tag != blank %}
+        <div class="eyebrow-row" style="justify-content: flex-start;">
+          <span class="tag tag--dark">{{ section.settings.carousel_tag }}</span>
+        </div>
+      {% endif %}
+      
+      {% if section.settings.carousel_headline != blank %}
+        <h3 class="inside-headline">{{ section.settings.carousel_headline }}</h3>
+      {% endif %}
 
       <div class="inside-carousel">
         <button class="carousel-arrow carousel-arrow--prev" aria-label="Previous element">&lsaquo;</button>
         <button class="carousel-arrow carousel-arrow--next" aria-label="Next element">&rsaquo;</button>
 
         <div class="inside-track" id="insideTrack">
-          <!-- Card 1 -->
-          <div class="inside-card" tabindex="0">
-            <img class="inside-img"
-              src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=800&auto=format&fit=crop"
-              alt="Brass singing bowl and mallet on slate">
-            <div class="inside-overlay">
-              <span class="inside-title">Singing Bowl</span>
-              <span class="inside-sub">Resonant &middot; Grounding &middot; Timeless</span>
-              <p class="inside-desc">Shaped through repeated hammering, its deep resonance creates a moment of pause — a gentle invitation towards stillness and coming back to the present.</p>
-            </div>
-          </div>
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              <div class="inside-card" tabindex="0" {{ block.shopify_attributes }}>
+                {% if block.settings.image != blank %}
+                  <img class="inside-img"
+                    src="{{ block.settings.image | image_url: width: 800 }}"
+                    alt="{{ block.settings.image.alt | default: block.settings.title }}">
+                {% else %}
+                  <img class="inside-img"
+                    src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=800&auto=format&fit=crop"
+                    alt="{{ block.settings.title }}">
+                {% endif %}
 
-          <!-- Card 2 -->
-          <div class="inside-card" tabindex="0">
-            <img class="inside-img"
-              src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop"
-              alt="Kansa cup with warm tea">
-            <div class="inside-overlay">
-              <span class="inside-title">Hand-Hammered Kansa Cup</span>
-              <span class="inside-sub">Ayurvedic &middot; Artisanal &middot; Warm</span>
-              <p class="inside-desc">Forged in traditional bronze alloy, celebrated in Ayurveda for its healing properties. Designed for slow sips of warm tea or botanical infusions.</p>
+                <div class="inside-overlay">
+                  <span class="inside-title">{{ block.settings.title }}</span>
+                  {% if block.settings.subtitle != blank %}
+                    <span class="inside-sub">{{ block.settings.subtitle }}</span>
+                  {% endif %}
+                  {% if block.settings.description != blank %}
+                    <p class="inside-desc">{{ block.settings.description }}</p>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <!-- Default Fallback Cards if no blocks added yet -->
+            <div class="inside-card" tabindex="0">
+              <img class="inside-img" src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=800&auto=format&fit=crop" alt="Singing Bowl">
+              <div class="inside-overlay">
+                <span class="inside-title">Singing Bowl</span>
+                <span class="inside-sub">Resonant &middot; Grounding &middot; Timeless</span>
+                <p class="inside-desc">Shaped through repeated hammering, its deep resonance creates a moment of pause — a gentle invitation towards stillness and coming back to the present.</p>
+              </div>
             </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="inside-card" tabindex="0">
-            <img class="inside-img"
-              src="https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=800&auto=format&fit=crop"
-              alt="Soy candle in brass vessel">
-            <div class="inside-overlay">
-              <span class="inside-title">Hand-Poured Soy Candle</span>
-              <span class="inside-sub">Botanical &middot; Calming &middot; Pure</span>
-              <p class="inside-desc">Infused with natural essential oils, poured in small batches into a reusable brass vessel. Fills the room with subtle, grounding aromatics.</p>
+            <div class="inside-card" tabindex="0">
+              <img class="inside-img" src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop" alt="Hand-Hammered Kansa Cup">
+              <div class="inside-overlay">
+                <span class="inside-title">Hand-Hammered Kansa Cup</span>
+                <span class="inside-sub">Ayurvedic &middot; Artisanal &middot; Warm</span>
+                <p class="inside-desc">Forged in traditional bronze alloy, celebrated in Ayurveda for its healing properties. Designed for slow sips of warm tea or botanical infusions.</p>
+              </div>
             </div>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="inside-card" tabindex="0">
-            <img class="inside-img"
-              src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop"
-              alt="Brass incense holder and incense smoke">
-            <div class="inside-overlay">
-              <span class="inside-title">Brass Incense Holder</span>
-              <span class="inside-sub">Mindful &middot; Elegant &middot; Ritual</span>
-              <p class="inside-desc">Minimalist solid brass holder paired with hand-rolled incense sticks. A daily ritual to clear the mind and mark the transition into rest.</p>
+            <div class="inside-card" tabindex="0">
+              <img class="inside-img" src="https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=800&auto=format&fit=crop" alt="Hand-Poured Soy Candle">
+              <div class="inside-overlay">
+                <span class="inside-title">Hand-Poured Soy Candle</span>
+                <span class="inside-sub">Botanical &middot; Calming &middot; Pure</span>
+                <p class="inside-desc">Infused with natural essential oils, poured in small batches into a reusable brass vessel. Fills the room with subtle, grounding aromatics.</p>
+              </div>
             </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="inside-card" tabindex="0">
-            <img class="inside-img"
-              src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=800&auto=format&fit=crop"
-              alt="Loose herbal tea leaves and dried botanicals">
-            <div class="inside-overlay">
-              <span class="inside-title">Organic Herbal Tea Blend</span>
-              <span class="inside-sub">Soothe &middot; Nourish &middot; Rest</span>
-              <p class="inside-desc">Custom blend of whole-leaf chamomile, dried lavender, and rose petals. Sourced directly from organic Himalayan tea estates.</p>
+            <div class="inside-card" tabindex="0">
+              <img class="inside-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop" alt="Brass Incense Holder">
+              <div class="inside-overlay">
+                <span class="inside-title">Brass Incense Holder</span>
+                <span class="inside-sub">Mindful &middot; Elegant &middot; Ritual</span>
+                <p class="inside-desc">Minimalist solid brass holder paired with hand-rolled incense sticks. A daily ritual to clear the mind and mark the transition into rest.</p>
+              </div>
             </div>
-          </div>
+            <div class="inside-card" tabindex="0">
+              <img class="inside-img" src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=800&auto=format&fit=crop" alt="Organic Herbal Tea Blend">
+              <div class="inside-overlay">
+                <span class="inside-title">Organic Herbal Tea Blend</span>
+                <span class="inside-sub">Soothe &middot; Nourish &middot; Rest</span>
+                <p class="inside-desc">Custom blend of whole-leaf chamomile, dried lavender, and rose petals. Sourced directly from organic Himalayan tea estates.</p>
+              </div>
+            </div>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -114,8 +150,14 @@
 
 {% schema %}
 {
-  "name": "Moment of Care",
+  "name": "Featured Product",
   "settings": [
+    {
+      "type": "text",
+      "id": "collection_tag",
+      "label": "Collection Badge Tag",
+      "default": "Collection 01"
+    },
     {
       "type": "text",
       "id": "title",
@@ -125,13 +167,13 @@
     {
       "type": "text",
       "id": "tagline",
-      "label": "Tagline",
+      "label": "Collection Tagline",
       "default": "A GIFT OF STILLNESS & MINDFULNESS"
     },
     {
       "type": "textarea",
       "id": "description",
-      "label": "Description",
+      "label": "Description Paragraph",
       "default": "A slow-living hamper curated to bring quiet luxury and sensory relaxation into daily life."
     },
     {
@@ -139,11 +181,108 @@
       "id": "price",
       "label": "Price",
       "default": "4,850"
+    },
+    {
+      "type": "text",
+      "id": "delivery_text",
+      "label": "Delivery Text",
+      "default": "Free Delivery across Delhi NCR"
+    },
+    {
+      "type": "textarea",
+      "id": "delivery_note",
+      "label": "Delivery Note",
+      "default": "Hand-wrapped in signature linen box with custom wax seal & personal note."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Button Label",
+      "default": "Order This Moment"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Main Hamper Image"
+    },
+    {
+      "type": "text",
+      "id": "carousel_tag",
+      "label": "Carousel Badge Tag",
+      "default": "Curated Elements"
+    },
+    {
+      "type": "text",
+      "id": "carousel_headline",
+      "label": "Carousel Headline",
+      "default": "Inside the Hamper"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "inside_item",
+      "name": "Inside Element Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Element Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Element Title",
+          "default": "Singing Bowl"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Sub-tags / Features",
+          "default": "Resonant · Grounding · Timeless"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Shaped through repeated hammering, its deep resonance creates a moment of pause."
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Moment of Care"
+      "name": "Featured Product",
+      "blocks": [
+        {
+          "type": "inside_item",
+          "settings": {
+            "title": "Singing Bowl",
+            "subtitle": "Resonant · Grounding · Timeless",
+            "description": "Shaped through repeated hammering, its deep resonance creates a moment of pause."
+          }
+        },
+        {
+          "type": "inside_item",
+          "settings": {
+            "title": "Hand-Hammered Kansa Cup",
+            "subtitle": "Ayurvedic · Artisanal · Warm",
+            "description": "Forged in traditional bronze alloy, celebrated in Ayurveda for its healing properties."
+          }
+        },
+        {
+          "type": "inside_item",
+          "settings": {
+            "title": "Hand-Poured Soy Candle",
+            "subtitle": "Botanical · Calming · Pure",
+            "description": "Infused with natural essential oils, poured in small batches into a reusable brass vessel."
+          }
+        }
+      ]
     }
   ]
 }

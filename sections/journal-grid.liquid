@@ -1,40 +1,52 @@
 {% comment %}
-  The Edit / Journal Grid Section (Exact Match preview.html)
+  The Edit / Journal Grid Section
+  Fully customizable via Shopify Customizer with repeatable article blocks.
 {% endcomment %}
 
 <section class="sec-edit reveal" id="journal">
   <div class="wrap">
     <div class="edit-grid">
       <div class="edit-left">
-        <span class="tag tag--kauna">Editorial</span>
+        {% if section.settings.section_tag != blank %}
+          <span class="tag tag--kauna">{{ section.settings.section_tag }}</span>
+        {% endif %}
         <h2>{{ section.settings.title | default: 'The Edit' }}</h2>
-        <p>{{ section.settings.subtitle | default: 'Thoughts on slow gifting, seasonal rituals, and the art of intention.' }}</p>
+        {% if section.settings.subtitle != blank %}
+          <p>{{ section.settings.subtitle }}</p>
+        {% endif %}
       </div>
 
       <div class="edit-images">
-        <!-- Article 1 -->
-        <a href="#" class="edit-item">
-          <img class="edit-img"
-            src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop"
-            alt="Brass Kansa cup with tea">
-          <span class="edit-caption">Why We Choose Kansa Over Ceramic</span>
-        </a>
-
-        <!-- Article 2 -->
-        <a href="#" class="edit-item">
-          <img class="edit-img"
-            src="https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=800&auto=format&fit=crop"
-            alt="Hand-poured soy candle and brass holder">
-          <span class="edit-caption">The Evening Pause: Building a Rest Ritual</span>
-        </a>
-
-        <!-- Article 3 -->
-        <a href="#" class="edit-item">
-          <img class="edit-img"
-            src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop"
-            alt="Artisan brass incense holder with smoke">
-          <span class="edit-caption">Artisans of Delhi NCR: Small-Batch Stories</span>
-        </a>
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            <a href="{{ block.settings.link | default: '#' }}" class="edit-item" {{ block.shopify_attributes }}>
+              {% if block.settings.image != blank %}
+                <img class="edit-img"
+                  src="{{ block.settings.image | image_url: width: 800 }}"
+                  alt="{{ block.settings.image.alt | default: block.settings.caption }}">
+              {% else %}
+                <img class="edit-img"
+                  src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop"
+                  alt="{{ block.settings.caption }}">
+              {% endif %}
+              <span class="edit-caption">{{ block.settings.caption }}</span>
+            </a>
+          {% endfor %}
+        {% else %}
+          <!-- Default Fallback Articles -->
+          <a href="#" class="edit-item">
+            <img class="edit-img" src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop" alt="Why We Choose Kansa Over Ceramic">
+            <span class="edit-caption">Why We Choose Kansa Over Ceramic</span>
+          </a>
+          <a href="#" class="edit-item">
+            <img class="edit-img" src="https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=800&auto=format&fit=crop" alt="The Evening Pause: Building a Rest Ritual">
+            <span class="edit-caption">The Evening Pause: Building a Rest Ritual</span>
+          </a>
+          <a href="#" class="edit-item">
+            <img class="edit-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop" alt="Artisans of Delhi NCR: Small-Batch Stories">
+            <span class="edit-caption">Artisans of Delhi NCR: Small-Batch Stories</span>
+          </a>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -44,6 +56,12 @@
 {
   "name": "Journal Grid",
   "settings": [
+    {
+      "type": "text",
+      "id": "section_tag",
+      "label": "Section Badge Tag",
+      "default": "Editorial"
+    },
     {
       "type": "text",
       "id": "title",
@@ -57,9 +75,53 @@
       "default": "Thoughts on slow gifting, seasonal rituals, and the art of intention."
     }
   ],
+  "blocks": [
+    {
+      "type": "article_card",
+      "name": "Journal Article Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Article Image"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Article Title / Caption",
+          "default": "Why We Choose Kansa Over Ceramic"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Article Link"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Journal Grid"
+      "name": "Journal Grid",
+      "blocks": [
+        {
+          "type": "article_card",
+          "settings": {
+            "caption": "Why We Choose Kansa Over Ceramic"
+          }
+        },
+        {
+          "type": "article_card",
+          "settings": {
+            "caption": "The Evening Pause: Building a Rest Ritual"
+          }
+        },
+        {
+          "type": "article_card",
+          "settings": {
+            "caption": "Artisans of Delhi NCR: Small-Batch Stories"
+          }
+        }
+      ]
     }
   ]
 }

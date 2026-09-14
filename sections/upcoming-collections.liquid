@@ -1,36 +1,59 @@
 {% comment %}
-  On the Horizon / Upcoming Collections Section (Exact Match preview.html)
+  On the Horizon / Upcoming Collections Section
+  Fully customizable via Shopify Customizer with repeatable collection blocks.
 {% endcomment %}
 
 <section class="horizon reveal" id="on-the-horizon">
   <div class="wrap">
     <div class="horizon-row">
       <div class="horizon-left">
-        <span class="tag tag--light">Upcoming</span>
+        {% if section.settings.section_tag != blank %}
+          <span class="tag tag--light">{{ section.settings.section_tag }}</span>
+        {% endif %}
         <h2>{{ section.settings.title | default: 'On the Horizon' }}</h2>
-        <p style="font-size: 14.5px; color: rgba(241, 233, 221, 0.65); line-height: 1.6; margin-top: 12px;">
-          {{ section.settings.subtitle | default: 'Future moments currently in curation. Be the first to know when they launch.' }}
-        </p>
+        {% if section.settings.subtitle != blank %}
+          <p style="font-size: 14.5px; color: rgba(241, 233, 221, 0.65); line-height: 1.6; margin-top: 12px;">
+            {{ section.settings.subtitle }}
+          </p>
+        {% endif %}
       </div>
 
       <div class="horizon-items">
-        <div class="horizon-item">
-          <div class="horizon-icon" style="display: flex; justify-content: center; align-items: center; font-size: 18px; line-height: 1;">&bull; &bull; &bull;</div>
-          <h3>Moment of Play</h3>
-          <span class="coming-soon">Coming Soon</span>
-          <br>
-          <a href="#" class="notify-link">Notify Me &rarr;</a>
-        </div>
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            {% unless forloop.first %}
+              <div class="horizon-divider"></div>
+            {% endunless %}
+            <div class="horizon-item" {{ block.shopify_attributes }}>
+              <div class="horizon-icon" style="display: flex; justify-content: center; align-items: center; font-size: 18px; line-height: 1;">&bull; &bull; &bull;</div>
+              <h3>{{ block.settings.title }}</h3>
+              {% if block.settings.status != blank %}
+                <span class="coming-soon">{{ block.settings.status }}</span>
+              {% endif %}
+              <br>
+              <a href="#" class="notify-link">{{ block.settings.button_text | default: 'Notify Me' }} &rarr;</a>
+            </div>
+          {% endfor %}
+        {% else %}
+          <!-- Default Fallback Items -->
+          <div class="horizon-item">
+            <div class="horizon-icon" style="display: flex; justify-content: center; align-items: center; font-size: 18px; line-height: 1;">&bull; &bull; &bull;</div>
+            <h3>Moment of Play</h3>
+            <span class="coming-soon">Coming Soon</span>
+            <br>
+            <a href="#" class="notify-link">Notify Me &rarr;</a>
+          </div>
 
-        <div class="horizon-divider"></div>
+          <div class="horizon-divider"></div>
 
-        <div class="horizon-item">
-          <div class="horizon-icon" style="display: flex; justify-content: center; align-items: center; font-size: 18px; line-height: 1;">&bull; &bull; &bull;</div>
-          <h3>Moment of Synergy</h3>
-          <span class="coming-soon">Coming Soon</span>
-          <br>
-          <a href="#" class="notify-link">Notify Me &rarr;</a>
-        </div>
+          <div class="horizon-item">
+            <div class="horizon-icon" style="display: flex; justify-content: center; align-items: center; font-size: 18px; line-height: 1;">&bull; &bull; &bull;</div>
+            <h3>Moment of Synergy</h3>
+            <span class="coming-soon">Coming Soon</span>
+            <br>
+            <a href="#" class="notify-link">Notify Me &rarr;</a>
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -40,6 +63,12 @@
 {
   "name": "Upcoming Collections",
   "settings": [
+    {
+      "type": "text",
+      "id": "section_tag",
+      "label": "Section Badge Tag",
+      "default": "Upcoming"
+    },
     {
       "type": "text",
       "id": "title",
@@ -53,9 +82,51 @@
       "default": "Future moments currently in curation. Be the first to know when they launch."
     }
   ],
+  "blocks": [
+    {
+      "type": "upcoming_item",
+      "name": "Upcoming Collection Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Collection Title",
+          "default": "Moment of Play"
+        },
+        {
+          "type": "text",
+          "id": "status",
+          "label": "Status Label",
+          "default": "Coming Soon"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Notify Button Label",
+          "default": "Notify Me"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Upcoming Collections"
+      "name": "Upcoming Collections",
+      "blocks": [
+        {
+          "type": "upcoming_item",
+          "settings": {
+            "title": "Moment of Play",
+            "status": "Coming Soon"
+          }
+        },
+        {
+          "type": "upcoming_item",
+          "settings": {
+            "title": "Moment of Synergy",
+            "status": "Coming Soon"
+          }
+        }
+      ]
     }
   ]
 }

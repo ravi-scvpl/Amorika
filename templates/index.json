@@ -14,14 +14,34 @@
     },
     "moments-pillars": {
       "type": "moments-pillars",
-      "settings": {
-        "pillar1_title": "Thoughtfully Chosen",
-        "pillar1_desc": "Every object earns its place inside the hamper.",
-        "pillar2_title": "Made Slowly",
-        "pillar2_desc": "Hand-poured, hand-hammered, hand-tied. Small batches, not mass production.",
-        "pillar3_title": "Wrapped With Intention",
-        "pillar3_desc": "Presentation is part of the gift, not packaging as an afterthought."
-      }
+      "blocks": {
+        "pillar-1": {
+          "type": "pillar",
+          "settings": {
+            "title": "Thoughtfully Chosen",
+            "description": "Every object earns its place inside the hamper."
+          }
+        },
+        "pillar-2": {
+          "type": "pillar",
+          "settings": {
+            "title": "Made Slowly",
+            "description": "Hand-poured, hand-hammered, hand-tied. Small batches, not mass production."
+          }
+        },
+        "pillar-3": {
+          "type": "pillar",
+          "settings": {
+            "title": "Wrapped With Intention",
+            "description": "Presentation is part of the gift, not packaging as an afterthought."
+          }
+        }
+      },
+      "block_order": [
+        "pillar-1",
+        "pillar-2",
+        "pillar-3"
+      ]
     },
     "brand-philosophy": {
       "type": "brand-philosophy",
@@ -34,31 +54,142 @@
     "featured-product": {
       "type": "featured-product",
       "settings": {
+        "collection_tag": "Collection 01",
         "title": "Moment of Care",
         "tagline": "A GIFT OF STILLNESS & MINDFULNESS",
         "description": "A slow-living hamper curated to bring quiet luxury and sensory relaxation into daily life.",
-        "price": "4,850"
-      }
+        "price": "4,850",
+        "delivery_text": "Free Delivery across Delhi NCR",
+        "delivery_note": "Hand-wrapped in signature linen box with custom wax seal & personal note.",
+        "cta_label": "Order This Moment",
+        "cta_link": "#custom-gifting",
+        "carousel_tag": "Curated Elements",
+        "carousel_headline": "Inside the Hamper"
+      },
+      "blocks": {
+        "item-1": {
+          "type": "inside_item",
+          "settings": {
+            "title": "Singing Bowl",
+            "subtitle": "Resonant · Grounding · Timeless",
+            "description": "Shaped through repeated hammering, its deep resonance creates a moment of pause — a gentle invitation towards stillness and coming back to the present."
+          }
+        },
+        "item-2": {
+          "type": "inside_item",
+          "settings": {
+            "title": "Hand-Hammered Kansa Cup",
+            "subtitle": "Ayurvedic · Artisanal · Warm",
+            "description": "Forged in traditional bronze alloy, celebrated in Ayurveda for its healing properties. Designed for slow sips of warm tea or botanical infusions."
+          }
+        },
+        "item-3": {
+          "type": "inside_item",
+          "settings": {
+            "title": "Hand-Poured Soy Candle",
+            "subtitle": "Botanical · Calming · Pure",
+            "description": "Infused with natural essential oils, poured in small batches into a reusable brass vessel. Fills the room with subtle, grounding aromatics."
+          }
+        },
+        "item-4": {
+          "type": "inside_item",
+          "settings": {
+            "title": "Brass Incense Holder",
+            "subtitle": "Mindful · Elegant · Ritual",
+            "description": "Minimalist solid brass holder paired with hand-rolled incense sticks. A daily ritual to clear the mind and mark the transition into rest."
+          }
+        },
+        "item-5": {
+          "type": "inside_item",
+          "settings": {
+            "title": "Organic Herbal Tea Blend",
+            "subtitle": "Soothe · Nourish · Rest",
+            "description": "Custom blend of whole-leaf chamomile, dried lavender, and rose petals. Sourced directly from organic Himalayan tea estates."
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-3",
+        "item-4",
+        "item-5"
+      ]
     },
     "upcoming-collections": {
       "type": "upcoming-collections",
       "settings": {
+        "section_tag": "Upcoming",
         "title": "On the Horizon",
         "subtitle": "Future moments currently in curation. Be the first to know when they launch."
-      }
+      },
+      "blocks": {
+        "collection-1": {
+          "type": "upcoming_item",
+          "settings": {
+            "title": "Moment of Play",
+            "status": "Coming Soon",
+            "button_text": "Notify Me"
+          }
+        },
+        "collection-2": {
+          "type": "upcoming_item",
+          "settings": {
+            "title": "Moment of Synergy",
+            "status": "Coming Soon",
+            "button_text": "Notify Me"
+          }
+        }
+      },
+      "block_order": [
+        "collection-1",
+        "collection-2"
+      ]
     },
     "journal-grid": {
       "type": "journal-grid",
       "settings": {
+        "section_tag": "Editorial",
         "title": "The Edit",
         "subtitle": "Thoughts on slow gifting, seasonal rituals, and the art of intention."
-      }
+      },
+      "blocks": {
+        "article-1": {
+          "type": "article_card",
+          "settings": {
+            "caption": "Why We Choose Kansa Over Ceramic"
+          }
+        },
+        "article-2": {
+          "type": "article_card",
+          "settings": {
+            "caption": "The Evening Pause: Building a Rest Ritual"
+          }
+        },
+        "article-3": {
+          "type": "article_card",
+          "settings": {
+            "caption": "Artisans of Delhi NCR: Small-Batch Stories"
+          }
+        }
+      },
+      "block_order": [
+        "article-1",
+        "article-2",
+        "article-3"
+      ]
     },
     "custom-gifting": {
       "type": "custom-gifting",
       "settings": {
+        "section_tag": "Bespoke",
         "title": "Custom & Corporate Curation",
-        "subtitle": "Weddings, corporate milestones, or private celebrations. We work directly with you to craft hampers aligned with your aesthetic and intention."
+        "subtitle": "Weddings, corporate milestones, or private celebrations. We work directly with you to craft hampers aligned with your aesthetic and intention.",
+        "form_link_text": "Enquire for Custom Order",
+        "right_text": "Personalized wax seals, custom branded stationery, & hand-selected artisanal elements.",
+        "catalogue_btn_text": "Request Curation Catalogue",
+        "moq_note": "Minimum order quantity for custom curation: 15 hampers",
+        "whatsapp_number": "919999999999"
       }
     }
   },

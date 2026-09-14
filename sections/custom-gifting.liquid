@@ -1,5 +1,6 @@
 {% comment %}
-  Custom Gifting / Bespoke Curation Section (Exact Match preview.html)
+  Custom Gifting / Bespoke Curation Section
+  Fully customizable via Shopify Customizer with image_picker & text options.
 {% endcomment %}
 
 <section class="custom reveal" id="custom-gifting">
@@ -7,15 +8,25 @@
     <div class="bespoke-grid">
       <div class="bespoke-left">
         <div class="bespoke-left-text">
-          <span class="tag tag--dark">Bespoke</span>
+          {% if section.settings.section_tag != blank %}
+            <span class="tag tag--dark">{{ section.settings.section_tag }}</span>
+          {% endif %}
           <h2>{{ section.settings.title | default: 'Custom & Corporate Curation' }}</h2>
-          <p>{{ section.settings.subtitle | default: 'Weddings, corporate milestones, or private celebrations. We work directly with you to craft hampers aligned with your aesthetic and intention.' }}</p>
-          <a href="#" class="link-plus js-open-custom-form">Enquire for Custom Order &rarr;</a>
+          {% if section.settings.subtitle != blank %}
+            <p>{{ section.settings.subtitle }}</p>
+          {% endif %}
+          <a href="#" class="link-plus js-open-custom-form">{{ section.settings.form_link_text | default: 'Enquire for Custom Order' }} &rarr;</a>
         </div>
         <div class="bespoke-img">
-          <img class="bespoke-img-tag"
-            src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=600&auto=format&fit=crop"
-            alt="Custom wrapped gift box with silk ribbon">
+          {% if section.settings.bespoke_image != blank %}
+            <img class="bespoke-img-tag"
+              src="{{ section.settings.bespoke_image | image_url: width: 600 }}"
+              alt="{{ section.settings.bespoke_image.alt | default: section.settings.title }}">
+          {% else %}
+            <img class="bespoke-img-tag"
+              src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=600&auto=format&fit=crop"
+              alt="Custom wrapped gift box with silk ribbon">
+          {% endif %}
         </div>
       </div>
 
@@ -26,15 +37,19 @@
             <path d="M7 11V7a5 5 0 0 1 10 0v4" />
           </svg>
         </div>
-        <p>Personalized wax seals, custom branded stationery, & hand-selected artisanal elements.</p>
-        <a href="#" class="btn btn--ink js-open-custom-form">Request Curation Catalogue &rarr;</a>
-        <p class="bespoke-moq">Minimum order quantity for custom curation: 15 hampers</p>
+        {% if section.settings.right_text != blank %}
+          <p>{{ section.settings.right_text }}</p>
+        {% endif %}
+        <a href="#" class="btn btn--ink js-open-custom-form">{{ section.settings.catalogue_btn_text | default: 'Request Curation Catalogue' }} &rarr;</a>
+        {% if section.settings.moq_note != blank %}
+          <p class="bespoke-moq">{{ section.settings.moq_note }}</p>
+        {% endif %}
       </div>
     </div>
 
     <!-- Collapsible Form -->
     <div class="collapse" id="customFormWrap">
-      <form class="form" id="customForm">
+      <form class="form" id="customForm" data-whatsapp="{{ section.settings.whatsapp_number | default: '919999999999' }}">
         <div class="field">
           <label for="cf-name">Your Name</label>
           <input type="text" id="cf-name" required placeholder="Full Name">
@@ -63,6 +78,12 @@
   "settings": [
     {
       "type": "text",
+      "id": "section_tag",
+      "label": "Section Badge Tag",
+      "default": "Bespoke"
+    },
+    {
+      "type": "text",
       "id": "title",
       "label": "Title",
       "default": "Custom & Corporate Curation"
@@ -72,6 +93,41 @@
       "id": "subtitle",
       "label": "Subtitle",
       "default": "Weddings, corporate milestones, or private celebrations. We work directly with you to craft hampers aligned with your aesthetic and intention."
+    },
+    {
+      "type": "text",
+      "id": "form_link_text",
+      "label": "Form Link Label",
+      "default": "Enquire for Custom Order"
+    },
+    {
+      "type": "image_picker",
+      "id": "bespoke_image",
+      "label": "Bespoke Side Image"
+    },
+    {
+      "type": "textarea",
+      "id": "right_text",
+      "label": "Right Column Description",
+      "default": "Personalized wax seals, custom branded stationery, & hand-selected artisanal elements."
+    },
+    {
+      "type": "text",
+      "id": "catalogue_btn_text",
+      "label": "Catalogue Button Label",
+      "default": "Request Curation Catalogue"
+    },
+    {
+      "type": "text",
+      "id": "moq_note",
+      "label": "MOQ Note",
+      "default": "Minimum order quantity for custom curation: 15 hampers"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp Business Number (with country code)",
+      "default": "919999999999"
     }
   ],
   "presets": [

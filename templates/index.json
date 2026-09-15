@@ -149,27 +149,29 @@
     "journal-grid": {
       "type": "journal-grid",
       "settings": {
-        "section_tag": "Editorial",
-        "title": "The Edit",
-        "subtitle": "Thoughts on slow gifting, seasonal rituals, and the art of intention."
+        "section_tag": "",
+        "title": "Journal",
+        "subtitle": "Thoughts on intentional gifting, sensory experiences and everyday rituals.",
+        "button_text": "Slow Reads →",
+        "button_url": "#"
       },
       "blocks": {
         "article-1": {
           "type": "article_card",
           "settings": {
-            "caption": "Why We Choose Kansa Over Ceramic"
+            "caption": "Why Presence Outlasts Presents"
           }
         },
         "article-2": {
           "type": "article_card",
           "settings": {
-            "caption": "The Evening Pause: Building a Rest Ritual"
+            "caption": "The Art of Slow Gifting"
           }
         },
         "article-3": {
           "type": "article_card",
           "settings": {
-            "caption": "Artisans of Delhi NCR: Small-Batch Stories"
+            "caption": "Beyond the Occasion"
           }
         }
       },
@@ -182,14 +184,19 @@
     "custom-gifting": {
       "type": "custom-gifting",
       "settings": {
-        "section_tag": "Bespoke",
-        "title": "Custom & Corporate Curation",
-        "subtitle": "Weddings, corporate milestones, or private celebrations. We work directly with you to craft hampers aligned with your aesthetic and intention.",
-        "form_link_text": "Enquire for Custom Order",
-        "right_text": "Personalized wax seals, custom branded stationery, & hand-selected artisanal elements.",
-        "catalogue_btn_text": "Request Curation Catalogue",
-        "moq_note": "Minimum order quantity for custom curation: 15 hampers",
+        "title": "Bespoke Gifting",
+        "subtitle": "Designed around your intent, never from a catalogue.",
+        "form_link_text": "Start a Conversation",
+        "right_text": "Tell us a little about what you're looking to create.<br>We'll be in touch to bring it to life.",
+        "catalogue_btn_text": "Share your requirements +",
+        "moq_note": "MOQ 100pcs | Lead time – 20–25 working days",
         "whatsapp_number": "919999999999"
+      }
+    },
+    "elements-purpose": {
+      "type": "elements-purpose",
+      "settings": {
+        "heading": "Every element has a purpose."
       }
     }
   },
@@ -198,6 +205,7 @@
     "moments-pillars",
     "brand-philosophy",
     "featured-product",
+    "elements-purpose",
     "upcoming-collections",
     "journal-grid",
     "custom-gifting"

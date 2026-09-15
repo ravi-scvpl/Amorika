@@ -14,9 +14,9 @@
         {% endif %}
         {% if section.settings.delivery_note != blank %}
           <p class="deliver">
-            <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 21s-7-4.35-7-10.5a7 7 0 1 1 14 0C19 16.65 12 21 12 21z" />
-              <circle cx="12" cy="10.5" r="2.5" />
+            <svg class="pin-icon" viewBox="0 0 20 20" fill="none">
+              <path d="M10 18s6-5.7 6-10.4A6 6 0 0 0 4 7.6C4 12.3 10 18 10 18Z" stroke="currentColor" stroke-width="1.2" />
+              <circle cx="10" cy="7.6" r="2" stroke="currentColor" stroke-width="1.2" />
             </svg>
             {{ section.settings.delivery_note }}
           </p>
@@ -24,56 +24,58 @@
       </div>
 
       <!-- FAQ Accordion Column -->
-      <div>
-        <h4>{{ section.settings.faq_heading | default: 'Questions & Care' }}</h4>
+      <div class="footer-faq">
+        <h4>{{ section.settings.faq_heading | default: 'FAQs' }}</h4>
         <button class="faq-teaser" id="faqTeaser">
-          {{ section.settings.faq_teaser_text | default: 'Have questions about delivery, contents, or custom orders?' }}
-          <br>
-          <span class="arrow">View Frequent Enquiries &rarr;</span>
+          Things you may want<br>to know <span class="arrow">&rarr;</span>
         </button>
 
         <div class="collapse" id="faqList">
-          <div style="margin-top: 18px;">
-            {% if section.blocks.size > 0 %}
-              {% for block in section.blocks %}
-                <div class="faq-item" {{ block.shopify_attributes }}>
-                  <button class="faq-q"><span>{{ block.settings.question }}</span><span class="plus">+</span></button>
-                  <div class="faq-a">
-                    <p>{{ block.settings.answer }}</p>
-                  </div>
-                </div>
-              {% endfor %}
-            {% else %}
-              <!-- Default Fallback FAQ Items -->
-              <div class="faq-item">
-                <button class="faq-q"><span>Where do you deliver?</span><span class="plus">+</span></button>
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              <div class="faq-item" {{ block.shopify_attributes }}>
+                <button class="faq-q">{{ block.settings.question }}<span class="plus">+</span></button>
                 <div class="faq-a">
-                  <p>We provide same-day &amp; scheduled hand-delivery across Delhi NCR. Pan-India shipping is available for non-perishable hampers via express courier.</p>
+                  <p>{{ block.settings.answer }}</p>
                 </div>
               </div>
-              <div class="faq-item">
-                <button class="faq-q"><span>Can I personalize the hamper note?</span><span class="plus">+</span></button>
-                <div class="faq-a">
-                  <p>Yes. Every hamper includes a handwritten card with your personalized message sealed in custom wax.</p>
-                </div>
+            {% endfor %}
+          {% else %}
+            <!-- Default Fallback FAQ Items (Exact preview.html) -->
+            <div class="faq-item">
+              <button class="faq-q">What is Amoraki?<span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>A gifting brand built around moments, not occasions. Moment of Care is our first — for the times care deserves to be felt, not just expressed.</p>
               </div>
-              <div class="faq-item">
-                <button class="faq-q"><span>What is the lead time for custom orders?</span><span class="plus">+</span></button>
-                <div class="faq-a">
-                  <p>Bespoke &amp; corporate orders require 7-14 business days depending on quantity and customization degree.</p>
-                </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">How do I order?<span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Message us on WhatsApp and we'll help you choose and send it — no account, no checkout, just a conversation.</p>
               </div>
-            {% endif %}
-          </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">Do you deliver outside Delhi NCR?<span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Not yet. We're starting close to home so every hamper leaves us exactly as intended. More cities are on the way.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">Can I include my own note?<span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Always. Every hamper leaves room for your own words — that part is yours to write.</p>
+              </div>
+            </div>
+          {% endif %}
         </div>
       </div>
 
       <!-- Newsletter Column -->
-      <div>
-        <h4>{{ section.settings.newsletter_heading | default: 'Stay Connected' }}</h4>
-        <p class="stay-copy">{{ section.settings.newsletter_copy | default: 'Receive private previews of upcoming moment curations and seasonal edits.' }}</p>
+      <div class="footer-stay">
+        <h4>{{ section.settings.newsletter_heading | default: 'Stay Close' }}</h4>
+        <p class="stay-copy">{{ section.settings.newsletter_copy | default: 'Stay updated on new collections and reads.' }}</p>
         <form class="stay" id="stayForm">
-          <input type="email" id="stayEmail" placeholder="Enter your email" required>
+          <input type="email" id="stayEmail" placeholder="Your email" required>
           <button type="submit" class="stay-btn" aria-label="Subscribe">&rarr;</button>
         </form>
       </div>
@@ -82,37 +84,32 @@
     <!-- Footer Bottom Row -->
     <div class="footer-bottom">
       <div class="footer-social">
-        {% if section.settings.instagram_link != blank %}
-          <a href="{{ section.settings.instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="2" width="20" height="20" rx="5" />
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-            </svg>
-          </a>
-        {% endif %}
-        {% if section.settings.whatsapp_link != blank %}
-          <a href="{{ section.settings.whatsapp_link }}" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-            </svg>
-          </a>
-        {% endif %}
+        <a href="{{ section.settings.instagram_link | default: 'https://instagram.com/moments.by.amoraki' }}" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 20 20" fill="none">
+            <rect x="2.5" y="2.5" width="15" height="15" rx="4" stroke="currentColor" stroke-width="1.2" />
+            <circle cx="10" cy="10" r="3.6" stroke="currentColor" stroke-width="1.2" />
+            <circle cx="14.3" cy="5.7" r="0.9" fill="currentColor" />
+          </svg>
+        </a>
+        <a href="{{ section.settings.whatsapp_link | default: '#' }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 20 20" fill="none">
+            <rect x="2.5" y="2.5" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.2" />
+            <circle cx="6.6" cy="6.7" r="0.9" fill="currentColor" />
+            <path d="M6.6 9.3v5.2M10 14.5v-3.2c0-1.2.8-2 1.9-2s1.8.8 1.8 2v3.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+          </svg>
+        </a>
       </div>
 
-      <div class="footer-email">
-        <a href="mailto:{{ section.settings.contact_email | default: 'hello@amoraki.in' }}">{{ section.settings.contact_email | default: 'hello@amoraki.in' }}</a>
-      </div>
+      <span class="footer-email"><a href="mailto:{{ section.settings.contact_email | default: 'hello@amoraki.in' }}">{{ section.settings.contact_email | default: 'hello@amoraki.in' }}</a></span>
 
-      <div class="footer-copy">
-        &copy; {{ 'now' | date: "%Y" }} {{ section.settings.copyright_text | default: 'Amoraki. All rights reserved.' }}
-      </div>
+      <span class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ section.settings.copyright_text | default: 'Amoraki. All rights reserved.' }}</span>
     </div>
+    
+    <svg class="footer-sprig" viewBox="0 0 120 140" fill="none" aria-hidden="true">
+      <path d="M10 130C10 90 30 60 55 20" stroke="currentColor" stroke-width="1.1" />
+      <path d="M55 20c-8 6-18 8-26 4M55 20c2-10 0-18-6-24M22 60c-8 2-16 0-22-6M30 42c-7 3-15 2-20-3M40 30c-6 4-14 4-19 0" stroke="currentColor" stroke-width="1" />
+    </svg>
   </div>
-
-  <svg class="footer-sprig" viewBox="0 0 100 160" fill="none" stroke="currentColor" stroke-width="1">
-    <path d="M50 150Q45 100 50 10M50 120Q30 110 20 90M50 90Q70 80 80 60M50 60Q35 50 25 35M50 35Q65 25 75 10" />
-  </svg>
 </footer>
 
 {% schema %}

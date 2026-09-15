@@ -1,25 +1,140 @@
 {% comment %}
-  Main Article Section - Moments By Amoraki
+  Main Single Journal Article Section - Moments By Amoraki
+  Styled in rich olive green palette (#656D3A / #3B4228 / #F2F5EC).
 {% endcomment %}
 
-<article class="main-article-section" style="padding: clamp(3rem, 6vw, 5rem) 0;">
-  <div class="container" style="max-width: 800px;">
-    <div style="text-align: center; margin-bottom: 2.5rem;">
-      <span class="eyebrow">JOURNAL</span>
-      <h1 class="h2" style="margin-bottom: 1rem;">{{ article.title }}</h1>
-      <p style="font-size: 0.8125rem; color: var(--color-text-subtle);">{{ article.published_at | date: '%B %d, %Y' }}</p>
-    </div>
+<article class="sec-single-article">
+  <div class="wrap wrap--narrow">
+    <!-- Article Header -->
+    <header class="art-header">
+      <nav class="art-breadcrumbs">
+        <a href="/">Home</a> <span class="sep">/</span> <a href="/#journal">Journal</a> <span class="sep">/</span> <span class="curr">{{ article.title | default: "Why Presence Outlasts Presents" }}</span>
+      </nav>
 
-    {%- if article.image -%}
-      <div style="margin-bottom: 2.5rem; border-radius: var(--radius-sm); overflow: hidden;">
-        <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}" loading="eager" />
+      <div class="art-tag-badge">
+        <span class="tag tag--olive">Slow Living &amp; Rituals</span>
       </div>
-    {%- endif -%}
 
-    <div class="article-content" style="line-height: 1.9; color: var(--color-text-muted); font-size: 1rem;">
-      {{ article.content }}
+      <h1 class="art-title">
+        {{ article.title | default: "Why Presence Outlasts Presents: The Art of Intentional Gifting" }}
+      </h1>
+
+      <p class="art-excerpt">
+        {{ article.excerpt | default: "In a world of fast consumption, creating moments of quiet luxury and sensory connection leaves a lasting memory far beyond the material object itself." }}
+      </p>
+
+      <div class="art-meta">
+        <div class="art-author">
+          <div class="art-avatar">A</div>
+          <div class="art-author-info">
+            <span class="art-author-name">Amoraki Studio</span>
+            <span class="art-author-role">Curated Reflections</span>
+          </div>
+        </div>
+        <div class="art-meta-details">
+          <span class="art-date">{{ article.published_at | date: '%B %d, %Y' | default: 'September 15, 2026' }}</span>
+          <span class="art-dot">•</span>
+          <span class="art-read-time">5 min read</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="art-hero">
+      {% if article.image %}
+        <img src="{{ article.image | image_url: width: 1400 }}" alt="{{ article.title | escape }}" class="art-hero-img">
+      {% else %}
+        <img src="{{ 'journal-1.jpg' | asset_url }}" alt="Why Presence Outlasts Presents" class="art-hero-img">
+      {% endif %}
+      <span class="art-hero-caption">Crafted bronze Kansa cup and organic Himalayan herbs — featured in the Moment of Care hamper.</span>
     </div>
+
+    <!-- Article Content Body -->
+    <div class="art-body">
+      {% if article.content != blank %}
+        {{ article.content }}
+      {% else %}
+        <!-- Rich Sample Article Content with Olive Accents -->
+        <p class="art-lead">
+          There is a quiet power in slow objects. When we unwrap a thoughtfully curated gift, our hands don't just touch paper and ribbon — we sense the time, consideration, and quiet devotion that went into choosing every single item.
+        </p>
+
+        <p>
+          In modern life, gifting has often been reduced to speed and convenience: a quick online order, a mass-produced catalogue item, or a transaction checked off a list. But at Amoraki, we believe that true luxury lies in stillness. It lives in the resonance of a hand-hammered Kansa bowl, the gentle aroma of small-batch soy candles, and the warmth of a freshly brewed herbal infusion.
+        </p>
+
+        <!-- Olive Callout Blockquote -->
+        <blockquote class="art-quote">
+          <svg class="art-quote-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+          <p>"A gift is never merely an object passed between hands. It is a physical anchor for a memory — a quiet message that says, <em>I see you, and I honor your time.</em>"</p>
+          <cite>— Amoraki Philosophy Deck</cite>
+        </blockquote>
+
+        <h2>The Elements of Sensory Intention</h2>
+        <p>
+          When designing a moment of pause, we look at how objects interact with our senses. Sensory memory is the deepest form of memory human beings experience. A scent can instantly transport us back to a peaceful morning, while the weight of handcrafted metal ground us in the present moment.
+        </p>
+
+        <!-- Olive Key Takeaways Box -->
+        <div class="art-highlight-box">
+          <h3 class="art-box-title">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            Three Principles of Slow Gifting
+          </h3>
+          <ul class="art-box-list">
+            <li><strong>Purpose over Abundance:</strong> Choose 4 to 5 meaningful items that complement each other rather than overwhelming with filler.</li>
+            <li><strong>Craftsmanship &amp; Provenance:</strong> Support artisans who use traditional methods — hand-hammering bronze, whole-leaf organic harvesting, and small-batch pouring.</li>
+            <li><strong>The Packaging Ritual:</strong> Unwrapping should be an unhurried experience. Reusable linen boxes and custom wax seals elevate anticipation.</li>
+          </ul>
+        </div>
+
+        <h2>Building Your Own Evening Rest Ritual</h2>
+        <p>
+          To bring presence into your daily life, start with small, deliberate steps. Light a botanical soy candle 30 minutes before sleep, pour warm chamomile tea into a bronze Kansa vessel, and allow the evening to slow down to a natural, gentle rhythm.
+        </p>
+      {% endif %}
+    </div>
+
+    <!-- Article Tags & Social Share Footer -->
+    <footer class="art-footer">
+      <div class="art-tags">
+        <span class="art-tag-label">Tags:</span>
+        <a href="/#journal" class="art-pill-tag">#SlowGifting</a>
+        <a href="/#journal" class="art-pill-tag">#KansaCraft</a>
+        <a href="/#journal" class="art-pill-tag">#Mindfulness</a>
+        <a href="/#journal" class="art-pill-tag">#AmorakiMoments</a>
+      </div>
+
+      <div class="art-share">
+        <span>Share this story:</span>
+        <a href="https://api.whatsapp.com/send?text={{ article.title | default: 'Why Presence Outlasts Presents' | url_encode }}%20{{ canonical_url | url_encode }}" target="_blank" rel="noopener" class="art-share-btn">WhatsApp</a>
+        <a href="https://pinterest.com/pin/create/button/?url={{ canonical_url | url_encode }}" target="_blank" rel="noopener" class="art-share-btn">Pinterest</a>
+      </div>
+    </footer>
   </div>
+
+  <!-- Related Articles Strip -->
+  <section class="art-related">
+    <div class="wrap">
+      <div class="art-related-head">
+        <span class="tag tag--olive">Keep Reading</span>
+        <h2>More Stories from the Journal</h2>
+      </div>
+
+      <div class="art-related-grid">
+        <a href="/blogs/news/the-art-of-slow-gifting" class="edit-item">
+          <img class="edit-img" src="{{ 'journal-2.jpg' | asset_url }}" alt="The Art of Slow Gifting">
+          <span class="edit-caption">The Art of Slow Gifting</span>
+        </a>
+        <a href="/blogs/news/beyond-the-occasion" class="edit-item">
+          <img class="edit-img" src="{{ 'journal-3.jpg' | asset_url }}" alt="Beyond the Occasion">
+          <span class="edit-caption">Beyond the Occasion</span>
+        </a>
+      </div>
+    </div>
+  </section>
 </article>
 
 {% schema %}

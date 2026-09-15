@@ -10,7 +10,7 @@
       alt="{{ section.settings.hero_image.alt | default: section.settings.brand_name }}">
   {% else %}
     <img class="hero-img"
-      src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=2000&auto=format&fit=crop"
+      src="{{ 'hero-hamper.jpg' | asset_url }}"
       alt="{{ section.settings.brand_name }}">
   {% endif %}
   

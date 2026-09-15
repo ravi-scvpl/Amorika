@@ -52,7 +52,7 @@
             alt="{{ section.settings.featured_image.alt | default: section.settings.title }}">
         {% else %}
           <img class="moc-right-img"
-            src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=1200&auto=format&fit=crop"
+            src="{{ 'moment-of-care.jpg' | asset_url }}"
             alt="Moment of Care Hamper">
         {% endif %}
       </div>
@@ -83,8 +83,16 @@
                     src="{{ block.settings.image | image_url: width: 800 }}"
                     alt="{{ block.settings.image.alt | default: block.settings.title }}">
                 {% else %}
+                  {% assign asset_fallback_name = 'moment-of-care.jpg' %}
+                  {% case forloop.index %}
+                    {% when 1 %}{% assign asset_fallback_name = 'singing bowl with tag3.png' %}
+                    {% when 2 %}{% assign asset_fallback_name = 'H1.png' %}
+                    {% when 3 %}{% assign asset_fallback_name = 'candle rain 3.png' %}
+                    {% when 4 %}{% assign asset_fallback_name = 'H7.png' %}
+                    {% when 5 %}{% assign asset_fallback_name = 'tea.png' %}
+                  {% endcase %}
                   <img class="inside-img"
-                    src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=800&auto=format&fit=crop"
+                    src="{{ asset_fallback_name | asset_url }}"
                     alt="{{ block.settings.title }}">
                 {% endif %}
 
@@ -102,7 +110,7 @@
           {% else %}
             <!-- Default Fallback Cards if no blocks added yet -->
             <div class="inside-card" tabindex="0">
-              <img class="inside-img" src="https://images.unsplash.com/photo-1602928321679-560b4139c907?q=80&w=800&auto=format&fit=crop" alt="Singing Bowl">
+              <img class="inside-img" src="{{ 'singing bowl with tag3.png' | asset_url }}" alt="Singing Bowl">
               <div class="inside-overlay">
                 <span class="inside-title">Singing Bowl</span>
                 <span class="inside-sub">Resonant &middot; Grounding &middot; Timeless</span>
@@ -110,7 +118,7 @@
               </div>
             </div>
             <div class="inside-card" tabindex="0">
-              <img class="inside-img" src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop" alt="Hand-Hammered Kansa Cup">
+              <img class="inside-img" src="{{ 'H1.png' | asset_url }}" alt="Hand-Hammered Kansa Cup">
               <div class="inside-overlay">
                 <span class="inside-title">Hand-Hammered Kansa Cup</span>
                 <span class="inside-sub">Ayurvedic &middot; Artisanal &middot; Warm</span>
@@ -118,7 +126,7 @@
               </div>
             </div>
             <div class="inside-card" tabindex="0">
-              <img class="inside-img" src="https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=800&auto=format&fit=crop" alt="Hand-Poured Soy Candle">
+              <img class="inside-img" src="{{ 'candle rain 3.png' | asset_url }}" alt="Hand-Poured Soy Candle">
               <div class="inside-overlay">
                 <span class="inside-title">Hand-Poured Soy Candle</span>
                 <span class="inside-sub">Botanical &middot; Calming &middot; Pure</span>
@@ -126,7 +134,7 @@
               </div>
             </div>
             <div class="inside-card" tabindex="0">
-              <img class="inside-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop" alt="Brass Incense Holder">
+              <img class="inside-img" src="{{ 'H7.png' | asset_url }}" alt="Brass Incense Holder">
               <div class="inside-overlay">
                 <span class="inside-title">Brass Incense Holder</span>
                 <span class="inside-sub">Mindful &middot; Elegant &middot; Ritual</span>
@@ -134,7 +142,7 @@
               </div>
             </div>
             <div class="inside-card" tabindex="0">
-              <img class="inside-img" src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=800&auto=format&fit=crop" alt="Organic Herbal Tea Blend">
+              <img class="inside-img" src="{{ 'tea.png' | asset_url }}" alt="Organic Herbal Tea Blend">
               <div class="inside-overlay">
                 <span class="inside-title">Organic Herbal Tea Blend</span>
                 <span class="inside-sub">Soothe &middot; Nourish &middot; Rest</span>

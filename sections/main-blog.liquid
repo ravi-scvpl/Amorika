@@ -1,36 +1,112 @@
 {% comment %}
   Main Blog Section - Moments By Amoraki
+  Dedicated Luxury Journal / Blog Listing Page (/blogs/*)
 {% endcomment %}
 
-<section class="main-blog-section" style="padding: clamp(3rem, 6vw, 5rem) 0;">
-  <div class="container">
-    <div style="text-align: center; max-width: 600px; margin: 0 auto clamp(2rem, 4vw, 3.5rem);">
-      <span class="eyebrow">JOURNAL</span>
-      <h1 class="h2">{{ blog.title | default: 'Reflections & Stories' }}</h1>
-    </div>
+<div class="blog-page-hero" style="background: var(--linen-soft); padding: clamp(4rem, 7vw, 5.5rem) 0 3rem; border-bottom: 1px solid var(--line);">
+  <div class="wrap" style="text-align: center; max-width: 760px;">
+    <span class="sec-num" style="display: inline-block; margin-bottom: 12px;">MOMENTS BY AMORAKI</span>
+    <h1 class="h2" style="font-family: var(--font-display); font-size: clamp(32px, 5vw, 48px); font-weight: 500; margin-bottom: 12px; color: var(--ink);">
+      {{ blog.title | default: 'Journal & Slow Reads' }}
+    </h1>
+    <p style="font-size: 15px; color: var(--taupe); max-width: 520px; margin: 0 auto; line-height: 1.65;">
+      Thoughts on intentional gifting, sensory experiences, craftsmanship, and everyday rituals of pause.
+    </p>
+  </div>
+</div>
 
-    <div class="journal-grid">
+<section class="main-blog-section" style="padding: clamp(3rem, 6vw, 5rem) 0;">
+  <div class="wrap" style="max-width: 1140px;">
+    
+    <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 36px;">
       {%- if blog.articles.size > 0 -%}
         {%- for article in blog.articles -%}
-          <article class="journal-card">
-            <a href="{{ article.url }}" class="journal-card__image-wrap">
+          <article class="blog-card" style="background: var(--white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <a href="{{ article.url }}" style="display: block; aspect-ratio: 16/10; overflow: hidden; background: #EFE8DC;">
               {%- if article.image -%}
-                <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title | escape }}" class="journal-card__image" loading="lazy" />
+                <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.title | escape }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" loading="lazy" />
+              {%- else -%}
+                <img src="{{ 'journal-1.jpg' | asset_url }}" alt="Amoraki Journal Story" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" />
               {%- endif -%}
             </a>
-            <div class="journal-card__body">
-              <h3 class="journal-card__title">
-                <a href="{{ article.url }}">{{ article.title }}</a>
+            
+            <div style="padding: 24px; display: flex; flex-direction: column; flex: 1;">
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-deep); margin-bottom: 8px; display: block;">
+                {{ article.published_at | date: '%B %d, %Y' | default: 'Slow Living' }}
+              </span>
+              
+              <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 12px; line-height: 1.3;">
+                <a href="{{ article.url }}" style="color: inherit; text-decoration: none;">{{ article.title }}</a>
               </h3>
-              <a href="{{ article.url }}" class="link-arrow">
-                <span>Read more</span>
-                {% render 'icon-arrow', size: 12 %}
+
+              <p style="font-size: 14px; color: var(--taupe); line-height: 1.6; margin-bottom: 20px; flex: 1;">
+                {{ article.excerpt_or_content | strip_html | truncatewords: 24 | default: "In a world of fast consumption, creating moments of quiet luxury and sensory connection leaves a lasting memory far beyond the material object itself." }}
+              </p>
+
+              <a href="{{ article.url }}" style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-deep); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <span>Read Story</span> &rarr;
               </a>
             </div>
           </article>
         {%- endfor -%}
+      {%- else -%}
+        <!-- Default Fallback Journal Articles -->
+        <article class="blog-card" style="background: var(--white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+          <a href="/blogs/news/why-presence-outlasts-presents" style="display: block; aspect-ratio: 16/10; overflow: hidden; background: #EFE8DC;">
+            <img src="{{ 'journal-1.jpg' | asset_url }}" alt="Why Presence Outlasts Presents" style="width: 100%; height: 100%; object-fit: cover;" />
+          </a>
+          <div style="padding: 24px; display: flex; flex-direction: column; flex: 1;">
+            <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-deep); margin-bottom: 8px; display: block;">Slow Living &amp; Rituals</span>
+            <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 12px; line-height: 1.3;">
+              <a href="/blogs/news/why-presence-outlasts-presents" style="color: inherit; text-decoration: none;">Why Presence Outlasts Presents</a>
+            </h3>
+            <p style="font-size: 14px; color: var(--taupe); line-height: 1.6; margin-bottom: 20px; flex: 1;">
+              In a world of fast consumption, creating moments of quiet luxury and sensory connection leaves a lasting memory far beyond the material object itself.
+            </p>
+            <a href="/blogs/news/why-presence-outlasts-presents" style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-deep); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+              <span>Read Story</span> &rarr;
+            </a>
+          </div>
+        </article>
+
+        <article class="blog-card" style="background: var(--white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+          <a href="/blogs/news/the-art-of-slow-gifting" style="display: block; aspect-ratio: 16/10; overflow: hidden; background: #EFE8DC;">
+            <img src="{{ 'journal-2.jpg' | asset_url }}" alt="The Art of Slow Gifting" style="width: 100%; height: 100%; object-fit: cover;" />
+          </a>
+          <div style="padding: 24px; display: flex; flex-direction: column; flex: 1;">
+            <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-deep); margin-bottom: 8px; display: block;">Craftsmanship</span>
+            <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 12px; line-height: 1.3;">
+              <a href="/blogs/news/the-art-of-slow-gifting" style="color: inherit; text-decoration: none;">The Art of Slow Gifting</a>
+            </h3>
+            <p style="font-size: 14px; color: var(--taupe); line-height: 1.6; margin-bottom: 20px; flex: 1;">
+              Unpacking the deliberate choices behind small-batch bronze hammering, organic teas, and hand-poured soy wax sachets.
+            </p>
+            <a href="/blogs/news/the-art-of-slow-gifting" style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-deep); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+              <span>Read Story</span> &rarr;
+            </a>
+          </div>
+        </article>
+
+        <article class="blog-card" style="background: var(--white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+          <a href="/blogs/news/beyond-the-occasion" style="display: block; aspect-ratio: 16/10; overflow: hidden; background: #EFE8DC;">
+            <img src="{{ 'journal-3.jpg' | asset_url }}" alt="Beyond the Occasion" style="width: 100%; height: 100%; object-fit: cover;" />
+          </a>
+          <div style="padding: 24px; display: flex; flex-direction: column; flex: 1;">
+            <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-deep); margin-bottom: 8px; display: block;">Mindfulness</span>
+            <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 12px; line-height: 1.3;">
+              <a href="/blogs/news/beyond-the-occasion" style="color: inherit; text-decoration: none;">Beyond the Occasion</a>
+            </h3>
+            <p style="font-size: 14px; color: var(--taupe); line-height: 1.6; margin-bottom: 20px; flex: 1;">
+              Why care doesn't need a calendar date — creating unexpected moments of appreciation for those who matter.
+            </p>
+            <a href="/blogs/news/beyond-the-occasion" style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-deep); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+              <span>Read Story</span> &rarr;
+            </a>
+          </div>
+        </article>
       {%- endif -%}
     </div>
+
   </div>
 </section>
 

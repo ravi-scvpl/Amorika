@@ -338,7 +338,7 @@ function initNewsletterForm() {
     stayForm.addEventListener('submit', function (e) {
       e.preventDefault();
       const email = document.getElementById('stayEmail')?.value || '';
-      window.location.href = `mailto:hello@amoraki.in?subject=Newsletter%20Signup&body=Please%20add%20me%20to%20the%20Amoraki%20newsletter%3A%20${encodeURIComponent(email)}`;
+      window.location.href = `mailto:reachmitikamalhotra@gmail.com?subject=Newsletter%20Signup&body=Please%20add%20me%20to%20the%20Amoraki%20newsletter%3A%20${encodeURIComponent(email)}`;
     });
   }
 }

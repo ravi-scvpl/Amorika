@@ -62,41 +62,41 @@
         "item-1": {
           "type": "inside_item",
           "settings": {
-            "title": "Singing Bowl",
-            "subtitle": "Resonant · Grounding · Timeless",
-            "description": "Shaped through repeated hammering, its deep resonance creates a moment of pause — a gentle invitation towards stillness and coming back to the present."
+            "title": "Basket",
+            "subtitle": "Warm · Woven · Rooted",
+            "description": "Handcrafted from natural kauna grass in Manipur. A beautiful, time-honoured craft bringing warmth and character into any space. A tactile piece with a life beyond the hamper."
           }
         },
         "item-2": {
           "type": "inside_item",
           "settings": {
-            "title": "Hand-Hammered Kansa Cup",
-            "subtitle": "Ayurvedic · Artisanal · Warm",
-            "description": "Forged in traditional bronze alloy, celebrated in Ayurveda for its healing properties. Designed for slow sips of warm tea or botanical infusions."
+            "title": "Singing Bowl",
+            "subtitle": "Resonant · Grounding · Timeless",
+            "description": "Shaped through repeated hammering, its deep resonance creates a moment of pause — a gentle invitation towards stillness, grounding and coming back to the present."
           }
         },
         "item-3": {
           "type": "inside_item",
           "settings": {
-            "title": "Hand-Poured Soy Candle",
-            "subtitle": "Botanical · Calming · Pure",
-            "description": "Infused with natural essential oils, poured in small batches into a reusable brass vessel. Fills the room with subtle, grounding aromatics."
+            "title": "Flower Tea With Glass Infuser",
+            "subtitle": "Gentle · Floral · Soothing",
+            "description": "Carefully picked chamomile, blue corn & rose buds flower tea, paired with a glass infuser for moments when slowing down and breathing a little easier feels just right."
           }
         },
         "item-4": {
           "type": "inside_item",
           "settings": {
-            "title": "Brass Incense Holder",
-            "subtitle": "Mindful · Elegant · Ritual",
-            "description": "Minimalist solid brass holder paired with hand-rolled incense sticks. A daily ritual to clear the mind and mark the transition into rest."
+            "title": "Wax Sachets",
+            "subtitle": "Aromatic · Comforting · Atmospheric",
+            "description": "Hand-poured fragrant soy wax sachets (Rainforest & Coffee) created to gently change the feeling of spaces around the home, linens, wardrobes, drawers, or restrooms."
           }
         },
         "item-5": {
           "type": "inside_item",
           "settings": {
-            "title": "Organic Herbal Tea Blend",
-            "subtitle": "Soothe · Nourish · Rest",
-            "description": "Custom blend of whole-leaf chamomile, dried lavender, and rose petals. Sourced directly from organic Himalayan tea estates."
+            "title": "Linen Cotton Napkins",
+            "subtitle": "Natural · Textured · Everyday",
+            "description": "A beautiful & tactile cotton-linen weave, chosen to bring a little more warmth and ease to the everyday table. For morning tea, a slow meal, or shared presence."
           }
         }
       },

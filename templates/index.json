@@ -62,6 +62,7 @@
         "item-1": {
           "type": "inside_item",
           "settings": {
+            "image": "shopify://shop_images/H1_ea76497d-82e5-4d80-a82a-ffe3fb9b5ef5.png",
             "title": "Basket",
             "subtitle": "Warm · Woven · Rooted",
             "description": "Handcrafted from natural kauna grass in Manipur. A beautiful, time-honoured craft bringing warmth and character into any space. A tactile piece with a life beyond the hamper."

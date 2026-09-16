@@ -11,7 +11,7 @@
       {% if section.settings.logo_image != blank %}
         <img src="{{ section.settings.logo_image | image_url: height: 48 }}" alt="{{ shop.name }}" style="height:28px; width:auto;">
       {% else %}
-        {{ section.settings.logo_text | default: 'amoraki' }}
+        <img src="{{ 'black logo.png' | asset_url }}" alt="{{ shop.name | default: 'Amoraki' }}" style="height:28px; width:auto;" class="nav-logo-img">
       {% endif %}
     </a>
 

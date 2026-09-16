@@ -10,7 +10,7 @@
       alt="{{ section.settings.hero_image.alt | default: section.settings.brand_name }}">
   {% else %}
     <img class="hero-img"
-      src="{{ 'hero-hamper.jpg' | asset_url }}"
+      src="{{ 'H7.png' | asset_url }}"
       alt="{{ section.settings.brand_name }}">
   {% endif %}
   
@@ -19,7 +19,13 @@
   <div class="hero-content">
     <div class="wrap">
       <h1>
-        <span class="hero-brand-word">{{ section.settings.brand_name | default: 'amoraki' }}</span>
+        <span class="hero-brand-word">
+          {% if section.settings.hero_logo != blank %}
+            <img src="{{ section.settings.hero_logo | image_url: width: 600 }}" alt="{{ section.settings.brand_name }}" class="hero-logo-img">
+          {% else %}
+            <img src="{{ 'Amoraki- high res white-logo.png' | asset_url }}" alt="{{ section.settings.brand_name | default: 'Amoraki' }}" class="hero-logo-img">
+          {% endif %}
+        </span>
         {% if section.settings.tagline != blank %}
           <span class="script">{{ section.settings.tagline }}</span>
         {% endif %}
@@ -64,6 +70,11 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Hero Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_logo",
+      "label": "Hero Logo Image (Optional)"
     },
     {
       "type": "text",

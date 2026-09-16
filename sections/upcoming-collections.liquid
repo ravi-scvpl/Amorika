@@ -1,20 +1,23 @@
 {% comment %}
   On the Horizon / Upcoming Collections Section
-  Fully customizable via Shopify Customizer with repeatable collection blocks.
+  Dark section (#100F0F) matching Amoraki brand deck reference design.
 {% endcomment %}
 
-<section class="horizon reveal" id="on-the-horizon">
+<section class="sec-horizon reveal" id="on-the-horizon">
   <div class="wrap">
-    <div class="horizon-row">
+    <div class="horizon-grid">
       <div class="horizon-left">
         {% if section.settings.section_tag != blank %}
-          <span class="tag tag--light">{{ section.settings.section_tag }}</span>
+          <span class="tag tag--light">• {{ section.settings.section_tag | upcase }}</span>
         {% endif %}
         <h2>{{ section.settings.title | default: 'On the Horizon' }}</h2>
         {% if section.settings.subtitle != blank %}
-          <p style="font-size: 14.5px; color: rgba(241, 233, 221, 0.65); line-height: 1.6; margin-top: 12px;">
-            {{ section.settings.subtitle }}
-          </p>
+          <p>{{ section.settings.subtitle }}</p>
+        {% endif %}
+        {% if section.settings.cta_label != blank %}
+          <a href="{{ section.settings.cta_link | default: 'https://api.whatsapp.com/send?phone=919999999999&text=Hi%20Amoraki%2C%20I%20would%20like%20to%20know%20what%20is%20launching%20next.' }}" target="_blank" rel="noopener" class="horizon-cta">
+            {{ section.settings.cta_label }}
+          </a>
         {% endif %}
       </div>
 
@@ -25,33 +28,37 @@
               <div class="horizon-divider"></div>
             {% endunless %}
             <div class="horizon-item" {{ block.shopify_attributes }}>
-              <div class="horizon-icon" style="display: flex; justify-content: center; align-items: center; font-size: 18px; line-height: 1;">&bull; &bull; &bull;</div>
+              <div class="horizon-icon">
+                {% if forloop.index == 1 %}
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C6A65E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a8 8 0 0 0-8 8h16a8 8 0 0 0-8-8z"/><path d="M12 11v10"/></svg>
+                {% else %}
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C6A65E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21A9 9 0 0 0 21 12V3h-9a9 9 0 0 0-9 9 9 9 0 0 0 9 9z"/><path d="M21 3l-9 9"/></svg>
+                {% endif %}
+              </div>
               <h3>{{ block.settings.title }}</h3>
               {% if block.settings.status != blank %}
                 <span class="coming-soon">{{ block.settings.status }}</span>
               {% endif %}
-              <br>
-              <a href="#" class="notify-link">{{ block.settings.button_text | default: 'Notify Me' }} &rarr;</a>
             </div>
           {% endfor %}
         {% else %}
           <!-- Default Fallback Items -->
           <div class="horizon-item">
-            <div class="horizon-icon" style="display: flex; justify-content: center; align-items: center; font-size: 18px; line-height: 1;">&bull; &bull; &bull;</div>
+            <div class="horizon-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C6A65E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a8 8 0 0 0-8 8h16a8 8 0 0 0-8-8z"/><path d="M12 11v10"/></svg>
+            </div>
             <h3>Moment of Play</h3>
-            <span class="coming-soon">Coming Soon</span>
-            <br>
-            <a href="#" class="notify-link">Notify Me &rarr;</a>
+            <span class="coming-soon">COMING SOON</span>
           </div>
 
           <div class="horizon-divider"></div>
 
           <div class="horizon-item">
-            <div class="horizon-icon" style="display: flex; justify-content: center; align-items: center; font-size: 18px; line-height: 1;">&bull; &bull; &bull;</div>
+            <div class="horizon-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C6A65E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21A9 9 0 0 0 21 12V3h-9a9 9 0 0 0-9 9 9 9 0 0 0 9 9z"/><path d="M21 3l-9 9"/></svg>
+            </div>
             <h3>Moment of Synergy</h3>
-            <span class="coming-soon">Coming Soon</span>
-            <br>
-            <a href="#" class="notify-link">Notify Me &rarr;</a>
+            <span class="coming-soon">COMING SOON</span>
           </div>
         {% endif %}
       </div>
@@ -66,8 +73,7 @@
     {
       "type": "text",
       "id": "section_tag",
-      "label": "Section Badge Tag",
-      "default": "Upcoming"
+      "label": "Section Badge Tag"
     },
     {
       "type": "text",
@@ -78,8 +84,18 @@
     {
       "type": "textarea",
       "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Future moments currently in curation. Be the first to know when they launch."
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Button Label",
+      "default": "Discover what's next"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
     }
   ],
   "blocks": [
@@ -97,13 +113,7 @@
           "type": "text",
           "id": "status",
           "label": "Status Label",
-          "default": "Coming Soon"
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Notify Button Label",
-          "default": "Notify Me"
+          "default": "COMING SOON"
         }
       ]
     }
@@ -116,14 +126,14 @@
           "type": "upcoming_item",
           "settings": {
             "title": "Moment of Play",
-            "status": "Coming Soon"
+            "status": "COMING SOON"
           }
         },
         {
           "type": "upcoming_item",
           "settings": {
             "title": "Moment of Synergy",
-            "status": "Coming Soon"
+            "status": "COMING SOON"
           }
         }
       ]

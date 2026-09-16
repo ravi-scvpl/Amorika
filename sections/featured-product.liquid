@@ -8,9 +8,7 @@
     <div class="moc-grid">
       <div class="moc-left">
         {% if section.settings.collection_tag != blank %}
-          <div class="eyebrow-row" style="justify-content: flex-start;">
-            <span class="tag tag--kauna">{{ section.settings.collection_tag }}</span>
-          </div>
+          <span class="moc-eyebrow">{{ section.settings.collection_tag }}</span>
         {% endif %}
 
         <h2>{{ section.settings.title | default: 'Moment of Care' }}</h2>
@@ -18,17 +16,21 @@
         {% if section.settings.tagline != blank %}
           <span class="moc-tagline">{{ section.settings.tagline }}</span>
         {% endif %}
+
+        {% if section.settings.quote != blank %}
+          <p class="moc-line">{{ section.settings.quote }}</p>
+        {% endif %}
         
         {% if section.settings.description != blank %}
           <p class="moc-sub">{{ section.settings.description }}</p>
         {% endif %}
 
-        <div class="moc-price-row">
+        <div class="moc-price-block">
           {% if section.settings.price != blank %}
-            <span class="moc-price">&#8377;{{ section.settings.price }}</span>
+            <div class="moc-price">&#8377;{{ section.settings.price }}</div>
           {% endif %}
           {% if section.settings.delivery_text != blank %}
-            <span class="moc-delivery">{{ section.settings.delivery_text }}</span>
+            <div class="moc-delivery">{{ section.settings.delivery_text }}</div>
           {% endif %}
         </div>
 
@@ -36,7 +38,16 @@
           <p class="moc-delivery-note">{{ section.settings.delivery_note }}</p>
         {% endif %}
 
-        {% if section.settings.cta_label != blank %}
+        {% assign featured_prod = section.settings.product %}
+        {% if featured_prod != blank %}
+          <form action="/cart/add" method="post" class="moc-links-form">
+            <input type="hidden" name="id" value="{{ featured_prod.selected_or_first_available_variant.id }}">
+            <input type="hidden" name="return_to" value="/checkout">
+            <button type="submit" class="btn btn--primary" style="padding: 14px 28px;">
+              {{ section.settings.cta_label | default: 'GIFT A MOMENT OF CARE' }} &rarr;
+            </button>
+          </form>
+        {% elsif section.settings.cta_label != blank %}
           <div class="moc-links">
             <a href="{{ section.settings.cta_link | default: '#custom-gifting' }}" class="btn btn--primary" style="padding: 14px 28px;">
               {{ section.settings.cta_label }} &rarr;
@@ -61,9 +72,7 @@
     <!-- Inside the Hamper Carousel (Customizable Blocks) -->
     <div class="inside-block">
       {% if section.settings.carousel_tag != blank %}
-        <div class="eyebrow-row" style="justify-content: flex-start;">
-          <span class="tag tag--dark">{{ section.settings.carousel_tag }}</span>
-        </div>
+        <span class="inside-eyebrow">{{ section.settings.carousel_tag }}</span>
       {% endif %}
       
       {% if section.settings.carousel_headline != blank %}
@@ -161,10 +170,15 @@
   "name": "Featured Product",
   "settings": [
     {
+      "type": "product",
+      "id": "product",
+      "label": "Select Featured Product (Direct Checkout)"
+    },
+    {
       "type": "text",
       "id": "collection_tag",
-      "label": "Collection Badge Tag",
-      "default": "Collection 01"
+      "label": "Badge Tag",
+      "default": "OUR FIRST COLLECTION"
     },
     {
       "type": "text",
@@ -176,13 +190,19 @@
       "type": "text",
       "id": "tagline",
       "label": "Collection Tagline",
-      "default": "A GIFT OF STILLNESS & MINDFULNESS"
+      "default": "HAND ASSEMBLED · LIMITED RELEASE"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Italic Quote Line",
+      "default": "A gentle reminder that care doesn't always need a reason."
     },
     {
       "type": "textarea",
       "id": "description",
       "label": "Description Paragraph",
-      "default": "A slow-living hamper curated to bring quiet luxury and sensory relaxation into daily life."
+      "default": "Intentionally curated hamper to bring comfort, calm & a little warmth to the everyday."
     },
     {
       "type": "text",

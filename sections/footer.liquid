@@ -8,7 +8,13 @@
     <div class="footer-top">
       <!-- Footer Brand Column -->
       <div class="footer-brand">
-        <a href="#top" class="nav-logo">{{ section.settings.logo_text | default: 'amoraki' }}</a>
+        <a href="#top" class="nav-logo">
+          {% if section.settings.footer_logo != blank %}
+            <img src="{{ section.settings.footer_logo | image_url: width: 400 }}" alt="{{ section.settings.logo_text | default: 'Amoraki' }}" style="height:32px; width:auto;" class="footer-logo-img">
+          {% else %}
+            <img src="{{ 'Amoraki- high res white-logo.png' | asset_url }}" alt="Amoraki" style="height:32px; width:auto;" class="footer-logo-img">
+          {% endif %}
+        </a>
         {% if section.settings.tagline != blank %}
           <span class="script">{{ section.settings.tagline }}</span>
         {% endif %}
@@ -27,7 +33,7 @@
       <div class="footer-faq">
         <h4>{{ section.settings.faq_heading | default: 'FAQs' }}</h4>
         <button class="faq-teaser" id="faqTeaser">
-          Things you may want<br>to know <span class="arrow">&rarr;</span>
+          Things you may want to know <span class="arrow">&rarr;</span>
         </button>
 
         <div class="collapse" id="faqList">
@@ -41,7 +47,7 @@
               </div>
             {% endfor %}
           {% else %}
-            <!-- Default Fallback FAQ Items (Exact preview.html) -->
+            <!-- Default Fallback FAQ Items -->
             <div class="faq-item">
               <button class="faq-q">What is Amoraki?<span class="plus">+</span></button>
               <div class="faq-a">
@@ -83,26 +89,19 @@
 
     <!-- Footer Bottom Row -->
     <div class="footer-bottom">
-      <div class="footer-social">
-        <a href="{{ section.settings.instagram_link | default: 'https://instagram.com/moments.by.amoraki' }}" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 20 20" fill="none">
-            <rect x="2.5" y="2.5" width="15" height="15" rx="4" stroke="currentColor" stroke-width="1.2" />
-            <circle cx="10" cy="10" r="3.6" stroke="currentColor" stroke-width="1.2" />
-            <circle cx="14.3" cy="5.7" r="0.9" fill="currentColor" />
-          </svg>
-        </a>
-        <a href="{{ section.settings.whatsapp_link | default: '#' }}" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 20 20" fill="none">
-            <rect x="2.5" y="2.5" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.2" />
-            <circle cx="6.6" cy="6.7" r="0.9" fill="currentColor" />
-            <path d="M6.6 9.3v5.2M10 14.5v-3.2c0-1.2.8-2 1.9-2s1.8.8 1.8 2v3.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-          </svg>
-        </a>
+      <div class="footer-links">
+        <a href="{{ section.settings.instagram_link | default: 'https://instagram.com/moments.by.amoraki' }}" target="_blank" rel="noopener">Instagram</a>
+        <span class="sep">|</span>
+        <a href="{{ section.settings.facebook_link | default: '#' }}" target="_blank" rel="noopener">FB</a>
+        <span class="sep">|</span>
+        <a href="mailto:{{ section.settings.contact_email | default: 'hello@momentsbyamoraki.com' }}" class="footer-email-link">{{ section.settings.contact_email | default: 'hello@momentsbyamoraki.com' }}</a>
+        <span class="sep">|</span>
+        <a href="#privacy">Privacy</a>
+        <span class="sep">|</span>
+        <a href="#terms">Terms</a>
       </div>
 
-      <span class="footer-email"><a href="mailto:{{ section.settings.contact_email | default: 'hello@amoraki.in' }}">{{ section.settings.contact_email | default: 'hello@amoraki.in' }}</a></span>
-
-      <span class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ section.settings.copyright_text | default: 'Amoraki. All rights reserved.' }}</span>
+      <span class="footer-copy">&copy; 2025 {{ section.settings.copyright_text | default: 'Amoraki. All rights reserved.' }}</span>
     </div>
     
     <svg class="footer-sprig" viewBox="0 0 120 140" fill="none" aria-hidden="true">

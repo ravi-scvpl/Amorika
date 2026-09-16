@@ -34,7 +34,12 @@ function initHeroLogoTravel() {
     if (!heroWord || !navLogo) return;
 
     // Measure natural layout positions
+    const prevTransform = heroWord.style.transform;
+    const prevOpacity = heroWord.style.opacity;
+
     heroWord.style.transform = 'none';
+    heroWord.style.opacity = '1';
+
     startHeroRect = heroWord.getBoundingClientRect();
 
     // Temporarily reveal navLogo to measure target header position
@@ -47,6 +52,19 @@ function initHeroLogoTravel() {
       navLogo.style.visibility = 'hidden';
       navLogo.style.opacity = '0';
     }
+
+    heroWord.style.transform = prevTransform;
+    heroWord.style.opacity = prevOpacity;
+  }
+
+  // Handle logo image load if heroWord contains an <img>
+  const heroImg = heroWord.querySelector('img');
+  if (heroImg) {
+    if (heroImg.complete) {
+      calcLogoCoordinates();
+    } else {
+      heroImg.addEventListener('load', calcLogoCoordinates);
+    }
   }
 
   window.addEventListener('load', calcLogoCoordinates);
@@ -56,8 +74,8 @@ function initHeroLogoTravel() {
     const scrollY = window.scrollY;
     const travelDistance = 180; // Fast travel transition distance
 
-    // Auto-recalculate coordinates near page top to account for mobile address bar resizes
-    if (scrollY < 15 || !startHeroRect) {
+    // Auto-recalculate coordinates near page top
+    if (scrollY < 15 || !startHeroRect || startHeroRect.height === 0) {
       calcLogoCoordinates();
     }
 
@@ -75,13 +93,13 @@ function initHeroLogoTravel() {
       return;
     }
 
-    if (heroWord && startHeroRect && targetNavRect) {
+    if (heroWord && startHeroRect && targetNavRect && startHeroRect.height > 0) {
       const progress = Math.min(Math.max(scrollY / travelDistance, 0), 1);
 
       if (progress < 1) {
         const deltaX = targetNavRect.left - startHeroRect.left;
         const deltaY = targetNavRect.top - startHeroRect.top;
-        const targetScale = targetNavRect.height / startHeroRect.height || 0.3;
+        const targetScale = targetNavRect.height > 0 ? (targetNavRect.height / startHeroRect.height) : 0.3;
 
         const currentX = deltaX * progress;
         const currentY = (deltaY * progress) - (scrollY * (1 - progress));
@@ -89,7 +107,7 @@ function initHeroLogoTravel() {
 
         heroWord.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0) scale(${currentScale.toFixed(4)})`;
 
-        // Smooth crossfade: fade travelling hero word out in last 30% of travel, while fading header logo in
+        // Smooth crossfade
         if (progress > 0.7) {
           const subFade = (progress - 0.7) / 0.3;
           heroWord.style.opacity = (1 - subFade).toFixed(2);
@@ -101,7 +119,6 @@ function initHeroLogoTravel() {
           navLogo.style.opacity = '0';
         }
       } else {
-        // Reached top header bar: complete clean fade handoff to header logo
         heroWord.style.opacity = 0;
         navLogo.style.visibility = 'visible';
         navLogo.style.opacity = '1';
@@ -117,7 +134,8 @@ function initHeroLogoTravel() {
   }
 
   window.addEventListener('scroll', handleLogoTravelScroll, { passive: true });
-  setTimeout(handleLogoTravelScroll, 50);
+  setTimeout(calcLogoCoordinates, 100);
+  setTimeout(handleLogoTravelScroll, 120);
 }
 
 // 2. Mobile Nav Panel & Drawer Toggle

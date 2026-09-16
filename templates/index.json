@@ -43,28 +43,21 @@
         "pillar-3"
       ]
     },
-    "brand-philosophy": {
-      "type": "brand-philosophy",
-      "settings": {
-        "quote_before": "We don't sell hampers. We curate ",
-        "quote_em": "moments.",
-        "subtitle": "Every element is chosen for how it feels, smells, sounds, and stays."
-      }
-    },
     "featured-product": {
       "type": "featured-product",
       "settings": {
-        "collection_tag": "Collection 01",
+        "collection_tag": "OUR FIRST COLLECTION",
         "title": "Moment of Care",
-        "tagline": "A GIFT OF STILLNESS & MINDFULNESS",
-        "description": "A slow-living hamper curated to bring quiet luxury and sensory relaxation into daily life.",
-        "price": "4,850",
-        "delivery_text": "Free Delivery across Delhi NCR",
-        "delivery_note": "Hand-wrapped in signature linen box with custom wax seal & personal note.",
-        "cta_label": "Order This Moment",
+        "tagline": "HAND ASSEMBLED · LIMITED RELEASE",
+        "quote": "A gentle reminder that care doesn't always need a reason.",
+        "description": "Intentionally curated hamper to bring comfort, calm & a little warmth to the everyday.",
+        "price": "5,490",
+        "delivery_text": "+ ₹200 hand-delivery across Delhi NCR",
+        "delivery_note": "Thoughtfully hand-delivered. No cartons, no couriers, no compromise on how the moment arrives.",
+        "cta_label": "GIFT A MOMENT OF CARE",
         "cta_link": "#custom-gifting",
-        "carousel_tag": "Curated Elements",
-        "carousel_headline": "Inside the Hamper"
+        "carousel_tag": "Inside the Collection",
+        "carousel_headline": "Little Intentions, waiting to unfold"
       },
       "blocks": {
         "item-1": {
@@ -119,25 +112,24 @@
     "upcoming-collections": {
       "type": "upcoming-collections",
       "settings": {
-        "section_tag": "Upcoming",
+        "section_tag": "",
         "title": "On the Horizon",
-        "subtitle": "Future moments currently in curation. Be the first to know when they launch."
+        "subtitle": "",
+        "cta_label": "Discover what's next"
       },
       "blocks": {
         "collection-1": {
           "type": "upcoming_item",
           "settings": {
             "title": "Moment of Play",
-            "status": "Coming Soon",
-            "button_text": "Notify Me"
+            "status": "COMING SOON"
           }
         },
         "collection-2": {
           "type": "upcoming_item",
           "settings": {
             "title": "Moment of Synergy",
-            "status": "Coming Soon",
-            "button_text": "Notify Me"
+            "status": "COMING SOON"
           }
         }
       },
@@ -192,20 +184,12 @@
         "moq_note": "MOQ 100pcs | Lead time – 20–25 working days",
         "whatsapp_number": "919999999999"
       }
-    },
-    "elements-purpose": {
-      "type": "elements-purpose",
-      "settings": {
-        "heading": "Every element has a purpose."
-      }
     }
   },
   "order": [
     "hero-banner",
     "moments-pillars",
-    "brand-philosophy",
     "featured-product",
-    "elements-purpose",
     "upcoming-collections",
     "journal-grid",
     "custom-gifting"

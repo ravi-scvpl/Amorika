@@ -1,0 +1,12 @@
+# Ignore temporary files created by OS, graphics editors, and tools
+*.~tmp
+*.tmp
+*.~*
+.*.swp
+.DS_Store
+Thumbs.db
+
+# Ignore non-theme project files
+preview.html
+server.js
+*.md

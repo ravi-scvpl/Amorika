@@ -71,6 +71,7 @@
         "item-2": {
           "type": "inside_item",
           "settings": {
+            "image": "shopify://shop_images/bowl5.png",
             "title": "Singing Bowl",
             "subtitle": "Resonant · Grounding · Timeless",
             "description": "Shaped through repeated hammering, its deep resonance creates a moment of pause — a gentle invitation towards stillness, grounding and coming back to the present."

@@ -220,13 +220,13 @@ body:not(.template-index) .nav-dropdown-btn {
   color: var(--ink);
 }
 
-body:not(.template-index) .nav-logo {
+body:not(.template-index) .nav .nav-logo {
   opacity: 1;
   visibility: visible;
   color: var(--ink);
 }
 
-body:not(.template-index) .nav-logo img {
+body:not(.template-index) .nav .nav-logo img {
   filter: brightness(0);
 }
 
@@ -1535,17 +1535,18 @@ footer {
   }
 }
 
-.footer-brand .nav-logo {
-  color: #FFFFFF;
-  opacity: 1;
-  visibility: visible;
-  font-size: 32px;
+.footer-logo-link {
+  display: inline-block;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .footer-logo-img {
   height: 32px;
   width: auto;
   display: block;
+  filter: none !important;
+  opacity: 1 !important;
 }
 
 .footer-brand .script {

@@ -89,6 +89,7 @@
         "item-4": {
           "type": "inside_item",
           "settings": {
+            "image": "shopify://shop_images/coffe_candle_1.png",
             "title": "Wax Sachets",
             "subtitle": "Aromatic · Comforting · Atmospheric",
             "description": "Hand-poured fragrant soy wax sachets (Rainforest & Coffee) created to gently change the feeling of spaces around the home, linens, wardrobes, drawers, or restrooms."

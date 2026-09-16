@@ -80,6 +80,7 @@
         "item-3": {
           "type": "inside_item",
           "settings": {
+            "image": "shopify://shop_images/Inf3.png",
             "title": "Flower Tea With Glass Infuser",
             "subtitle": "Gentle · Floral · Soothing",
             "description": "Carefully picked chamomile, blue corn & rose buds flower tea, paired with a glass infuser for moments when slowing down and breathing a little easier feels just right."

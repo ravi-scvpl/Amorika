@@ -234,35 +234,20 @@ function initInsideCarousel() {
   });
 }
 
-// 7. Moment of Care Hamper Image Hover Swap
+// 7. Moment of Care 2-Image Auto Slider (Changes every 2 seconds)
 function initMocImageSwap() {
-  const mocRight = document.querySelector('.moc-right');
-  const mocImg = document.querySelector('.moc-right-img');
-  if (mocRight && mocImg) {
-    let originalSrc = mocImg.src;
-    mocRight.addEventListener('mouseenter', () => {
-      const insideImgs = Array.from(document.querySelectorAll('.inside-card .inside-img'))
-        .map(img => img.src)
-        .filter(Boolean);
-      if (insideImgs.length > 0) {
-        const available = insideImgs.filter(src => src !== mocImg.src);
-        const pool = available.length > 0 ? available : insideImgs;
-        const randomSrc = pool[Math.floor(Math.random() * pool.length)];
-        mocImg.style.opacity = '0.3';
-        setTimeout(() => {
-          mocImg.src = randomSrc;
-          mocImg.style.opacity = '1';
-        }, 150);
-      }
-    });
-    mocRight.addEventListener('mouseleave', () => {
-      mocImg.style.opacity = '0.3';
-      setTimeout(() => {
-        mocImg.src = originalSrc;
-        mocImg.style.opacity = '1';
-      }, 150);
-    });
-  }
+  const mocSlider = document.getElementById('mocSlider') || document.querySelector('.moc-right');
+  if (!mocSlider) return;
+
+  const slides = mocSlider.querySelectorAll('.moc-slide');
+  if (slides.length < 2) return;
+
+  let currentIdx = 0;
+  setInterval(() => {
+    slides[currentIdx].classList.remove('is-active');
+    currentIdx = (currentIdx + 1) % slides.length;
+    slides[currentIdx].classList.add('is-active');
+  }, 2000);
 }
 
 // 8. FAQ Teaser and Accordion

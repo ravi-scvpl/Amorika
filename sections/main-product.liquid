@@ -1,47 +1,78 @@
 {% comment %}
   Main Product Section - Moments By Amoraki
-  Full customizable OS 2.0 product detail page
+  Full customizable OS 2.0 product detail page matching luxury brand deck styling.
 {% endcomment %}
 
+<div class="product-page-hero" style="background: var(--linen-soft); padding: clamp(3rem, 5vw, 4rem) 0 2rem; border-bottom: 1px solid var(--line);">
+  <div class="wrap">
+    <nav class="art-breadcrumbs" style="font-size: 13px; color: var(--taupe);">
+      <a href="{{ routes.root_url }}">Home</a> <span class="sep">/</span> <a href="{{ routes.collections_url }}">Collections</a> <span class="sep">/</span> <span class="curr" style="color: var(--copper-deep); font-weight: 500;">{{ product.title | default: "Moment of Care" }}</span>
+    </nav>
+  </div>
+</div>
+
 <section class="main-product-section" style="padding: clamp(3rem, 6vw, 5rem) 0;">
-  <div class="container">
-    <div class="featured-product-grid">
+  <div class="wrap" style="max-width: 1100px;">
+    <div class="product-grid" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: start;">
+      
       <!-- Media Gallery -->
-      <div class="featured-product-media">
-        {%- if product.featured_image -%}
-          <img src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.title | escape }}" loading="eager" />
-        {%- else -%}
-          <img src="{{ 'moment-of-care.jpg' | asset_url }}" alt="Moments By Amoraki" loading="eager" />
-        {%- endif -%}
+      <div class="product-media-wrap" style="position: sticky; top: 100px;">
+        <div style="border-radius: 8px; overflow: hidden; background: #EFE8DC; border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+          {%- if product.featured_image -%}
+            <img src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.title | escape }}" style="width: 100%; height: auto; display: block;" loading="eager" />
+          {%- else -%}
+            <img src="{{ 'moment-of-care.jpg' | asset_url }}" alt="Moment of Care Hamper" style="width: 100%; height: auto; display: block;" loading="eager" />
+          {%- endif -%}
+        </div>
       </div>
 
       <!-- Product Form & Info -->
-      <div class="featured-product-content">
-        <span class="eyebrow">CURATED SENSORY MOMENT</span>
-        <h1 class="featured-product-title">{{ product.title | default: 'Moment of Care' }}</h1>
-        <div class="featured-product-price">
-          {% render 'price', product: product, price: '₹3,450' %}
+      <div class="product-info-wrap">
+        <span class="sec-num" style="display: inline-block; margin-bottom: 8px;">CURATED SENSORY MOMENT</span>
+        <h1 style="font-family: var(--font-display); font-size: clamp(32px, 4vw, 44px); font-weight: 500; color: var(--ink); margin-bottom: 12px; line-height: 1.15;">
+          {{ product.title | default: 'Moment of Care' }}
+        </h1>
+        
+        <div style="font-family: var(--font-sans); font-size: 24px; font-weight: 600; color: var(--copper-deep); margin-bottom: 20px;">
+          {{ product.price | money | default: '₹5,490' }}
         </div>
 
-        <div class="featured-product-meta">
-          <span>Shipping calculated separately</span>
-          <span class="location-badge">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            Delivering across Delhi NCR
-          </span>
+        <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(138, 67, 36, 0.06); padding: 8px 16px; border-radius: 999px; font-size: 13px; color: var(--copper-deep); margin-bottom: 28px; border: 1px solid rgba(138, 67, 36, 0.15);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          Hand/Personally Delivered across Delhi NCR (+ ₹200)
         </div>
 
-        <div class="product-description" style="color: var(--color-text-muted); margin-bottom: 2rem; line-height: 1.8;">
-          {{ product.description | default: "A gentle reminder that care doesn't always need a reason. Thoughtfully curated to bring comfort, calm and a little warmth to the everyday." }}
+        <div class="product-description" style="color: var(--taupe); margin-bottom: 32px; line-height: 1.8; font-size: 16px;">
+          {{ product.description | default: "A gentle reminder that care doesn't always need a reason. Intentionally curated hamper to bring comfort, calm & a little warmth to the everyday." }}
         </div>
 
-        {%- form 'product', product -%}
+        {%- form 'product', product, id: 'product-form' -%}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id | default: '456789' }}">
-          <button type="button" class="btn btn--primary js-add-to-cart" style="width: 100%; max-width: 320px;">
-            Send this Moment
-          </button>
+          
+          <div style="display: flex; gap: 16px; margin-bottom: 24px;">
+            <button type="submit" name="add" class="btn btn--primary" style="flex: 1; padding: 16px 28px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--copper-deep); color: var(--white); border: none; border-radius: 4px; cursor: pointer;">
+              Send / Gift This Moment &rarr;
+            </button>
+          </div>
         {%- endform -%}
+
+        <div style="margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center;">
+          <div style="padding: 12px; background: var(--linen-soft); border-radius: 6px;">
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--copper-deep); display: block; margin-bottom: 4px;">Craftsmanship</span>
+            <span style="font-size: 12px; color: var(--taupe);">Hand-assembled</span>
+          </div>
+          <div style="padding: 12px; background: var(--linen-soft); border-radius: 6px;">
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--copper-deep); display: block; margin-bottom: 4px;">Packaging</span>
+            <span style="font-size: 12px; color: var(--taupe);">No cartons/couriers</span>
+          </div>
+          <div style="padding: 12px; background: var(--linen-soft); border-radius: 6px;">
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--copper-deep); display: block; margin-bottom: 4px;">Personal Note</span>
+            <span style="font-size: 12px; color: var(--taupe);">Sealed wax card</span>
+          </div>
+        </div>
+
       </div>
+
     </div>
   </div>
 </section>

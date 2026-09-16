@@ -1093,6 +1093,9 @@ body:not(.template-index) .nav-toggle span {
 .moc-right {
   overflow: hidden;
   border-radius: 2px;
+  position: relative;
+  aspect-ratio: 4/3;
+  max-height: 520px;
 }
 
 .moc-right-img {
@@ -1103,6 +1106,21 @@ body:not(.template-index) .nav-toggle span {
   display: block;
   transition: opacity 0.35s ease, transform 0.4s ease;
   cursor: pointer;
+}
+
+.moc-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transform: scale(1.02);
+}
+
+.moc-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
 }
 
 .gallery-label {

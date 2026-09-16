@@ -56,15 +56,25 @@
         {% endif %}
       </div>
 
-      <div class="moc-right">
+      <div class="moc-right moc-slider" id="mocSlider">
         {% if section.settings.featured_image != blank %}
-          <img class="moc-right-img"
+          <img class="moc-right-img moc-slide is-active"
             src="{{ section.settings.featured_image | image_url: width: 1200 }}"
             alt="{{ section.settings.featured_image.alt | default: section.settings.title }}">
         {% else %}
-          <img class="moc-right-img"
+          <img class="moc-right-img moc-slide is-active"
             src="{{ 'moment-of-care.jpg' | asset_url }}"
             alt="Moment of Care Hamper">
+        {% endif %}
+
+        {% if section.settings.featured_image_2 != blank %}
+          <img class="moc-right-img moc-slide"
+            src="{{ section.settings.featured_image_2 | image_url: width: 1200 }}"
+            alt="{{ section.settings.featured_image_2.alt | default: section.settings.title }}">
+        {% else %}
+          <img class="moc-right-img moc-slide"
+            src="{{ 'hero-hamper.jpg' | asset_url }}"
+            alt="Moment of Care Alternate View">
         {% endif %}
       </div>
     </div>
@@ -236,7 +246,12 @@
     {
       "type": "image_picker",
       "id": "featured_image",
-      "label": "Main Hamper Image"
+      "label": "Main Hamper Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image_2",
+      "label": "Main Hamper Image 2 (Auto-slides every 2s)"
     },
     {
       "type": "text",

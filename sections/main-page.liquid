@@ -7,19 +7,22 @@
 {% assign legal_title = page.title %}
 {% assign legal_content = page.content %}
 
-{% if page_handle contains 'privacy' or page.title contains 'Privacy' %}
-  {% if shop.privacy_policy != blank %}
+{% if policy != blank %}
+  {% assign legal_title = policy.title %}
+  {% assign legal_content = policy.body %}
+{% elsif page_handle contains 'privacy' or page.title contains 'Privacy' or request.path contains 'privacy' %}
+  {% if shop.privacy_policy.body != blank %}
     {% assign legal_title = shop.privacy_policy.title %}
     {% assign legal_content = shop.privacy_policy.body %}
   {% endif %}
-{% elsif page_handle contains 'terms' or page.title contains 'Terms' %}
-  {% if shop.terms_of_service != blank %}
+{% elsif page_handle contains 'terms' or page.title contains 'Terms' or request.path contains 'terms' %}
+  {% if shop.terms_of_service.body != blank %}
     {% assign legal_title = shop.terms_of_service.title %}
     {% assign legal_content = shop.terms_of_service.body %}
   {% endif %}
 {% endif %}
 
-{% if page_handle contains 'privacy' or page.title contains 'Privacy' or page_handle contains 'terms' or page.title contains 'Terms' or shop.privacy_policy != blank or shop.terms_of_service != blank %}
+{% if policy != blank or page_handle contains 'privacy' or page.title contains 'Privacy' or page_handle contains 'terms' or page.title contains 'Terms' or request.path contains 'privacy' or request.path contains 'terms' %}
   <div class="legal-page-hero" style="background: var(--linen-soft); padding: clamp(4rem, 8vw, 6rem) 0 3rem; border-bottom: 1px solid var(--line);">
     <div class="wrap" style="text-align: center; max-width: 760px;">
       <span class="sec-num" style="display: inline-block; margin-bottom: 12px;">MOMENTS BY AMORAKI</span>

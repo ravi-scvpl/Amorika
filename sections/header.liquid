@@ -57,8 +57,8 @@
     {{ section.settings.contact_email | default: 'reachmitikamalhotra@gmail.com' }}<br>
     {{ section.settings.delivery_area | default: 'Delivering across Delhi NCR' }}<br>
     <div style="margin-top: 8px; font-size: 13px; opacity: 0.8;">
-      <a href="{{ shop.privacy_policy.url | default: routes.root_url | append: 'pages/privacy' }}" style="text-decoration: underline;">Privacy Policy</a> &bull; 
-      <a href="{{ shop.terms_of_service.url | default: routes.root_url | append: 'pages/terms' }}" style="text-decoration: underline;">Terms of Service</a>
+      <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}" style="text-decoration: underline;">Privacy Policy</a> &bull; 
+      <a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}" style="text-decoration: underline;">Terms of Service</a>
     </div>
   </div>
 </div>

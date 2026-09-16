@@ -52,7 +52,11 @@
   </div>
   <div class="nav-panel-foot">
     {{ section.settings.contact_email | default: 'hello@amoraki.in' }}<br>
-    {{ section.settings.delivery_area | default: 'Delivering across Delhi NCR' }}
+    {{ section.settings.delivery_area | default: 'Delivering across Delhi NCR' }}<br>
+    <div style="margin-top: 8px; font-size: 13px; opacity: 0.8;">
+      <a href="{{ routes.root_url }}pages/privacy" style="text-decoration: underline;">Privacy Policy</a> &bull; 
+      <a href="{{ routes.root_url }}pages/terms" style="text-decoration: underline;">Terms of Service</a>
+    </div>
   </div>
 </div>
 

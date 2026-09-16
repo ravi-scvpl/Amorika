@@ -1,15 +1,130 @@
 {% comment %}
   Main Page Section - Moments By Amoraki
+  Renders default pages as well as Privacy Policy and Terms of Service if assigned.
 {% endcomment %}
 
-<section class="main-page-section" style="padding: clamp(3rem, 6vw, 5rem) 0;">
-  <div class="container" style="max-width: 800px;">
-    <h1 class="h2" style="text-align: center; margin-bottom: 2.5rem;">{{ page.title }}</h1>
-    <div class="page-content" style="line-height: 1.85; color: var(--color-text-muted);">
-      {{ page.content }}
+{% assign page_handle = page.handle | default: '' %}
+
+{% if page_handle contains 'privacy' or page.title contains 'Privacy' or page_handle contains 'terms' or page.title contains 'Terms' %}
+  <div class="legal-page-hero" style="background: var(--linen-soft); padding: clamp(4rem, 8vw, 6rem) 0 3rem; border-bottom: 1px solid var(--line);">
+    <div class="wrap" style="text-align: center; max-width: 760px;">
+      <span class="sec-num" style="display: inline-block; margin-bottom: 12px;">MOMENTS BY AMORAKI</span>
+      <h1 class="h2" style="font-family: var(--font-display); font-size: clamp(32px, 5vw, 48px); font-weight: 500; margin-bottom: 16px; color: var(--ink);">
+        {{ page.title }}
+      </h1>
+      <p style="font-size: 14px; letter-spacing: 0.05em; color: var(--taupe); text-transform: uppercase;">
+        Last Updated: {{ 'now' | date: '%B %d, %Y' }} &bull; Crafting Moments with Care
+      </p>
     </div>
   </div>
-</section>
+
+  <section class="legal-page-content" style="padding: clamp(3rem, 6vw, 5rem) 0;">
+    <div class="wrap" style="max-width: 860px;">
+      
+      {% if page.content != blank %}
+        <div class="legal-body rte" style="line-height: 1.85; font-size: 16px; color: var(--ink-soft);">
+          {{ page.content }}
+        </div>
+      {% else %}
+        {% if page_handle contains 'privacy' or page.title contains 'Privacy' %}
+          <div class="legal-body" style="line-height: 1.85; font-size: 16px; color: var(--ink-soft);">
+            <div class="legal-notice-box" style="background: rgba(138, 67, 36, 0.04); border-left: 3px solid var(--copper); padding: 20px 24px; margin-bottom: 40px; border-radius: 4px;">
+              <p style="margin: 0; font-size: 15px; color: var(--ink);">
+                At <strong>Moments by Amoraki</strong>, your privacy is deeply respected. This policy describes how your personal information is collected, used, and protected when you visit, make an inquiry, or order from <strong>momentsbyamoraki.com</strong>.
+              </p>
+            </div>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">1. Personal Information We Collect</h3>
+            <p style="margin-bottom: 16px;">When you browse our store or interact with our curations, we automatically collect certain information about your device, including details about your web browser, IP address, time zone, and cookies installed on your device.</p>
+            <p style="margin-bottom: 16px;">Additionally, when you make a purchase or attempt a purchase, submit a bespoke request, or connect with us via WhatsApp/Email, we collect personal details including:</p>
+            <ul style="padding-left: 24px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
+              <li>Full Name & Contact Information (Email Address, Mobile Number)</li>
+              <li>Delivery Addresses (Hand-delivery locations across Delhi NCR)</li>
+              <li>Custom Handwritten Note details & Recipient Information</li>
+              <li>Billing Information and Payment Confirmation details</li>
+            </ul>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">2. How We Use Your Personal Information</h3>
+            <p style="margin-bottom: 16px;">We use the Order and Inquiry Information that we collect generally to fulfill any orders placed through the Site (including arranging for personal hand-deliveries across Delhi NCR, providing invoices, and order confirmations).</p>
+            <p style="margin-bottom: 16px;">Additionally, we use this information to:</p>
+            <ul style="padding-left: 24px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
+              <li>Communicate directly with you regarding bespoke custom orders and delivery schedules</li>
+              <li>Screen orders for potential risk or fraud</li>
+              <li>Provide you with previews of new curations, slow reads, or updates (if opted in)</li>
+            </ul>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">3. Sharing Your Personal Information</h3>
+            <p style="margin-bottom: 16px;">We share your Personal Information with trusted third parties to help us fulfill our obligations to you as described above:</p>
+            <ul style="padding-left: 24px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
+              <li><strong>Shopify:</strong> We use Shopify to power our online store. You can read more about how Shopify uses your Personal Information here: <a href="https://www.shopify.com/legal/privacy" target="_blank" rel="noopener" style="color: var(--copper); text-decoration: underline;">Shopify Privacy Policy</a>.</li>
+              <li><strong>Personal Hand-Delivery Teams:</strong> Information necessary for safe delivery within Delhi NCR is shared strictly with authorized delivery concierge personnel.</li>
+              <li><strong>Legal Compliance:</strong> We may also share information to comply with applicable Indian laws and regulations (including the Information Technology Act and DPDP framework).</li>
+            </ul>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">4. Data Retention & Your Rights</h3>
+            <p style="margin-bottom: 16px;">When you place an order or inquire about a collection, we will maintain your Information for our records unless and until you ask us to delete this information.</p>
+            <p style="margin-bottom: 16px;">You have the right to access personal information we hold about you and to ask that your personal information be corrected, updated, or deleted. If you would like to exercise this right, please contact us at <a href="mailto:hello@momentsbyamoraki.com" style="color: var(--copper); font-weight: 500;">hello@momentsbyamoraki.com</a>.</p>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">5. Contact Us</h3>
+            <p style="margin-bottom: 16px;">For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us by email at <a href="mailto:hello@momentsbyamoraki.com" style="color: var(--copper); font-weight: 500;">hello@momentsbyamoraki.com</a>.</p>
+          </div>
+
+        {% else %}
+          <div class="legal-body" style="line-height: 1.85; font-size: 16px; color: var(--ink-soft);">
+            <div class="legal-notice-box" style="background: rgba(138, 67, 36, 0.04); border-left: 3px solid var(--copper); padding: 20px 24px; margin-bottom: 40px; border-radius: 4px;">
+              <p style="margin: 0; font-size: 15px; color: var(--ink);">
+                Welcome to <strong>Moments by Amoraki</strong>. By accessing our website or purchasing our curated hampers, you agree to be bound by the following Terms of Service.
+              </p>
+            </div>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">1. Overview & Online Store Terms</h3>
+            <p style="margin-bottom: 16px;">This website is operated by Moments by Amoraki. Throughout the site, the terms “we”, “us” and “our” refer to Amoraki. By visiting our site or purchasing from us, you engage in our “Service” and agree to be bound by these terms.</p>
+            <p style="margin-bottom: 16px;">By agreeing to these Terms of Service, you represent that you are at least the age of majority in your state or region of residence.</p>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">2. Artisanal Craftsmanship & Product Specifications</h3>
+            <p style="margin-bottom: 16px;">Every item inside an Amoraki hamper (including natural kauna grass baskets from Manipur, hand-hammered brass singing bowls, hand-poured wax sachets, and organic tea blends) is crafted in small batches.</p>
+            <ul style="padding-left: 24px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
+              <li>Natural variations in texture, weave pattern, or color are inherent to handmade items and are celebrated as part of their unique character.</li>
+              <li>We make every effort to display as accurately as possible the colors and images of our products. We cannot guarantee that your monitor's display of any color will be accurate.</li>
+            </ul>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">3. Delivery & Fulfillment (Delhi NCR Specialization)</h3>
+            <p style="margin-bottom: 16px;">To ensure how the moment arrives meets our standards, delivery is currently conducted via personal hand-delivery across Delhi NCR (+ ₹200 delivery fee).</p>
+            <p style="margin-bottom: 16px;">We do not use generic courier cartons or compromise on packaging for local deliveries. Delivery timeframes discussed during ordering are estimates and may vary slightly due to traffic or weather conditions.</p>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">4. Bespoke & Corporate Custom Gifting</h3>
+            <p style="margin-bottom: 16px;">For custom or corporate orders:</p>
+            <ul style="padding-left: 24px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
+              <li><strong>Minimum Order Quantity (MOQ):</strong> 100 units for fully bespoke curations.</li>
+              <li><strong>Lead Time:</strong> 20–25 working days from approval of curation and initial deposit.</li>
+              <li><strong>Deposits:</strong> Custom orders require an advance deposit before production begins. Deposits for bespoke orders are non-refundable once production or sourcing has commenced.</li>
+            </ul>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">5. Returns, Cancellations & Replacement</h3>
+            <p style="margin-bottom: 16px;">Due to the curated, personal nature of our hampers (including food items such as tea and fragrant wax items), sales are generally final once delivered.</p>
+            <p style="margin-bottom: 16px;">If your order arrives damaged or impaired during delivery, please notify us within 24 hours at <a href="mailto:hello@momentsbyamoraki.com" style="color: var(--copper); font-weight: 500;">hello@momentsbyamoraki.com</a> or via WhatsApp with photographs of the item. We will promptly arrange a replacement or solution.</p>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">6. Governing Law</h3>
+            <p style="margin-bottom: 16px;">These Terms of Service and any separate agreements shall be governed by and construed in accordance with the laws of India, under the jurisdiction of courts in Delhi, India.</p>
+
+            <h3 style="font-family: var(--font-display); font-size: 24px; margin: 32px 0 16px; color: var(--copper-deep);">7. Contact Information</h3>
+            <p style="margin-bottom: 16px;">Questions about the Terms of Service should be sent to us at <a href="mailto:hello@momentsbyamoraki.com" style="color: var(--copper); font-weight: 500;">hello@momentsbyamoraki.com</a>.</p>
+          </div>
+        {% endif %}
+      {% endif %}
+
+    </div>
+  </section>
+{% else %}
+  <section class="main-page-section" style="padding: clamp(3rem, 6vw, 5rem) 0;">
+    <div class="wrap" style="max-width: 800px;">
+      <h1 class="h2" style="text-align: center; margin-bottom: 2.5rem;">{{ page.title }}</h1>
+      <div class="page-content" style="line-height: 1.85; color: var(--color-text-muted);">
+        {{ page.content }}
+      </div>
+    </div>
+  </section>
+{% endif %}
 
 {% schema %}
 {

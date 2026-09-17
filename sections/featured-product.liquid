@@ -42,7 +42,7 @@
 
         {% assign featured_prod = section.settings.product %}
         {% if featured_prod != blank %}
-          <form action="/cart/add" method="post" class="moc-links-form" id="MocAddToCartForm">
+          <form action="/cart/add" method="post" class="moc-links-form" id="MocAddToCartForm" target="_top">
             <input type="hidden" name="id" value="{{ featured_prod.selected_or_first_available_variant.id }}">
             <button type="submit" class="btn btn--primary js-send-moment-cta" style="padding: 14px 28px;">
               {{ section.settings.cta_label | default: 'Send a Moment of Care' }} &rarr;

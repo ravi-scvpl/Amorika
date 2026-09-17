@@ -364,7 +364,7 @@ function initSendMomentCTA() {
                 drawer.classList.add('is-open');
                 overlay.classList.add('is-open');
               } else {
-                window.location.href = '/cart';
+                window.top.location.href = '/checkout';
               }
             }
           });

@@ -42,18 +42,18 @@
 
         {% assign featured_prod = section.settings.product %}
         {% if featured_prod != blank %}
-          <form action="/cart/add" method="post" class="moc-links-form">
+          <form action="/cart/add" method="post" class="moc-links-form" id="MocAddToCartForm">
             <input type="hidden" name="id" value="{{ featured_prod.selected_or_first_available_variant.id }}">
             <input type="hidden" name="return_to" value="/checkout">
-            <button type="submit" class="btn btn--primary" style="padding: 14px 28px;">
-              {{ section.settings.cta_label | default: 'GIFT A MOMENT OF CARE' }} &rarr;
+            <button type="submit" class="btn btn--primary js-send-moment-cta" style="padding: 14px 28px;">
+              {{ section.settings.cta_label | default: 'Send a Moment of Care' }} &rarr;
             </button>
           </form>
-        {% elsif section.settings.cta_label != blank %}
+        {% else %}
           <div class="moc-links">
-            <a href="{{ section.settings.cta_link | default: '#custom-gifting' }}" class="btn btn--primary" style="padding: 14px 28px;">
-              {{ section.settings.cta_label }} &rarr;
-            </a>
+            <button type="button" class="btn btn--primary js-send-moment-cta" style="padding: 14px 28px;">
+              {{ section.settings.cta_label | default: 'Send a Moment of Care' }} &rarr;
+            </button>
           </div>
         {% endif %}
       </div>
@@ -238,7 +238,7 @@
       "type": "text",
       "id": "cta_label",
       "label": "CTA Button Label",
-      "default": "Order This Moment"
+      "default": "Send a Moment of Care"
     },
     {
       "type": "url",

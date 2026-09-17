@@ -1,0 +1,38 @@
+{% comment %}
+  Thank-You / Order Confirmation Page Copy - Amoraki
+  Step 08: Customer Facing Confirmation
+{% endcomment %}
+
+<div class="thank-you-confirmation" style="max-width: 600px; margin: 3rem auto; text-align: center; background: var(--linen-soft, #F7F3ED); border: 1px solid var(--line, #E5DEC9); padding: 40px 30px; border-radius: 8px;">
+  
+  <span class="sec-num" style="display: inline-block; margin-bottom: 12px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper, #B87333);">Order Received</span>
+
+  <h2 style="font-family: var(--font-display, 'Cormorant Garamond', serif); font-size: clamp(28px, 4vw, 38px); font-weight: 500; color: var(--ink, #2C2623); margin-bottom: 12px;">
+    A Moment of Care is on its way.
+  </h2>
+
+  <p style="font-size: 16px; font-weight: 500; color: var(--copper-deep, #8A4324); margin-bottom: 24px;">
+    Thank you for choosing Amoraki.
+  </p>
+
+  <p style="font-size: 15px; color: var(--taupe, #59524C); line-height: 1.6; margin-bottom: 28px;">
+    Your order has been received and will be hand-delivered in 2-3 business days. We’ll soon send an intimation to your email and WhatsApp with the details..
+  </p>
+
+  <div style="background: var(--white, #FFF); border: 1px solid var(--line, #E5DEC9); border-radius: 6px; padding: 20px; margin-bottom: 32px; text-align: left;">
+    <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px; border-bottom: 1px solid var(--line, #E5DEC9); padding-bottom: 8px;">
+      <span style="color: var(--taupe, #706862);">Order Number:</span>
+      <strong style="color: var(--ink, #2C2623);">#{{ order.name | default: '1001' }}</strong>
+    </div>
+    <div style="display: flex; justify-content: space-between; font-size: 14px;">
+      <span style="color: var(--taupe, #706862);">Collection Name:</span>
+      <strong style="color: var(--ink, #2C2623);">Moment of Care</strong>
+    </div>
+  </div>
+
+  <div style="margin-top: 32px; font-family: var(--font-display, serif);">
+    <p style="font-size: 16px; font-style: italic; color: var(--taupe, #706862); margin-bottom: 8px;">Thoughtfully yours,</p>
+    <div style="font-size: 24px; font-weight: 600; letter-spacing: 0.1em; color: var(--ink, #2C2623); text-transform: lowercase;">amoraki</div>
+  </div>
+
+</div>

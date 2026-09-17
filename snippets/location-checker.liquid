@@ -1,0 +1,73 @@
+{% comment %}
+  Delivery Location Checker Modal - Amoraki
+  Step 01 & 02: Location Prompt & Eligibility Validation for Delhi NCR
+{% endcomment %}
+
+<div class="location-modal-overlay" id="LocationModalOverlay" aria-hidden="true" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(28, 25, 23, 0.6); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+  <div class="location-modal" id="LocationModal" role="dialog" aria-modal="true" aria-labelledby="LocationModalTitle" style="background: var(--linen-soft, #F7F3ED); border: 1px solid var(--line, #E5DEC9); border-radius: 8px; max-width: 480px; width: 100%; padding: clamp(24px, 5vw, 36px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); position: relative;">
+    
+    <button type="button" class="location-modal__close" id="CloseLocationModal" aria-label="Close modal" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--taupe, #8C827A); line-height: 1;">&times;</button>
+
+    <!-- State 1: Location Selection Prompt -->
+    <div id="LocationPromptState">
+      <span class="sec-num" style="display: inline-block; margin-bottom: 8px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper, #B87333);">Delivery Region</span>
+      <h3 id="LocationModalTitle" style="font-family: var(--font-display, 'Cormorant Garamond', serif); font-size: 26px; font-weight: 500; color: var(--ink, #2C2623); margin-bottom: 12px; line-height: 1.2;">
+        Where would you like this Moment Hamper to be delivered?
+      </h3>
+      
+      <p style="font-size: 14px; color: var(--taupe, #706862); margin-bottom: 24px; line-height: 1.5;">
+        Select your region or enter your PIN code to verify hand-delivery eligibility.
+      </p>
+
+      <form id="LocationForm" onsubmit="return false;">
+        <div style="margin-bottom: 20px;">
+          <label for="DeliveryLocationSelect" style="display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; color: var(--ink, #2C2623);">
+            Select delivery location
+          </label>
+          <select id="DeliveryLocationSelect" style="width: 100%; padding: 12px 16px; border: 1px solid var(--line, #D6CDBB); border-radius: 4px; background: var(--white, #FFF); font-family: var(--font-sans, sans-serif); font-size: 15px; color: var(--ink, #2C2623); outline: none;">
+            <option value="" disabled selected>-- Select Location --</option>
+            <option value="delhi">Delhi</option>
+            <option value="noida">Noida</option>
+            <option value="gurgaon">Gurgaon / Gurugram</option>
+            <option value="faridabad">Faridabad</option>
+            <option value="ghaziabad">Ghaziabad</option>
+            <option value="others">Others</option>
+          </select>
+        </div>
+
+        <div style="text-align: center; margin: 12px 0; font-size: 12px; color: var(--taupe, #8C827A); text-transform: uppercase; letter-spacing: 0.1em;">
+          &mdash; OR Enter PIN Code &mdash;
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <input type="text" id="DeliveryPincodeInput" maxlength="6" placeholder="Enter 6-digit PIN Code (e.g. 110001)" style="width: 100%; padding: 12px 16px; border: 1px solid var(--line, #D6CDBB); border-radius: 4px; background: var(--white, #FFF); font-family: var(--font-sans, sans-serif); font-size: 14px; color: var(--ink, #2C2623); outline: none;">
+        </div>
+
+        <button type="button" id="SubmitLocationBtn" class="btn btn--primary" style="width: 100%; padding: 14px 20px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--copper-deep, #8A4324); color: #FFF; border: none; border-radius: 4px; cursor: pointer; transition: background 0.3s ease;">
+          Continue &rarr;
+        </button>
+      </form>
+    </div>
+
+    <!-- State 2: Location Outside Delivery Area -->
+    <div id="LocationUnserviceableState" style="display: none; text-align: center;">
+      <div style="font-size: 32px; margin-bottom: 12px;">🤍</div>
+      <h3 style="font-family: var(--font-display, 'Cormorant Garamond', serif); font-size: 24px; font-weight: 500; color: var(--ink, #2C2623); margin-bottom: 16px;">
+        We’re starting close to home, with Delhi NCR.
+      </h3>
+      
+      <p style="font-size: 15px; color: var(--taupe, #59524C); line-height: 1.6; margin-bottom: 20px;">
+        Moment of Care isn’t available for delivery to this location just yet. We’d love to bring it your way soon.
+      </p>
+
+      <p style="font-size: 14px; font-style: italic; font-family: var(--font-display, serif); color: var(--copper-deep, #8A4324); margin-bottom: 24px;">
+        Thank you for thinking of amoraki.
+      </p>
+
+      <button type="button" id="BackToLocationPrompt" class="btn" style="padding: 10px 20px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; border: 1px solid var(--line, #C4B9A7); color: var(--ink, #2C2623); cursor: pointer; border-radius: 4px;">
+        Choose another location
+      </button>
+    </div>
+
+  </div>
+</div>

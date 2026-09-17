@@ -41,7 +41,10 @@
 
     {% section 'footer' %}
 
-    <!-- Amoraki Theme JavaScript (Exact Match preview.html) -->
+    {% render 'location-checker' %}
+
+    <!-- Amoraki Theme & Location JavaScript -->
+    <script src="{{ 'location-checker.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'amoraki-theme.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

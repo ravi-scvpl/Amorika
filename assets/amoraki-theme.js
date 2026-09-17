@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initBespokeForm();
   initNewsletterForm();
+  initSendMomentCTA();
 });
 
 // 1. Hero-to-Header Logo Travel Animation
@@ -342,3 +343,34 @@ function initNewsletterForm() {
     });
   }
 }
+
+// 11. Send a Moment of Care CTA Location Validation Trigger
+function initSendMomentCTA() {
+  const ctaBtns = document.querySelectorAll('.js-send-moment-cta');
+  ctaBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const form = btn.closest('form');
+      if (window.AmorakiLocation && typeof window.AmorakiLocation.promptIfNeeded === 'function') {
+        const isAlreadyApproved = window.AmorakiLocation.getSelectedLocation();
+        if (!isAlreadyApproved) {
+          e.preventDefault();
+          window.AmorakiLocation.promptIfNeeded(function() {
+            if (form) {
+              form.submit();
+            } else {
+              const drawer = document.getElementById('CartDrawer');
+              const overlay = document.getElementById('CartOverlay');
+              if (drawer && overlay) {
+                drawer.classList.add('is-open');
+                overlay.classList.add('is-open');
+              } else {
+                window.location.href = '/cart';
+              }
+            }
+          });
+        }
+      }
+    });
+  });
+}
+

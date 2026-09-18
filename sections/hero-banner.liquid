@@ -4,12 +4,28 @@
 {% endcomment %}
 
 <section class="hero">
+  {% comment %} Desktop Image {% endcomment %}
   {% if section.settings.hero_image != blank %}
-    <img class="hero-img"
+    <img class="hero-img hero-img--desktop"
       src="{{ section.settings.hero_image | image_url: width: 2000 }}"
       alt="{{ section.settings.hero_image.alt | default: section.settings.brand_name }}">
   {% else %}
-    <img class="hero-img"
+    <img class="hero-img hero-img--desktop"
+      src="{{ 'H7.png' | asset_url }}"
+      alt="{{ section.settings.brand_name }}">
+  {% endif %}
+
+  {% comment %} Mobile Image {% endcomment %}
+  {% if section.settings.hero_image_mobile != blank %}
+    <img class="hero-img hero-img--mobile"
+      src="{{ section.settings.hero_image_mobile | image_url: width: 1000 }}"
+      alt="{{ section.settings.hero_image_mobile.alt | default: section.settings.brand_name }}">
+  {% elsif section.settings.hero_image != blank %}
+    <img class="hero-img hero-img--mobile"
+      src="{{ section.settings.hero_image | image_url: width: 1000 }}"
+      alt="{{ section.settings.hero_image.alt | default: section.settings.brand_name }}">
+  {% else %}
+    <img class="hero-img hero-img--mobile"
       src="{{ 'H7.png' | asset_url }}"
       alt="{{ section.settings.brand_name }}">
   {% endif %}
@@ -69,7 +85,12 @@
     {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Hero Background Image"
+      "label": "Hero Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Hero Background Image (Mobile)"
     },
     {
       "type": "image_picker",

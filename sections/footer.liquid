@@ -6,25 +6,40 @@
 <footer id="contact">
   <div class="wrap">
     <div class="footer-top">
-      <!-- Footer Brand Column -->
+      <!-- Column 1: Brand & Logo -->
       <div class="footer-brand">
         <a href="#top" class="footer-logo-link">
           {% if section.settings.footer_logo != blank %}
-            <img src="{{ section.settings.footer_logo | image_url: width: 400 }}" alt="{{ section.settings.logo_text | default: 'Amoraki' }}" style="height:32px; width:auto;" class="footer-logo-img">
+            <img
+              src="{{ section.settings.footer_logo | image_url: width: 400 }}"
+              alt="{{ section.settings.logo_text | default: 'Amoraki' }}"
+              style="height:32px; width:auto;"
+              class="footer-logo-img"
+            >
           {% else %}
-            <img src="{{ 'Amoraki- high res white-logo.png' | asset_url }}" alt="Amoraki" style="height:32px; width:auto;" class="footer-logo-img">
+            <img
+              src="{{ 'Amoraki- high res white-logo.png' | asset_url }}"
+              alt="Amoraki"
+              style="height:32px; width:auto;"
+              class="footer-logo-img"
+            >
           {% endif %}
         </a>
         {% if section.settings.tagline != blank %}
           <span class="script">{{ section.settings.tagline }}</span>
         {% endif %}
+      </div>
+
+      <!-- Column 2: Delivery Coverage -->
+      <div class="footer-delivery">
+        <h4>Delivery Across</h4>
         {% if section.settings.delivery_note != blank %}
           <p class="deliver">
             <svg class="pin-icon" viewBox="0 0 20 20" fill="none">
               <path d="M10 18s6-5.7 6-10.4A6 6 0 0 0 4 7.6C4 12.3 10 18 10 18Z" stroke="currentColor" stroke-width="1.2" />
               <circle cx="10" cy="7.6" r="2" stroke="currentColor" stroke-width="1.2" />
             </svg>
-            {{ section.settings.delivery_note }}
+            {{ section.settings.delivery_note | default: 'Delhi NCR only' }}
           </p>
         {% endif %}
       </div>
@@ -33,14 +48,18 @@
       <div class="footer-faq">
         <h4>{{ section.settings.faq_heading | default: 'FAQs' }}</h4>
         <button class="faq-teaser" id="faqTeaser">
-          Things you may want to know <span class="arrow">&rarr;</span>
+          {{ section.settings.faq_teaser_text | default: 'Things you may want to know' }}
+          <span class="arrow">&rarr;</span>
         </button>
 
         <div class="collapse" id="faqList">
           {% if section.blocks.size > 0 %}
             {% for block in section.blocks %}
               <div class="faq-item" {{ block.shopify_attributes }}>
-                <button class="faq-q">{{ block.settings.question }}<span class="plus">+</span></button>
+                <button class="faq-q">
+                  {{ block.settings.question -}}
+                  <span class="plus">+</span>
+                </button>
                 <div class="faq-a">
                   <p>{{ block.settings.answer }}</p>
                 </div>
@@ -51,19 +70,28 @@
             <div class="faq-item">
               <button class="faq-q">What is Amoraki?<span class="plus">+</span></button>
               <div class="faq-a">
-                <p>A gifting brand built around moments, not occasions. Moment of Care is our first — for the times care deserves to be felt, not just expressed.</p>
+                <p>
+                  A gifting brand built around moments, not occasions. Moment of Care is our first — for the times care
+                  deserves to be felt, not just expressed.
+                </p>
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-q">How do I order?<span class="plus">+</span></button>
               <div class="faq-a">
-                <p>Message us on WhatsApp and we'll help you choose and send it — no account, no checkout, just a conversation.</p>
+                <p>
+                  Message us on WhatsApp and we'll help you choose and send it — no account, no checkout, just a
+                  conversation.
+                </p>
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-q">Do you deliver outside Delhi NCR?<span class="plus">+</span></button>
               <div class="faq-a">
-                <p>Not yet. We're starting close to home so every hamper leaves us exactly as intended. More cities are on the way.</p>
+                <p>
+                  Not yet. We're starting close to home so every hamper leaves us exactly as intended. More cities are
+                  on the way.
+                </p>
               </div>
             </div>
             <div class="faq-item">
@@ -79,7 +107,9 @@
       <!-- Newsletter Column -->
       <div class="footer-stay">
         <h4>{{ section.settings.newsletter_heading | default: 'Stay Close' }}</h4>
-        <p class="stay-copy">{{ section.settings.newsletter_copy | default: 'Stay updated on new collections and reads.' }}</p>
+        <p class="stay-copy">
+          {{ section.settings.newsletter_copy | default: 'Stay updated on new collections and reads.' }}
+        </p>
         <form class="stay" id="stayForm">
           <input type="email" id="stayEmail" placeholder="Your email" required>
           <button type="submit" class="stay-btn" aria-label="Subscribe">&rarr;</button>
@@ -90,20 +120,32 @@
     <!-- Footer Bottom Row -->
     <div class="footer-bottom">
       <div class="footer-links">
-        <a href="{{ section.settings.instagram_link | default: 'https://instagram.com/moments.by.amoraki' }}" target="_blank" rel="noopener">Instagram</a>
+        <a
+          href="{{ section.settings.instagram_link | default: 'https://instagram.com/moments.by.amoraki' }}"
+          target="_blank"
+          rel="noopener"
+          >Instagram</a
+        >
         <span class="sep">|</span>
         <a href="{{ section.settings.facebook_link | default: '#' }}" target="_blank" rel="noopener">FB</a>
         <span class="sep">|</span>
-        <a href="mailto:{{ section.settings.contact_email | default: 'reachmitikamalhotra@gmail.com' }}" class="footer-email-link">{{ section.settings.contact_email | default: 'reachmitikamalhotra@gmail.com' }}</a>
+        <a
+          href="mailto:{{ section.settings.contact_email | default: 'reachmitikamalhotra@gmail.com' }}"
+          class="footer-email-link"
+        >
+          {{- section.settings.contact_email | default: 'reachmitikamalhotra@gmail.com' -}}
+        </a>
         <span class="sep">|</span>
         <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Privacy</a>
         <span class="sep">|</span>
         <a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}">Terms</a>
       </div>
 
-      <span class="footer-copy">&copy; 2025 {{ section.settings.copyright_text | default: 'Amoraki. All rights reserved.' }}</span>
+      <span class="footer-copy"
+        >&copy; 2025 {{ section.settings.copyright_text | default: 'Amoraki. All rights reserved.' -}}
+      </span>
     </div>
-    
+
     <svg class="footer-sprig" viewBox="0 0 120 140" fill="none" aria-hidden="true">
       <path d="M10 130C10 90 30 60 55 20" stroke="currentColor" stroke-width="1.1" />
       <path d="M55 20c-8 6-18 8-26 4M55 20c2-10 0-18-6-24M22 60c-8 2-16 0-22-6M30 42c-7 3-15 2-20-3M40 30c-6 4-14 4-19 0" stroke="currentColor" stroke-width="1" />
@@ -131,31 +173,31 @@
       "type": "textarea",
       "id": "delivery_note",
       "label": "Delivery Note",
-      "default": "Delivering Across Delhi NCR only"
+      "default": "Delhi NCR only"
     },
     {
       "type": "text",
       "id": "faq_heading",
       "label": "FAQ Column Heading",
-      "default": "Questions & Care"
+      "default": "FAQs"
     },
     {
       "type": "textarea",
       "id": "faq_teaser_text",
       "label": "FAQ Teaser Text",
-      "default": "Have questions about delivery, contents, or custom orders?"
+      "default": "Things you may want to know"
     },
     {
       "type": "text",
       "id": "newsletter_heading",
       "label": "Newsletter Heading",
-      "default": "Stay Connected"
+      "default": "Stay Close"
     },
     {
       "type": "textarea",
       "id": "newsletter_copy",
       "label": "Newsletter Copy",
-      "default": "Receive private previews of upcoming moment curations and seasonal edits."
+      "default": "Stay updated on new collections and reads."
     },
     {
       "type": "text",

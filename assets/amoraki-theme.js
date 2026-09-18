@@ -358,14 +358,7 @@ function initSendMomentCTA() {
             if (form) {
               form.submit();
             } else {
-              const drawer = document.getElementById('CartDrawer');
-              const overlay = document.getElementById('CartOverlay');
-              if (drawer && overlay) {
-                drawer.classList.add('is-open');
-                overlay.classList.add('is-open');
-              } else {
-                window.top.location.href = '/checkout';
-              }
+              window.location.href = '/checkout';
             }
           });
         }

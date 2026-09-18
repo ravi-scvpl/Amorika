@@ -845,10 +845,25 @@ body:not(.template-index) .nav-sep {
   margin-bottom: 90px;
 }
 
+.moc-slider--desktop {
+  display: block;
+}
+
+.moc-slider--mobile {
+  display: none;
+  margin: 28px 0;
+}
+
 @media(max-width:900px) {
   .moc-grid {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+  .moc-slider--desktop {
+    display: none;
+  }
+  .moc-slider--mobile {
+    display: block;
   }
 }
 
@@ -968,7 +983,7 @@ body:not(.template-index) .nav-sep {
   font-style: italic;
   font-weight: 500;
   font-size: clamp(22px, 3vw, 30px);
-  color: var(--copper-deep);
+  color: #100F0F !important;
   margin: 10px 0 36px;
 }
 
@@ -1080,16 +1095,15 @@ body:not(.template-index) .nav-sep {
 
 .carousel-arrow {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: -60px;
   z-index: 2;
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid var(--line);
-  background: var(--linen);
+  background: var(--linen-soft);
   color: var(--ink);
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1;
   cursor: pointer;
   display: flex;
@@ -1105,20 +1119,49 @@ body:not(.template-index) .nav-sep {
 }
 
 .carousel-arrow--prev {
-  left: -16px;
+  right: 48px;
+  left: auto;
 }
 
 .carousel-arrow--next {
-  right: -16px;
+  right: 0;
 }
 
-@media(max-width:640px) {
+.carousel-dots {
+  display: none;
+}
+
+@media(max-width:900px) {
   .carousel-arrow {
-    display: none;
+    display: none !important;
   }
 
   .inside-card {
     width: 78vw;
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(44, 39, 36, 0.25);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .carousel-dot.is-active {
+    background: var(--copper-deep, #8A4324);
+    transform: scale(1.25);
   }
 }
 
@@ -2957,5 +3000,50 @@ button[type="submit"]:hover,
   background: var(--linen-soft) !important;
   font-weight: 600 !important;
   color: var(--ink) !important;
+}
+
+/* ---------- Responsive Mobile Cart Page ---------- */
+@media(max-width:840px) {
+  .cart-page-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .cart-page-header {
+    display: grid !important;
+    grid-template-columns: 75px 1fr 85px 85px !important;
+    gap: 10px !important;
+    font-size: 10.5px !important;
+  }
+
+  .cart-page-item {
+    display: grid !important;
+    grid-template-columns: 75px 1fr 85px 85px !important;
+    gap: 10px !important;
+  }
+
+  .cart-page-item a {
+    width: 75px !important;
+    height: 75px !important;
+  }
+
+  .cart-page-item-info a {
+    font-size: 16px !important;
+  }
+
+  .cart-page-qty {
+    width: 72px !important;
+    height: 34px !important;
+  }
+
+  .cart-page-qty a {
+    padding: 0 6px !important;
+    font-size: 13px !important;
+  }
+
+  .cart-page-summary {
+    position: static !important;
+    padding: 20px 16px !important;
+  }
 }
 

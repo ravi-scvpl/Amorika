@@ -34,7 +34,11 @@
         {% if selected_blog != blank and selected_blog.articles.size > 0 %}
           {% for article in selected_blog.articles limit: 3 %}
             <a href="{{ article.url }}" class="edit-item">
-              {% if article.image %}
+              {% if article.metafields.custom.homepage_thumbnail != blank %}
+                <img class="edit-img"
+                  src="{{ article.metafields.custom.homepage_thumbnail | image_url: width: 800 }}"
+                  alt="{{ article.title }}">
+              {% elsif article.image %}
                 <img class="edit-img"
                   src="{{ article.image | image_url: width: 800 }}"
                   alt="{{ article.image.alt | default: article.title }}">

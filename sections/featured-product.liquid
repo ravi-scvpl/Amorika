@@ -25,6 +25,29 @@
           <p class="moc-sub">{{ section.settings.description }}</p>
         {% endif %}
 
+        {% comment %} Mobile Image placement (between description and price) {% endcomment %}
+        <div class="moc-right moc-slider moc-slider--mobile" id="mocSliderMobile">
+          {% if section.settings.featured_image != blank %}
+            <img class="moc-right-img moc-slide is-active"
+              src="{{ section.settings.featured_image | image_url: width: 1200 }}"
+              alt="{{ section.settings.featured_image.alt | default: section.settings.title }}">
+          {% else %}
+            <img class="moc-right-img moc-slide is-active"
+              src="{{ 'moment-of-care.jpg' | asset_url }}"
+              alt="Moment of Care Hamper">
+          {% endif %}
+
+          {% if section.settings.featured_image_2 != blank %}
+            <img class="moc-right-img moc-slide"
+              src="{{ section.settings.featured_image_2 | image_url: width: 1200 }}"
+              alt="{{ section.settings.featured_image_2.alt | default: section.settings.title }}">
+          {% else %}
+            <img class="moc-right-img moc-slide"
+              src="{{ 'hero-hamper.jpg' | asset_url }}"
+              alt="Moment of Care Alternate View">
+          {% endif %}
+        </div>
+
         <div class="moc-price-block">
           {% if section.settings.price != blank %}
             <div class="moc-price">
@@ -57,7 +80,8 @@
         {% endif %}
       </div>
 
-      <div class="moc-right moc-slider" id="mocSlider">
+      {% comment %} Desktop Image placement {% endcomment %}
+      <div class="moc-right moc-slider moc-slider--desktop" id="mocSlider">
         {% if section.settings.featured_image != blank %}
           <img class="moc-right-img moc-slide is-active"
             src="{{ section.settings.featured_image | image_url: width: 1200 }}"
@@ -87,7 +111,7 @@
       {% endif %}
       
       {% if section.settings.carousel_headline != blank %}
-        <h3 class="inside-headline">{{ section.settings.carousel_headline }}</h3>
+        <h3 class="inside-headline" style="color: #100F0F !important;">{{ section.settings.carousel_headline }}</h3>
       {% endif %}
 
       <div class="inside-carousel">
@@ -128,49 +152,51 @@
               </div>
             {% endfor %}
           {% else %}
-            <!-- Default Fallback Cards matching exact Amoraki Deck Specs -->
             <div class="inside-card" tabindex="0">
               <img class="inside-img" src="{{ 'Hamper- Inside.png' | asset_url }}" alt="Kauna Grass Basket">
               <div class="inside-overlay">
                 <span class="inside-title">Basket</span>
                 <span class="inside-sub">Warm &middot; Woven &middot; Rooted</span>
-                <p class="inside-desc">Handcrafted from natural kauna grass in Manipur. A beautiful, time-honoured craft bringing warmth and character into any space. A tactile piece with a life beyond the hamper — for memorabilia, letters, keepsakes, picnic essentials or everyday treasures.</p>
+                <p class="inside-desc">Handcrafted from natural kauna grass in Manipur. A beautiful, time-honoured craft bringing warmth and character into any space. A tactile piece with a life beyond the hamper.</p>
               </div>
             </div>
             <div class="inside-card" tabindex="0">
-              <img class="inside-img" src="{{ 'singing bowl with tag3.png' | asset_url }}" alt="Singing Bowl">
+              <img class="inside-img" src="{{ 'singing bowl with tag3.png' | asset_url }}" alt="Hand-Hammered Kansa Bowl">
               <div class="inside-overlay">
                 <span class="inside-title">Singing Bowl</span>
                 <span class="inside-sub">Resonant &middot; Grounding &middot; Timeless</span>
-                <p class="inside-desc">Shaped through repeated hammering, its deep resonance creates a moment of pause — a gentle invitation towards stillness, grounding and coming back to the present. A sound that fades slowly, leaving a little more quiet behind.</p>
+                <p class="inside-desc">Shaped through repeated hammering, its deep resonance creates a moment of pause — a gentle call to stillness, grounding you back to the present.</p>
               </div>
             </div>
             <div class="inside-card" tabindex="0">
-              <img class="inside-img" src="{{ 'Infuser1.png' | asset_url }}" alt="Flower Tea With Glass Infuser">
+              <img class="inside-img" src="{{ 'tea.png' | asset_url }}" alt="Flower Tea With Glass Infuser">
               <div class="inside-overlay">
                 <span class="inside-title">Flower Tea With Glass Infuser</span>
                 <span class="inside-sub">Gentle &middot; Floral &middot; Soothing</span>
-                <p class="inside-desc">Carefully picked chamomile, blue corn & rose buds flower tea, paired with a glass infuser for moments when slowing down and breathing a little easier feels just right. Flowers unfolding in warm water, a gentle floral aroma, a slow sip.</p>
+                <p class="inside-desc">Carefully picked chamomile, blue corn &amp; rose buds flower tea, paired with a glass infuser for a quiet evening rest ritual.</p>
               </div>
             </div>
             <div class="inside-card" tabindex="0">
-              <img class="inside-img" src="{{ 'candle rain 3.png' | asset_url }}" alt="Wax Sachets">
+              <img class="inside-img" src="{{ 'candle rain 3.png' | asset_url }}" alt="Hand-Poured Wax Sachets">
               <div class="inside-overlay">
                 <span class="inside-title">Wax Sachets</span>
                 <span class="inside-sub">Aromatic &middot; Comforting &middot; Atmospheric</span>
-                <p class="inside-desc">Hand-poured fragrant soy wax sachets (Rainforest: fresh & calming; Coffee: warm & familiar) created to gently change the feeling of spaces around the home, linens, wardrobes, drawers, or restrooms.</p>
+                <p class="inside-desc">Hand-poured fragrant soy wax sachets created to gently change the feeling of spaces and drawers.</p>
               </div>
             </div>
             <div class="inside-card" tabindex="0">
-              <img class="inside-img" src="{{ 'napkin tag 3.png' | asset_url }}" alt="Linen Cotton Napkins">
+              <img class="inside-img" src="{{ 'H7.png' | asset_url }}" alt="Linen Cotton Napkins">
               <div class="inside-overlay">
                 <span class="inside-title">Linen Cotton Napkins</span>
                 <span class="inside-sub">Natural &middot; Textured &middot; Everyday</span>
-                <p class="inside-desc">A beautiful & tactile cotton-linen weave, chosen to bring a little more warmth and ease to the everyday table. For morning tea, a slow meal, coffee with someone worth talking to, and small gatherings made special through texture.</p>
+                <p class="inside-desc">A beautiful &amp; tactile cotton-linen weave, chosen to bring warmth and ease to the table.</p>
               </div>
             </div>
           {% endif %}
         </div>
+
+        <!-- Mobile Carousel Dots Indicator -->
+        <div class="carousel-dots" id="carouselDots" aria-label="Carousel navigation"></div>
       </div>
     </div>
   </div>

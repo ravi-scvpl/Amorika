@@ -220,15 +220,43 @@ function initInsideCarousel() {
 
   const prevBtn = document.querySelector('.carousel-arrow--prev');
   const nextBtn = document.querySelector('.carousel-arrow--next');
+  const dotsContainer = document.getElementById('carouselDots');
+  const cards = insideTrack.querySelectorAll('.inside-card');
   const scrollAmt = () => (insideTrack.querySelector('.inside-card')?.offsetWidth || 270) + 22;
 
   prevBtn?.addEventListener('click', () => insideTrack.scrollBy({ left: -scrollAmt(), behavior: 'smooth' }));
   nextBtn?.addEventListener('click', () => insideTrack.scrollBy({ left: scrollAmt(), behavior: 'smooth' }));
 
-  document.querySelectorAll('.inside-card').forEach(card => {
+  // Render dots for mobile
+  if (dotsContainer && cards.length > 0) {
+    dotsContainer.innerHTML = '';
+    cards.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (idx === 0 ? ' is-active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+      dot.addEventListener('click', () => {
+        cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    const updateActiveDot = () => {
+      const scrollLeft = insideTrack.scrollLeft;
+      const cardWidth = scrollAmt();
+      const activeIdx = Math.round(scrollLeft / cardWidth);
+      const dots = dotsContainer.querySelectorAll('.carousel-dot');
+      dots.forEach((d, i) => {
+        d.classList.toggle('is-active', i === activeIdx);
+      });
+    };
+
+    insideTrack.addEventListener('scroll', updateActiveDot, { passive: true });
+  }
+
+  cards.forEach(card => {
     card.addEventListener('click', () => {
       if (window.matchMedia('(hover: none)').matches) {
-        document.querySelectorAll('.inside-card').forEach(c => { if (c !== card) c.classList.remove('is-active'); });
+        cards.forEach(c => { if (c !== card) c.classList.remove('is-active'); });
         card.classList.toggle('is-active');
       }
     });
@@ -237,18 +265,18 @@ function initInsideCarousel() {
 
 // 7. Moment of Care 2-Image Auto Slider (Changes every 2 seconds)
 function initMocImageSwap() {
-  const mocSlider = document.getElementById('mocSlider') || document.querySelector('.moc-right');
-  if (!mocSlider) return;
+  const sliders = document.querySelectorAll('.moc-slider');
+  sliders.forEach(slider => {
+    const slides = slider.querySelectorAll('.moc-slide');
+    if (slides.length < 2) return;
 
-  const slides = mocSlider.querySelectorAll('.moc-slide');
-  if (slides.length < 2) return;
-
-  let currentIdx = 0;
-  setInterval(() => {
-    slides[currentIdx].classList.remove('is-active');
-    currentIdx = (currentIdx + 1) % slides.length;
-    slides[currentIdx].classList.add('is-active');
-  }, 2000);
+    let currentIdx = 0;
+    setInterval(() => {
+      slides[currentIdx].classList.remove('is-active');
+      currentIdx = (currentIdx + 1) % slides.length;
+      slides[currentIdx].classList.add('is-active');
+    }, 2000);
+  });
 }
 
 // 8. FAQ Teaser and Accordion

@@ -25,10 +25,10 @@
             <h4 class="cart-drawer__item-title">{{ item.product.title }}</h4>
             <span style="display: block; font-size: 12px; color: var(--taupe);">Collection: Moment of Care</span>
             <div class="cart-drawer__item-price">{{ item.final_price | money }}</div>
-            <div class="cart-drawer__item-qty">
-              <button type="button" class="cart-drawer__qty-btn js-qty-minus">-</button>
-              <span class="cart-drawer__qty-val">{{ item.quantity }}</span>
-              <button type="button" class="cart-drawer__qty-btn js-qty-plus">+</button>
+            <div class="cart-drawer__item-qty" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--line); border-radius: 4px; width: 84px; height: 32px; background: var(--white); margin-top: 8px; box-sizing: border-box;">
+              <button type="button" class="cart-drawer__qty-btn js-qty-minus" style="border: none; background: transparent; padding: 0 8px; font-size: 14px; cursor: pointer; color: var(--ink);">-</button>
+              <span class="cart-drawer__qty-val" style="font-size: 13px; font-weight: 600; color: var(--ink); text-align: center; flex: 1;">{{ item.quantity }}</span>
+              <button type="button" class="cart-drawer__qty-btn js-qty-plus" style="border: none; background: transparent; padding: 0 8px; font-size: 14px; cursor: pointer; color: var(--ink);">+</button>
             </div>
           </div>
         </div>
@@ -41,10 +41,10 @@
           <h4 class="cart-drawer__item-title">Moment of Care</h4>
           <span style="display: block; font-size: 12px; color: var(--taupe);">Collection: Moment of Care</span>
           <div class="cart-drawer__item-price">₹5,490 <span style="font-size: 11px; color: var(--taupe);">(incl. taxes)</span></div>
-          <div class="cart-drawer__item-qty">
-            <button type="button" class="cart-drawer__qty-btn">-</button>
-            <span class="cart-drawer__qty-val">1</span>
-            <button type="button" class="cart-drawer__qty-btn">+</button>
+          <div class="cart-drawer__item-qty" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--line); border-radius: 4px; width: 84px; height: 32px; background: var(--white); margin-top: 8px; box-sizing: border-box;">
+            <button type="button" class="cart-drawer__qty-btn" style="border: none; background: transparent; padding: 0 8px; font-size: 14px; cursor: pointer; color: var(--ink);">-</button>
+            <span class="cart-drawer__qty-val" style="font-size: 13px; font-weight: 600; color: var(--ink); text-align: center; flex: 1;">1</span>
+            <button type="button" class="cart-drawer__qty-btn" style="border: none; background: transparent; padding: 0 8px; font-size: 14px; cursor: pointer; color: var(--ink);">+</button>
           </div>
         </div>
       </div>

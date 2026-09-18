@@ -16,13 +16,107 @@
 </div>
 
 <section class="main-cart-section" style="padding: clamp(3rem, 6vw, 5rem) 0;">
+  <style>
+    /* Desktop cart grid layout */
+    .cart-page-header,
+    .cart-page-item {
+      display: grid !important;
+      grid-template-columns: 90px 1fr 110px 110px !important;
+      gap: 16px !important;
+      align-items: center !important;
+    }
+    
+    .cart-page-item {
+      padding-bottom: 24px !important;
+      border-bottom: 1px solid var(--line) !important;
+    }
+
+    .cart-page-qty {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      border: 1px solid var(--line) !important;
+      border-radius: 4px !important;
+      width: 90px !important;
+      height: 38px !important;
+      margin: 0 auto !important;
+      background: var(--white) !important;
+      padding: 0 4px !important;
+      box-sizing: border-box !important;
+    }
+
+    .cart-page-qty a {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 28px !important;
+      height: 100% !important;
+      font-size: 16px !important;
+      color: var(--ink) !important;
+      text-decoration: none !important;
+      font-weight: 500 !important;
+    }
+
+    .cart-page-qty span {
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      text-align: center !important;
+      flex: 1 !important;
+      color: var(--ink) !important;
+    }
+
+    /* Mobile responsive layout */
+    @media (max-width: 767px) {
+      .cart-page-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      .cart-page-header {
+        display: none !important;
+      }
+      .cart-page-item {
+        display: grid !important;
+        grid-template-columns: 75px 1fr !important;
+        gap: 12px 16px !important;
+        align-items: center !important;
+        padding-bottom: 20px !important;
+      }
+      .cart-item-thumb {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        width: 75px !important;
+        height: 75px !important;
+      }
+      .cart-page-item-info {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+      }
+      .cart-page-qty {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+        margin: 0 !important;
+        width: 90px !important;
+        height: 36px !important;
+      }
+      .cart-page-amount {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+        text-align: right !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        color: var(--ink) !important;
+      }
+    }
+  </style>
+
   <div class="wrap" style="max-width: 1040px;">
     {% if cart.item_count > 0 %}
-      <form action="{{ routes.cart_url }}" method="post" id="cart-form" class="cart-page-grid" style="display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start;">
+      <form action="{{ routes.cart_url }}" method="post" id="cart-form" class="cart-page-grid" style="display: grid; grid-template-columns: 1fr 360px; gap: 48px; align-items: start;">
         
         <!-- Cart Items Column -->
         <div class="cart-page-items" style="display: flex; flex-direction: column; gap: 24px;">
-          <div class="cart-page-header" style="display: grid; grid-template-columns: 90px 1fr 100px 110px; gap: 16px; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--line); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe); font-weight: 600;">
+          <div class="cart-page-header" style="padding-bottom: 16px; border-bottom: 1px solid var(--line); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe); font-weight: 600;">
             <span>Collection</span>
             <span>Details</span>
             <span style="text-align: center;">Quantity</span>
@@ -30,8 +124,8 @@
           </div>
 
           {% for item in cart.items %}
-            <div class="cart-page-item" style="display: grid; grid-template-columns: 90px 1fr 100px 110px; gap: 16px; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--line);">
-              <a href="{{ item.url }}" style="display: block; width: 90px; height: 90px; overflow: hidden; border-radius: 4px; background: #EFE8DC;">
+            <div class="cart-page-item">
+              <a href="{{ item.url }}" class="cart-item-thumb" style="display: block; width: 90px; height: 90px; overflow: hidden; border-radius: 4px; background: #EFE8DC;">
                 {% if item.image %}
                   <img src="{{ item.image | image_url: width: 240 }}" alt="{{ item.title | escape }}" style="width: 100%; height: 100%; object-fit: cover;">
                 {% else %}
@@ -49,14 +143,14 @@
               </div>
 
               <!-- Quantity Selector -->
-              <div class="cart-page-qty" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--line); border-radius: 4px; width: 90px; height: 38px; margin: 0 auto; background: var(--white); padding: 0 4px;">
-                <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" style="padding: 4px 8px; font-size: 14px; color: var(--ink); text-decoration: none; line-height: 1;">-</a>
-                <span style="font-size: 13px; font-weight: 500; text-align: center; flex: 1;">{{ item.quantity }}</span>
-                <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" style="padding: 4px 8px; font-size: 14px; color: var(--ink); text-decoration: none; line-height: 1;">+</a>
+              <div class="cart-page-qty">
+                <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}">-</a>
+                <span>{{ item.quantity }}</span>
+                <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}">+</a>
               </div>
 
               <!-- Item Line Amount -->
-              <div style="text-align: right; font-family: var(--font-sans); font-size: 16px; font-weight: 600; color: var(--ink);">
+              <div class="cart-page-amount" style="text-align: right; font-family: var(--font-sans); font-size: 16px; font-weight: 600; color: var(--ink);">
                 {{ item.final_line_price | money }}
               </div>
             </div>
@@ -69,27 +163,41 @@
             Order Summary
           </h3>
 
-          <div style="display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 15px; color: var(--ink);">
-            <span>Subtotal</span>
-            <span style="font-weight: 600; color: var(--copper-deep);">{{ cart.total_price | money }}</span>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 15px; color: var(--ink);">
+            <span>Item Total</span>
+            <span style="font-weight: 600;">{{ cart.total_price | money }}</span>
           </div>
 
-          <div style="font-size: 13px; color: var(--taupe); line-height: 1.6; margin-bottom: 24px; padding: 12px; background: rgba(138, 67, 36, 0.05); border-radius: 4px; border-left: 2px solid var(--copper);">
-            <strong>Delivery Note:</strong> Hand-delivered across Delhi NCR (+ ₹200 delivery). Taxes calculated at checkout.
+          <div style="display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 14px; color: var(--taupe);">
+            <span>Hand delivery fee</span>
+            <span>+ ₹200</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; padding-top: 14px; border-top: 1px dashed var(--line); margin-bottom: 20px; font-size: 16px; font-weight: 600; color: var(--ink);">
+            <span>Total Amount</span>
+            <div style="text-align: right;">
+              <div style="color: var(--copper-deep); font-size: 18px;">{{ cart.total_price | plus: 20000 | money }}</div>
+              <span style="font-size: 11px; font-weight: 400; color: var(--taupe); display: block;">inclusive of all taxes</span>
+            </div>
           </div>
 
           {% render 'cart-recipient-fields' %}
 
-          <div style="margin-bottom: 24px;">
-            <label for="CartSpecialInstructions" style="display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; color: var(--ink);">
-              Handwritten Card Note / Special Requests:
-            </label>
-            <textarea name="note" id="CartSpecialInstructions" rows="3" placeholder="Write your personal note to be hand-sealed inside the hamper..." style="width: 100%; border: 1px solid var(--line); border-radius: 4px; padding: 10px; font-family: var(--font-sans); font-size: 13px; background: var(--white); color: var(--ink); resize: vertical;">{{ cart.note }}</textarea>
-          </div>
-
-          <button type="submit" name="checkout" class="btn btn--primary" style="width: 100%; padding: 14px 20px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--copper-deep); color: var(--white); border: none; border-radius: 4px; cursor: pointer; transition: background 0.3s ease;">
+          <button type="submit" name="checkout" class="btn btn--primary" style="width: 100%; padding: 14px 20px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--copper-deep); color: var(--white); border: none; border-radius: 4px; cursor: pointer; transition: background 0.3s ease; margin-bottom: 20px;">
             Continue to pay &rarr;
           </button>
+
+          <!-- Cart Disclaimers -->
+          <div class="cart-disclaimers" style="display: flex; flex-direction: column; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: 6px; font-size: 12.5px; color: var(--ink); line-height: 1.5;">
+            <div style="display: flex; gap: 8px; align-items: flex-start;">
+              <span style="color: var(--copper-deep); font-weight: bold;">1.</span>
+              <span>Hand delivered in 2-3 days.</span>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: flex-start;">
+              <span style="color: var(--copper-deep); font-weight: bold;">2.</span>
+              <span>No refunds/returns/cancellations once the order is confirmed. In case of any query reach us on our WhatsApp (<a href="https://wa.me/917827961165" target="_blank" style="color: var(--copper-deep); text-decoration: underline;">+91-7827961165</a>).</span>
+            </div>
+          </div>
 
           <a href="{{ routes.root_url }}#moment-of-care" style="display: block; text-align: center; margin-top: 16px; font-size: 13px; color: var(--taupe); text-decoration: underline;">
             Continue Exploring Curations

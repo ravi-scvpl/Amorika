@@ -21,17 +21,18 @@
           Collections
         </button>
         <div class="nav-dropdown-menu">
-          <a href="#moment-of-care">Moment of Care</a>
-          <a href="#on-the-horizon">Moment of Play <span class="soon">Coming Soon</span></a>
-          <a href="#on-the-horizon">Moment of Synergy <span class="soon">Coming Soon</span></a>
+          <a href="{{ routes.collections_url }}">All Collections</a>
+          <a href="{{ routes.root_url }}#moment-of-care">Moment of Care</a>
+          <a href="{{ routes.root_url }}#on-the-horizon">Moment of Play <span class="soon">Coming Soon</span></a>
+          <a href="{{ routes.root_url }}#on-the-horizon">Moment of Synergy <span class="soon">Coming Soon</span></a>
         </div>
       </div>
       <span class="nav-sep">|</span>
-      <a href="#journal">Journal</a>
+      <a href="/blogs/news">Journal</a>
       <span class="nav-sep">|</span>
-      <a href="#custom-gifting">Bespoke Gifting</a>
+      <a href="{{ routes.root_url }}#custom-gifting">Bespoke Gifting</a>
       <span class="nav-sep">|</span>
-      <a href="#contact">Connect</a>
+      <a href="{{ routes.root_url }}#contact">Connect</a>
     </div>
 
     <button class="nav-toggle" id="navToggle" aria-label="Open menu">
@@ -45,13 +46,14 @@
   <div class="nav-links">
     <div class="nav-link-group">
       <span class="nav-link nav-link--head">Collections</span>
-      <a href="#moment-of-care" class="nav-sublink">Moment of Care</a>
-      <a href="#on-the-horizon" class="nav-sublink">Moment of Play <em>Coming Soon</em></a>
-      <a href="#on-the-horizon" class="nav-sublink">Moment of Synergy <em>Coming Soon</em></a>
+      <a href="{{ routes.collections_url }}" class="nav-sublink">All Collections</a>
+      <a href="{{ routes.root_url }}#moment-of-care" class="nav-sublink">Moment of Care</a>
+      <a href="{{ routes.root_url }}#on-the-horizon" class="nav-sublink">Moment of Play <em>Coming Soon</em></a>
+      <a href="{{ routes.root_url }}#on-the-horizon" class="nav-sublink">Moment of Synergy <em>Coming Soon</em></a>
     </div>
-    <a href="#journal" class="nav-link">Journal</a>
-    <a href="#custom-gifting" class="nav-link">Bespoke Gifting</a>
-    <a href="#contact" class="nav-link">Connect</a>
+    <a href="/blogs/news" class="nav-link">Journal</a>
+    <a href="{{ routes.root_url }}#custom-gifting" class="nav-link">Bespoke Gifting</a>
+    <a href="{{ routes.root_url }}#contact" class="nav-link">Connect</a>
   </div>
   <div class="nav-panel-foot">
     {{ section.settings.contact_email | default: 'reachmitikamalhotra@gmail.com' }}<br>

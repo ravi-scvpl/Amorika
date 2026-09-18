@@ -18,16 +18,28 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo_text": "Amoraki"
+          "logo_text": "Amoraki",
+          "contact_email": "reachmitikamalhotra@gmail.com",
+          "delivery_area": "Delivering across Delhi NCR"
         }
       },
       "footer": {
         "type": "footer",
         "settings": {
+          "logo_text": "amoraki",
           "tagline": "A Moment Wrapped.",
-          "delivery_note": "Delivering Across Delhi NCR only"
+          "delivery_note": "Delhi NCR only",
+          "faq_heading": "FAQs",
+          "faq_teaser_text": "Things you may want to know",
+          "newsletter_heading": "Stay Close",
+          "newsletter_copy": "Stay updated on new collections and reads.",
+          "contact_email": "reachmitikamalhotra@gmail.com",
+          "instagram_link": "",
+          "whatsapp_link": "",
+          "copyright_text": "Amoraki. All rights reserved."
         }
       }
-    }
+    },
+    "content_for_index": []
   }
 }

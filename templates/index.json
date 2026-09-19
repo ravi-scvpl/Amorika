@@ -168,6 +168,7 @@
         "article-1": {
           "type": "article_card",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-09-19_at_11.05.30_AM.jpg",
             "caption": "Why Presence Outlasts Presents",
             "link": ""
           }
@@ -175,6 +176,7 @@
         "article-2": {
           "type": "article_card",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-09-19_at_11.05.31_AM_1.jpg",
             "caption": "The Art of Slow Gifting",
             "link": ""
           }
@@ -182,6 +184,7 @@
         "article-3": {
           "type": "article_card",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-09-19_at_11.05.31_AM.jpg",
             "caption": "Beyond the Occasion",
             "link": ""
           }

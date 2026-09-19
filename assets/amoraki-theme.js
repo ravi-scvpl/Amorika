@@ -254,19 +254,60 @@ function initInsideCarousel() {
   }
 
   cards.forEach(card => {
-    card.addEventListener('click', () => {
-      if (window.matchMedia('(hover: none)').matches) {
-        cards.forEach(c => { if (c !== card) c.classList.remove('is-active'); });
-        card.classList.toggle('is-active');
+    card.addEventListener('click', (e) => {
+      // Tap toggle function is strictly for mobile/phone screens
+      if (window.innerWidth > 767) return;
+
+      e.stopPropagation();
+      const overlay = card.querySelector('.inside-overlay');
+      if (!overlay) return;
+
+      const isShowing = card.classList.contains('info-open') || 
+                        (getComputedStyle(overlay).opacity > 0.5 && !card.classList.contains('info-hidden'));
+
+      if (isShowing) {
+        // If info is showing -> MAKE IT DISAPPEAR
+        card.classList.remove('info-open');
+        card.classList.remove('is-active');
+        card.classList.add('info-hidden');
+      } else {
+        // If info is hidden -> MAKE IT APPEAR
+        cards.forEach(c => {
+          c.classList.remove('info-open');
+          c.classList.remove('is-active');
+          c.classList.add('info-hidden');
+        });
+        card.classList.remove('info-hidden');
+        card.classList.add('info-open');
+        card.classList.add('is-active');
       }
     });
   });
+
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth > 767) return;
+    if (insideTrack && !insideTrack.contains(e.target)) {
+      cards.forEach(c => {
+        c.classList.remove('info-open');
+        c.classList.remove('is-active');
+        c.classList.add('info-hidden');
+      });
+    }
+  });
 }
 
-// 7. Moment of Care 2-Image Auto Slider (Changes every 2 seconds)
+// 7. Moment of Care 2-Image Auto Slider (Changes every 2 seconds) & Scroll to Inside Collection
 function initMocImageSwap() {
   const sliders = document.querySelectorAll('.moc-slider');
   sliders.forEach(slider => {
+    slider.addEventListener('click', (e) => {
+      const insideTarget = document.getElementById('inside-collection');
+      if (insideTarget) {
+        e.preventDefault();
+        insideTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
     const slides = slider.querySelectorAll('.moc-slide');
     if (slides.length < 2) return;
 
@@ -367,7 +408,7 @@ function initNewsletterForm() {
     stayForm.addEventListener('submit', function (e) {
       e.preventDefault();
       const email = document.getElementById('stayEmail')?.value || '';
-      window.location.href = `mailto:reachmitikamalhotra@gmail.com?subject=Newsletter%20Signup&body=Please%20add%20me%20to%20the%20Amoraki%20newsletter%3A%20${encodeURIComponent(email)}`;
+      window.location.href = `mailto:hello@momentsbyamoraki.com?subject=Newsletter%20Signup&body=Please%20add%20me%20to%20the%20Amoraki%20newsletter%3A%20${encodeURIComponent(email)}`;
     });
   }
 }

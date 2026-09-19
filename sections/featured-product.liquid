@@ -26,7 +26,7 @@
         {% endif %}
 
         {% comment %} Mobile Image placement (between description and price) {% endcomment %}
-        <div class="moc-right moc-slider moc-slider--mobile" id="mocSliderMobile">
+        <a href="#inside-collection" class="moc-right moc-slider moc-slider--mobile" id="mocSliderMobile" style="text-decoration: none; cursor: pointer;" aria-label="Scroll to inside collection">
           {% if section.settings.featured_image != blank %}
             <img class="moc-right-img moc-slide is-active"
               src="{{ section.settings.featured_image | image_url: width: 1200 }}"
@@ -46,12 +46,12 @@
               src="{{ 'hero-hamper.jpg' | asset_url }}"
               alt="Moment of Care Alternate View">
           {% endif %}
-        </div>
+        </a>
 
         <div class="moc-price-block">
           {% if section.settings.price != blank %}
             <div class="moc-price">
-              &#8377;{{ section.settings.price }}<span class="moc-tax-note">* (inclusive of all taxes)</span>
+              &#8377;{{ section.settings.price }}<span class="moc-tax-note">(inclusive of all taxes)</span>
             </div>
           {% endif %}
           {% if section.settings.delivery_text != blank %}
@@ -81,7 +81,7 @@
       </div>
 
       {% comment %} Desktop Image placement {% endcomment %}
-      <div class="moc-right moc-slider moc-slider--desktop" id="mocSlider">
+      <a href="#inside-collection" class="moc-right moc-slider moc-slider--desktop" id="mocSlider" style="text-decoration: none; cursor: pointer;" aria-label="Scroll to inside collection">
         {% if section.settings.featured_image != blank %}
           <img class="moc-right-img moc-slide is-active"
             src="{{ section.settings.featured_image | image_url: width: 1200 }}"
@@ -101,11 +101,11 @@
             src="{{ 'hero-hamper.jpg' | asset_url }}"
             alt="Moment of Care Alternate View">
         {% endif %}
-      </div>
+      </a>
     </div>
 
     <!-- Inside the Hamper Carousel (Customizable Blocks) -->
-    <div class="inside-block">
+    <div class="inside-block" id="inside-collection">
       {% if section.settings.carousel_tag != blank %}
         <span class="inside-eyebrow">{{ section.settings.carousel_tag }}</span>
       {% endif %}

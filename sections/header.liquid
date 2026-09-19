@@ -21,23 +21,42 @@
           Collections
         </button>
         <div class="nav-dropdown-menu">
-          
           <a href="{{ routes.root_url }}#moment-of-care">Moment of Care</a>
           <a href="{{ routes.root_url }}#on-the-horizon">Moment of Play <span class="soon">Coming Soon</span></a>
           <a href="{{ routes.root_url }}#on-the-horizon">Moment of Synergy <span class="soon">Coming Soon</span></a>
         </div>
       </div>
       <span class="nav-sep">|</span>
-      <a href="/#journal">Journal</a>
+      <a href="/blogs/journal">Journal</a>
       <span class="nav-sep">|</span>
       <a href="{{ routes.root_url }}#custom-gifting">Bespoke Gifting</a>
       <span class="nav-sep">|</span>
       <a href="{{ routes.root_url }}#contact">Connect</a>
     </div>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
-      <span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="nav-header-account" aria-label="Account" style="color: inherit; display: inline-flex; align-items: center; padding: 6px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+
+      <a href="{{ routes.cart_url }}" class="nav-header-cart" aria-label="View Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        {% if cart.item_count > 0 %}
+          <span class="nav-cart-badge">{{ cart.item_count }}</span>
+        {% endif %}
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -51,9 +70,20 @@
       <a href="{{ routes.root_url }}#on-the-horizon" class="nav-sublink">Moment of Play <em>Coming Soon</em></a>
       <a href="{{ routes.root_url }}#on-the-horizon" class="nav-sublink">Moment of Synergy <em>Coming Soon</em></a>
     </div>
-    <a href="/blogs/news" class="nav-link">Journal</a>
+    <a href="/blogs/journal" class="nav-link">Journal</a>
     <a href="{{ routes.root_url }}#custom-gifting" class="nav-link">Bespoke Gifting</a>
     <a href="{{ routes.root_url }}#contact" class="nav-link">Connect</a>
+    <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="nav-link">
+      {% if customer %}My Account{% else %}Sign In / Register{% endif %}
+    </a>
+    <a href="{{ routes.cart_url }}" class="nav-link nav-link--cart">
+      <span>Cart</span>
+      {% if cart.item_count > 0 %}
+        <span class="nav-panel-cart-badge">{{ cart.item_count }}</span>
+      {% else %}
+        <span class="nav-panel-cart-badge nav-panel-cart-badge--empty">0</span>
+      {% endif %}
+    </a>
   </div>
   <div class="nav-panel-foot">
     {{ section.settings.delivery_area | default: 'Delivering across Delhi NCR' }}<br>
@@ -85,7 +115,7 @@
       "type": "text",
       "id": "contact_email",
       "label": "Contact Email",
-      "default": "reachmitikamalhotra@gmail.com"
+      "default": "hello@momentsbyamoraki.com"
     },
     {
       "type": "text",

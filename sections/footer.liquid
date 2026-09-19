@@ -32,7 +32,7 @@
 
       <!-- Column 2: Delivery Coverage -->
       <div class="footer-delivery">
-        <h4>Delivery Across</h4>
+        <h4>Delivery Radius</h4>
         {% if section.settings.delivery_note != blank %}
           <p class="deliver">
             <svg class="pin-icon" viewBox="0 0 20 20" fill="none">
@@ -68,52 +68,75 @@
           {% else %}
             <!-- Default Fallback FAQ Items -->
             <div class="faq-item">
-              <button class="faq-q">What is Amoraki?<span class="plus">+</span></button>
+              <button class="faq-q">What is amoraki<span class="plus">+</span></button>
               <div class="faq-a">
-                <p>
-                  A gifting brand built around moments, not occasions. Moment of Care is our first — for the times care
-                  deserves to be felt, not just expressed.
-                </p>
+                <p>amoraki (a-moh-rah-ki) is a home for intentional gifting, where thoughts take shape and feelings lead the way. We curate meaningful gift hampers around moments that matter.</p>
               </div>
             </div>
             <div class="faq-item">
-              <button class="faq-q">How do I order?<span class="plus">+</span></button>
+              <button class="faq-q">What is a Moment of Care?<span class="plus">+</span></button>
               <div class="faq-a">
-                <p>
-                  Message us on WhatsApp and we'll help you choose and send it — no account, no checkout, just a
-                  conversation.
-                </p>
+                <p>It’s a thoughtful curated collection to say “I’m thinking of you”</p>
               </div>
             </div>
             <div class="faq-item">
-              <button class="faq-q">Do you deliver outside Delhi NCR?<span class="plus">+</span></button>
+              <button class="faq-q">Can I buy the individual products separately?<span class="plus">+</span></button>
               <div class="faq-a">
-                <p>
-                  Not yet. We're starting close to home so every hamper leaves us exactly as intended. More cities are
-                  on the way.
-                </p>
+                <p>Our Moment of Care is currently available as a complete collection. Individual pieces may become available in future edits.</p>
               </div>
             </div>
             <div class="faq-item">
-              <button class="faq-q">Can I include my own note?<span class="plus">+</span></button>
+              <button class="faq-q">Can I send a Moment of Care directly to someone?<span class="plus">+</span></button>
               <div class="faq-a">
-                <p>Always. Every hamper leaves room for your own words — that part is yours to write.</p>
+                <p>Yes. You can enter the recipient’s delivery details during checkout, & we’ll ensure the moment is carefully hand-delivered within 2-3 business days.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">Why does delivery take 2–3 days?<span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Every hamper is hand-assembled and prepared for its journey after your order is placed. We take a little time to get each one right before it leaves us, so what arrives feels as intentional as what was chosen.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">Can I add a personal message?<span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Yes. You can reach out to us on WhatsApp (+91-7827961165) with your order ID and we will be happy to help!</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">Can I order a hamper for myself?<span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Of course. Some moments are worth creating for yourself too.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">What payment methods do you accept?<span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>We accept online payments through our secure payment gateway - Razorpay.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">Can I cancel or modify my order?<span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>As each Moment of Care is thoughtfully assembled for every order, cancellations or modifications are not possible once an order has been placed.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">Do you offer refunds?<span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>All purchases are final. We do not offer refunds once an order has been placed. If your Moment of Care arrives damaged, please contact us within 24 hours of delivery with photographs of the package and affected item, and we’ll take it from there.</p>
               </div>
             </div>
           {% endif %}
         </div>
       </div>
 
-      <!-- Newsletter Column -->
+      <!-- Newsletter / Contact Column -->
       <div class="footer-stay">
-        <h4>{{ section.settings.newsletter_heading | default: 'Stay Close' }}</h4>
+        <h4>Contact</h4>
         <p class="stay-copy">
-          {{ section.settings.newsletter_copy | default: 'Stay updated on new collections and reads.' }}
+          Say <a href="mailto:hello@momentsbyamoraki.com" style="color: inherit; text-decoration: underline;">hello@momentsbyamoraki.com</a> and we will reach out to you.
         </p>
-        <form class="stay" id="stayForm">
-          <input type="email" id="stayEmail" placeholder="Your email" required>
-          <button type="submit" class="stay-btn" aria-label="Subscribe">&rarr;</button>
-        </form>
       </div>
     </div>
 
@@ -126,15 +149,6 @@
           rel="noopener"
           >Instagram</a
         >
-        <span class="sep">|</span>
-        <a href="{{ section.settings.facebook_link | default: '#' }}" target="_blank" rel="noopener">FB</a>
-        <span class="sep">|</span>
-        <a
-          href="mailto:{{ section.settings.contact_email | default: 'reachmitikamalhotra@gmail.com' }}"
-          class="footer-email-link"
-        >
-          {{- section.settings.contact_email | default: 'reachmitikamalhotra@gmail.com' -}}
-        </a>
         <span class="sep">|</span>
         <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Privacy</a>
         <span class="sep">|</span>
@@ -191,19 +205,19 @@
       "type": "text",
       "id": "newsletter_heading",
       "label": "Newsletter Heading",
-      "default": "Stay Close"
+      "default": "Contact"
     },
     {
       "type": "textarea",
       "id": "newsletter_copy",
       "label": "Newsletter Copy",
-      "default": "Stay updated on new collections and reads."
+      "default": "Say hello@momentsbyamoraki.com and we will reach out to you."
     },
     {
       "type": "text",
       "id": "contact_email",
       "label": "Contact Email",
-      "default": "reachmitikamalhotra@gmail.com"
+      "default": "hello@momentsbyamoraki.com"
     },
     {
       "type": "url",
@@ -231,13 +245,13 @@
           "type": "text",
           "id": "question",
           "label": "Question",
-          "default": "Where do you deliver?"
+          "default": "What is amoraki"
         },
         {
           "type": "textarea",
           "id": "answer",
           "label": "Answer",
-          "default": "We provide same-day & scheduled hand-delivery across Delhi NCR."
+          "default": "amoraki (a-moh-rah-ki) is a home for intentional gifting, where thoughts take shape and feelings lead the way. We curate meaningful gift hampers around moments that matter."
         }
       ]
     }
@@ -249,22 +263,71 @@
         {
           "type": "faq_item",
           "settings": {
-            "question": "Where do you deliver?",
-            "answer": "We provide same-day & scheduled hand-delivery across Delhi NCR. Pan-India shipping is available for non-perishable hampers via express courier."
+            "question": "What is amoraki",
+            "answer": "amoraki (a-moh-rah-ki) is a home for intentional gifting, where thoughts take shape and feelings lead the way. We curate meaningful gift hampers around moments that matter."
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "Can I personalize the hamper note?",
-            "answer": "Yes. Every hamper includes a handwritten card with your personalized message sealed in custom wax."
+            "question": "What is a Moment of Care?",
+            "answer": "It’s a thoughtful curated collection to say “I’m thinking of you”"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "What is the lead time for custom orders?",
-            "answer": "Bespoke & corporate orders require 7-14 business days depending on quantity and customization degree."
+            "question": "Can I buy the individual products separately?",
+            "answer": "Our Moment of Care is currently available as a complete collection. Individual pieces may become available in future edits."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I send a Moment of Care directly to someone?",
+            "answer": "Yes. You can enter the recipient’s delivery details during checkout, & we’ll ensure the moment is carefully hand-delivered within 2-3 business days."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Why does delivery take 2–3 days?",
+            "answer": "Every hamper is hand-assembled and prepared for its journey after your order is placed. We take a little time to get each one right before it leaves us, so what arrives feels as intentional as what was chosen."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I add a personal message?",
+            "answer": "Yes. You can reach out to us on WhatsApp (+91-7827961165) with your order ID and we will be happy to help!"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I order a hamper for myself?",
+            "answer": "Of course. Some moments are worth creating for yourself too."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What payment methods do you accept?",
+            "answer": "We accept online payments through our secure payment gateway - Razorpay."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I cancel or modify my order?",
+            "answer": "As each Moment of Care is thoughtfully assembled for every order, cancellations or modifications are not possible once an order has been placed."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer refunds?",
+            "answer": "All purchases are final. We do not offer refunds once an order has been placed. If your Moment of Care arrives damaged, please contact us within 24 hours of delivery with photographs of the package and affected item, and we’ll take it from there."
           }
         }
       ]

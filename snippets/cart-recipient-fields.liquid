@@ -3,58 +3,15 @@
   Step 06: Collect Recipient and Buyer Information
 {% endcomment %}
 
-<div class="cart-recipient-fields" style="background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 20px; margin-bottom: 24px;">
-  <h4 style="font-family: var(--font-display); font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line);">
-    Where should we send it?
-  </h4>
-
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
-    <div>
-      <label for="RecipientFullName" style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; color: var(--taupe);">Recipient's Full Name *</label>
-      <input type="text" id="RecipientFullName" name="attributes[Recipient's Full Name]" required placeholder="Recipient's full name" style="width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 4px; font-size: 13px;">
+<div class="cart-recipient-fields" style="background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; margin-bottom: 20px;">
+  <div style="font-size: 13px; color: var(--ink); line-height: 1.5;">
+    <div style="display: flex; gap: 8px; align-items: flex-start; margin-bottom: 8px;">
+      <span style="color: var(--copper-deep); font-weight: 600;">1.</span>
+      <span>Hand delivered in 2-3 days.</span>
     </div>
-    <div>
-      <label for="RecipientMobile" style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; color: var(--taupe);">Recipient's Mobile *</label>
-      <input type="tel" id="RecipientMobile" name="attributes[Recipient's Mobile Number]" required placeholder="Recipient's phone number" style="width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 4px; font-size: 13px;">
-    </div>
-  </div>
-
-  <div style="margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--line);">
-    <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--ink); cursor: pointer; margin-bottom: 16px;">
-      <input type="checkbox" id="DifferentBillingToggle" name="attributes[Billing address is different]" value="Yes" style="accent-color: var(--copper-deep);">
-      Billing address is different
-    </label>
-
-    <div id="BuyerFieldsWrapper" style="display: none; background: var(--linen-soft); padding: 16px; border-radius: 4px; border: 1px solid var(--line);">
-      <h5 style="font-family: var(--font-display); font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 12px;">Buyer Details</h5>
-      
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
-        <div>
-          <label for="BuyerFullName" style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; color: var(--taupe);">Buyer Full Name</label>
-          <input type="text" id="BuyerFullName" name="attributes[Buyer Full Name]" placeholder="Buyer's full name" style="width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 4px; font-size: 13px; background: var(--white);">
-        </div>
-        <div>
-          <label for="BuyerMobile" style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; color: var(--taupe);">Buyer Mobile</label>
-          <input type="tel" id="BuyerMobile" name="attributes[Buyer Mobile Number]" placeholder="Buyer's phone" style="width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 4px; font-size: 13px; background: var(--white);">
-        </div>
-      </div>
-
-      <div>
-        <label for="BuyerEmail" style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; color: var(--taupe);">Buyer Email Address</label>
-        <input type="email" id="BuyerEmail" name="attributes[Buyer Email Address]" placeholder="buyer.email@domain.com" style="width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 4px; font-size: 13px; background: var(--white);">
-      </div>
+    <div style="display: flex; gap: 8px; align-items: flex-start;">
+      <span style="color: var(--copper-deep); font-weight: 600;">2.</span>
+      <span>No refunds/returns/cancellations once the order is confirmed.</span>
     </div>
   </div>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const toggle = document.getElementById('DifferentBillingToggle');
-    const wrapper = document.getElementById('BuyerFieldsWrapper');
-    if (toggle && wrapper) {
-      toggle.addEventListener('change', function() {
-        wrapper.style.display = this.checked ? 'block' : 'none';
-      });
-    }
-  });
-</script>

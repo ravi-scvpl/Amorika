@@ -1,0 +1,147 @@
+{% comment %}
+  Main Account Dashboard Section - Moments By Amoraki
+  Luxury minimal customer account page template (/account)
+{% endcomment %}
+
+<div class="account-page-hero" style="background: var(--linen-soft, #F7F3ED); padding: clamp(3.5rem, 6vw, 5rem) 0 2.5rem; border-bottom: 1px solid var(--line, #E5DEC9);">
+  <div class="wrap" style="max-width: 960px;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper-deep, #8A4324); display: block; margin-bottom: 6px;">
+          Account Dashboard
+        </span>
+        <h1 class="h2" style="font-family: var(--font-display, 'Cormorant Garamond', serif); font-size: clamp(30px, 4.5vw, 44px); font-weight: 500; color: var(--ink, #2C2623); margin: 0;">
+          Welcome back, {{ customer.first_name | default: customer.name | default: 'Friend' }}
+        </h1>
+      </div>
+
+      <a href="{{ routes.account_logout_url }}" style="font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe, #706862); text-decoration: underline; transition: color 0.2s ease;">
+        Sign Out &rarr;
+      </a>
+    </div>
+  </div>
+</div>
+
+<section class="account-section" style="padding: clamp(3rem, 5vw, 4.5rem) 0; background: var(--white, #FFF);">
+  <div class="wrap" style="max-width: 960px;">
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;" class="account-grid">
+      
+      <!-- Left Column: Order History -->
+      <div>
+        <h2 style="font-family: var(--font-display, serif); font-size: 24px; font-weight: 500; color: var(--ink, #2C2623); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line, #E5DEC9);">
+          Order History
+        </h2>
+
+        {% paginate customer.orders by 10 %}
+          {% if customer.orders.size > 0 %}
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              {% for order in customer.orders %}
+                <div style="background: var(--linen-soft, #F7F3ED); border: 1px solid var(--line, #E5DEC9); border-radius: 6px; padding: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                  <div>
+                    <a href="{{ order.customer_url }}" style="font-family: var(--font-sans); font-size: 16px; font-weight: 600; color: var(--copper-deep, #8A4324); text-decoration: none;">
+                      Order {{ order.name }}
+                    </a>
+                    <div style="font-size: 13px; color: var(--taupe, #706862); margin-top: 4px;">
+                      Placed on {{ order.created_at | date: '%B %d, %Y' }}
+                    </div>
+                  </div>
+
+                  <div style="text-align: right;">
+                    <div style="font-size: 15px; font-weight: 600; color: var(--ink, #2C2623);">
+                      {{ order.total_price | money }}
+                    </div>
+                    <span style="display: inline-block; margin-top: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 12px; background: rgba(138, 67, 36, 0.1); color: var(--copper-deep, #8A4324);">
+                      {{ order.financial_status_label }}
+                    </span>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+
+            {% if paginate.pages > 1 %}
+              <div style="margin-top: 24px; text-align: center;">
+                {{ paginate | default_pagination }}
+              </div>
+            {% endif %}
+
+          {% else %}
+            <!-- Empty Orders State -->
+            <div style="background: var(--linen-soft, #F7F3ED); border: 1px solid var(--line, #E5DEC9); border-radius: 8px; padding: 36px 24px; text-align: center;">
+              <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--white); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--copper-deep)" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              </div>
+              <h3 style="font-family: var(--font-display, serif); font-size: 20px; font-weight: 500; color: var(--ink, #2C2623); margin-bottom: 8px;">
+                You haven't placed any orders yet
+              </h3>
+              <p style="font-size: 14px; color: var(--taupe, #706862); margin-bottom: 20px; line-height: 1.5; max-width: 380px; margin-left: auto; margin-right: auto;">
+                Care doesn't always need a reason. Explore our curations to send a quiet moment to someone worth thinking of.
+              </p>
+              <a href="{{ routes.root_url }}#moment-of-care" class="btn btn--primary" style="display: inline-block; padding: 12px 24px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--copper-deep, #8A4324); color: #FFF; border-radius: 4px; text-decoration: none;">
+                Explore Curations &rarr;
+              </a>
+            </div>
+          {% endif %}
+        {% endpaginate %}
+      </div>
+
+      <!-- Right Column: Account Details -->
+      <div>
+        <h2 style="font-family: var(--font-display, serif); font-size: 24px; font-weight: 500; color: var(--ink, #2C2623); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line, #E5DEC9);">
+          Account Details
+        </h2>
+
+        <div style="background: var(--linen-soft, #F7F3ED); border: 1px solid var(--line, #E5DEC9); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: var(--ink, #2C2623); margin-bottom: 8px;">
+            {{ customer.name }}
+          </h3>
+          <p style="font-size: 13.5px; color: var(--taupe, #706862); margin-bottom: 16px; line-height: 1.5;">
+            {{ customer.email }}
+          </p>
+
+          <div style="border-top: 1px dashed var(--line, #E5DEC9); padding-top: 16px; margin-top: 16px;">
+            <span style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper-deep, #8A4324); margin-bottom: 6px;">
+              Primary Address
+            </span>
+            {% if customer.default_address %}
+              <p style="font-size: 13.5px; color: var(--ink, #2C2623); line-height: 1.5; margin-bottom: 16px;">
+                {{ customer.default_address.address1 }}<br>
+                {% if customer.default_address.address2 != blank %}
+                  {{ customer.default_address.address2 }}<br>
+                {% endif %}
+                {{ customer.default_address.city }}, {{ customer.default_address.province_code }} {{ customer.default_address.zip }}<br>
+                {{ customer.default_address.country }}
+              </p>
+            {% else %}
+              <p style="font-size: 13.5px; color: var(--taupe, #706862); margin-bottom: 16px; font-style: italic;">
+                No default address saved yet.
+              </p>
+            {% endif %}
+
+            <a href="{{ routes.account_addresses_url }}" style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--copper-deep, #8A4324); text-decoration: underline;">
+              Manage Addresses ({{ customer.addresses_count | default: 0 }})
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (max-width: 767px) {
+    .account-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Main Account",
+  "settings": []
+}
+{% endschema %}

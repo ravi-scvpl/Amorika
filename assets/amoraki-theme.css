@@ -432,6 +432,49 @@ body:not(.template-index) .nav-sep {
   will-change: opacity, transform;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-header-cart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--white);
+  text-decoration: none;
+  padding: 6px;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  line-height: 1;
+}
+
+.nav.is-scrolled .nav-header-cart,
+body:not(.template-index) .nav-header-cart {
+  color: var(--ink);
+}
+
+.nav-header-cart:hover {
+  color: var(--mustard);
+}
+
+.nav-cart-badge {
+  position: absolute;
+  top: -2px;
+  right: -6px;
+  background: var(--copper-deep);
+  color: #FFF;
+  font-size: 9.5px;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 1px 5px;
+  line-height: 1.2;
+  min-width: 15px;
+  text-align: center;
+  font-family: var(--font-sans);
+}
+
 .nav-toggle {
   background: none;
   border: none;
@@ -451,6 +494,31 @@ body:not(.template-index) .nav-sep {
 
 .nav.is-scrolled .nav-toggle span {
   background: var(--ink);
+}
+
+.nav-link--cart {
+  margin-top: 14px !important;
+  padding-top: 16px !important;
+  border-top: 1px solid rgba(247, 243, 237, 0.15) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  color: #E29578 !important;
+}
+
+.nav-panel-cart-badge {
+  background: var(--copper-deep);
+  color: var(--linen-soft);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-family: var(--font-sans);
+}
+
+.nav-panel-cart-badge--empty {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--linen-soft);
 }
 
 .nav-panel {
@@ -846,11 +914,11 @@ body:not(.template-index) .nav-sep {
 }
 
 .moc-slider--desktop {
-  display: block;
+  display: block !important;
 }
 
 .moc-slider--mobile {
-  display: none;
+  display: none !important;
   margin: 28px 0;
 }
 
@@ -860,10 +928,10 @@ body:not(.template-index) .nav-sep {
     gap: 36px;
   }
   .moc-slider--desktop {
-    display: none;
+    display: none !important;
   }
   .moc-slider--mobile {
-    display: block;
+    display: block !important;
   }
 }
 
@@ -899,9 +967,9 @@ body:not(.template-index) .nav-sep {
 .moc-left>p {
   font-size: 15.5px;
   color: var(--ink-soft);
-  line-height: 1.7;
+  line-height: 1.6;
   max-width: 380px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .moc-links,
@@ -918,15 +986,15 @@ body:not(.template-index) .nav-sep {
   font-weight: 400;
   font-size: 15.5px;
   color: var(--ink-soft, #201D18);
-  margin-bottom: 14px;
-  line-height: 1.7;
+  margin-bottom: 6px !important;
+  line-height: 1.6;
   max-width: 380px;
 }
 
 .moc-sub {
   font-size: 15px;
   color: var(--ink-soft);
-  line-height: 1.7;
+  line-height: 1.6;
   max-width: 380px;
   margin-bottom: 24px;
 }
@@ -1037,19 +1105,27 @@ body:not(.template-index) .nav-sep {
   justify-content: flex-end;
   padding: 28px 24px;
   background: linear-gradient(180deg, rgba(16, 15, 15, 0) 0%, rgba(16, 15, 15, 0.3) 30%, rgba(16, 15, 15, 0.94) 100%);
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
-  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease;
   pointer-events: none;
 }
 
 .inside-card:hover .inside-overlay,
-.inside-card.is-active .inside-overlay,
-.inside-card:focus-visible .inside-overlay {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transform: translateY(8px) !important;
+.inside-card.info-open .inside-overlay,
+.inside-card.is-active .inside-overlay {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (max-width: 767px) {
+  .inside-card.info-hidden .inside-overlay {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(14px) !important;
+  }
 }
 
 .inside-title {
@@ -1172,26 +1248,28 @@ body:not(.template-index) .nav-sep {
   color: var(--ink);
   border-bottom: 1px solid var(--ink);
   padding-bottom: 3px;
-  transition: color .25s ease, border-color .25s ease;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .link-arrow:hover {
-  color: var(--copper-deep);
-  border-color: var(--copper-deep);
+  color: var(--copper-deep, #8A4324) !important;
+  border-color: var(--copper-deep, #8A4324) !important;
 }
 
 .link-plus {
   font-family: var(--font-sans);
   font-size: 13.5px;
   font-weight: 500;
-  color: var(--copper-deep);
-  border-bottom: 1px solid var(--copper-deep);
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
   padding-bottom: 3px;
-  transition: opacity .25s ease;
+  transition: color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
 }
 
 .link-plus:hover {
-  opacity: 0.7;
+  color: var(--copper-deep, #8A4324) !important;
+  border-color: var(--copper-deep, #8A4324) !important;
+  opacity: 1 !important;
 }
 
 .moc-right {
@@ -1988,11 +2066,13 @@ footer h4 {
   text-underline-offset: 4px;
   display: inline-flex;
   align-items: center;
-  transition: opacity 0.2s ease;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease, opacity 0.3s ease;
 }
 
 .edit-link:hover {
-  opacity: 0.7;
+  color: var(--copper-deep, #8A4324) !important;
+  text-decoration-color: var(--copper-deep, #8A4324) !important;
+  opacity: 1 !important;
 }
 
 .edit-images {
@@ -2074,7 +2154,7 @@ footer h4 {
 
 .sec-single-article {
   background: #FFFDF9;
-  padding: 60px 0 100px;
+  padding: 60px 0 0;
   color: #1A1C16;
 }
 
@@ -2397,8 +2477,8 @@ footer h4 {
 
 .art-related {
   background: #F7F8F3;
-  padding: 80px 0;
-  margin-top: 80px;
+  padding: 50px 0 50px;
+  margin-top: 60px;
   border-top: 1px solid rgba(101, 109, 58, 0.15);
 }
 
@@ -2596,7 +2676,7 @@ footer h4 {
   }
 }
 
-/* ---------- Universal Button Color Theme (#2f3a1f) ---------- */
+/* ---------- Universal Button Color Theme (Green to Orange on hover) ---------- */
 .btn,
 .btn--primary,
 .btn--ink,
@@ -2617,9 +2697,9 @@ button[type="submit"]:hover,
 .cart-drawer__checkout:hover,
 .js-add-to-cart:hover,
 .stay-btn:hover {
-  background-color: #1f2715 !important;
+  background-color: var(--copper-deep, #8A4324) !important;
   color: #FFFDF9 !important;
-  border-color: #1f2715 !important;
+  border-color: var(--copper-deep, #8A4324) !important;
 }
 
 /* ---------- Inside the Collection / Inside the Hamper Carousel ---------- */

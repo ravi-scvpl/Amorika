@@ -1,7 +1,13 @@
 {% comment %}
   Main Collection Section - Moments By Amoraki
-  Full Page Dedicated Collection View
+  Full Page Dedicated Collection View - Redirects to Homepage Featured Product (#moment-of-care)
 {% endcomment %}
+
+<script>
+  if (window.location.pathname.includes('/collections') || window.location.pathname.includes('/all')) {
+    window.location.replace("{{ routes.root_url }}#moment-of-care");
+  }
+</script>
 
 <div class="collection-page-hero" style="background: var(--linen-soft); padding: clamp(4rem, 7vw, 5.5rem) 0 3rem; border-bottom: 1px solid var(--line);">
   <div class="wrap" style="text-align: center; max-width: 760px;">

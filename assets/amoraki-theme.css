@@ -1124,18 +1124,18 @@ body:not(.template-index) .nav-header-cart {
   }
 }
 
-/* Desktop PC: Overlay hidden by default, visible on hover */
+/* Desktop PC: Overlay visible by default, disappears on hover */
 @media (min-width: 768px) {
   .inside-overlay {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(14px);
-  }
-
-  .inside-card:hover .inside-overlay {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+  }
+
+  .inside-card:hover .inside-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(14px);
   }
 }
 

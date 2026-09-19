@@ -27,7 +27,7 @@
         </div>
       </div>
       <span class="nav-sep">|</span>
-      <a href="/blogs/journal">Journal</a>
+      <a href="{{ routes.root_url }}#journal">Journal</a>
       <span class="nav-sep">|</span>
       <a href="{{ routes.root_url }}#custom-gifting">Bespoke Gifting</a>
       <span class="nav-sep">|</span>
@@ -70,7 +70,7 @@
       <a href="{{ routes.root_url }}#on-the-horizon" class="nav-sublink">Moment of Play <em>Coming Soon</em></a>
       <a href="{{ routes.root_url }}#on-the-horizon" class="nav-sublink">Moment of Synergy <em>Coming Soon</em></a>
     </div>
-    <a href="/blogs/journal" class="nav-link">Journal</a>
+    <a href="{{ routes.root_url }}#journal" class="nav-link">Journal</a>
     <a href="{{ routes.root_url }}#custom-gifting" class="nav-link">Bespoke Gifting</a>
     <a href="{{ routes.root_url }}#contact" class="nav-link">Connect</a>
     <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="nav-link">

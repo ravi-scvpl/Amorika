@@ -7,11 +7,27 @@
     <meta name="theme-color" content="#F1E9DD">
     <link rel="canonical" href="{{ canonical_url }}">
     
+    <link rel="icon" type="image/png" href="{{ 'fevicon .png' | asset_url }}">
+    <link rel="shortcut icon" type="image/png" href="{{ 'fevicon .png' | asset_url }}">
+    <link rel="apple-touch-icon" href="{{ 'fevicon .png' | asset_url }}">
+    
     <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- if request.page_type == 'index' -%}
+        {%- assign home_title = page_title | default: shop.name -%}
+        {%- if home_title contains 'Amoraki' -%}
+          {{ home_title | replace: 'Amoraki', 'amoraki' }}
+        {%- elsif home_title == 'amoraki' or home_title contains 'amoraki' -%}
+          {{ home_title }}
+        {%- else -%}
+          amoraki &ndash; {{ home_title }}
+        {%- endif -%}
+      {%- else -%}
+        {{ page_title | replace: 'Amoraki', 'amoraki' }}
+        {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+        {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+        {%- assign formatted_shop_name = shop.name | replace: 'Amoraki', 'amoraki' -%}
+        {%- unless page_title contains shop.name or page_title contains 'amoraki' or page_title contains 'Amoraki' %} &ndash; {{ formatted_shop_name }}{% endunless -%}
+      {%- endif -%}
     </title>
 
     {% if page_description %}

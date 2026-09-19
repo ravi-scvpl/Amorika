@@ -15,11 +15,11 @@
         "hero_image": "shopify://shop_images/H-8.png",
         "hero_image_mobile": "shopify://shop_images/H-9.png",
         "brand_name": "amoraki",
-        "tagline": "A Moment Wrapped.",
+        "tagline": "A Moment Wrapped",
         "subtitle_left": "HOME OF INTENTIONAL GIFTING",
         "subtitle_right": "SUSTAINABLY CURATED",
-        "description": "Designed to be felt long after it's unwrapped.",
-        "cta_label": "Explore Collection",
+        "description": "Designed to be felt even after it's unwrapped.",
+        "cta_label": "Explore Collections",
         "cta_link": "#moment-of-care"
       }
     },

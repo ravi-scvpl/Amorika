@@ -1105,26 +1105,37 @@ body:not(.template-index) .nav-header-cart {
   justify-content: flex-end;
   padding: 28px 24px;
   background: linear-gradient(180deg, rgba(16, 15, 15, 0) 0%, rgba(16, 15, 15, 0.3) 30%, rgba(16, 15, 15, 0.94) 100%);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(14px);
   transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease;
   pointer-events: none;
 }
 
-.inside-card:hover .inside-overlay,
-.inside-card.info-open .inside-overlay,
-.inside-card.is-active .inside-overlay {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
+/* Mobile: Overlay visible by default. Tap hides it (.info-hidden) */
 @media (max-width: 767px) {
+  .inside-overlay {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
   .inside-card.info-hidden .inside-overlay {
     opacity: 0 !important;
     visibility: hidden !important;
     transform: translateY(14px) !important;
+  }
+}
+
+/* Desktop PC: Overlay hidden by default, visible on hover */
+@media (min-width: 768px) {
+  .inside-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(14px);
+  }
+
+  .inside-card:hover .inside-overlay {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 }
 
@@ -2777,26 +2788,7 @@ button[type="submit"]:hover,
   transform: scale(1.04);
 }
 
-/* Content overlay visible by default */
-.inside-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(16, 15, 15, 0) 0%, rgba(16, 15, 15, 0.25) 30%, rgba(16, 15, 15, 0.92) 100%);
-  color: #FFFFFF;
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-  pointer-events: none;
-}
 
-.inside-card:hover .inside-overlay {
-  opacity: 0;
-  visibility: hidden;
-}
 
 .inside-title {
   font-family: var(--font-display, 'Tan Mon Cheri', serif);

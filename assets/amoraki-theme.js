@@ -207,7 +207,7 @@ function initNotifyMeLinks() {
       e.preventDefault();
       const parentItem = link.closest('.horizon-item');
       const momentName = parentItem ? parentItem.querySelector('h3').textContent : 'this collection';
-      const url = `https://wa.me/919999999999?text=${encodeURIComponent(`Hi, please notify me when ${momentName} launches.`)}`;
+      const url = `https://wa.me/917827961165?text=${encodeURIComponent(`Hi, please notify me when ${momentName} launches.`)}`;
       window.open(url, '_blank', 'noopener');
     });
   });
@@ -259,27 +259,14 @@ function initInsideCarousel() {
       if (window.innerWidth > 767) return;
 
       e.stopPropagation();
-      const overlay = card.querySelector('.inside-overlay');
-      if (!overlay) return;
+      const isHidden = card.classList.contains('info-hidden');
 
-      const isShowing = card.classList.contains('info-open') || 
-                        (getComputedStyle(overlay).opacity > 0.5 && !card.classList.contains('info-hidden'));
-
-      if (isShowing) {
-        // If info is showing -> MAKE IT DISAPPEAR
-        card.classList.remove('info-open');
-        card.classList.remove('is-active');
-        card.classList.add('info-hidden');
-      } else {
-        // If info is hidden -> MAKE IT APPEAR
-        cards.forEach(c => {
-          c.classList.remove('info-open');
-          c.classList.remove('is-active');
-          c.classList.add('info-hidden');
-        });
+      if (isHidden) {
+        // 2nd tap / 4th tap: MAKE IT APPEAR
         card.classList.remove('info-hidden');
-        card.classList.add('info-open');
-        card.classList.add('is-active');
+      } else {
+        // 1st tap / 3rd tap: MAKE IT DISAPPEAR
+        card.classList.add('info-hidden');
       }
     });
   });
@@ -287,11 +274,7 @@ function initInsideCarousel() {
   document.addEventListener('click', (e) => {
     if (window.innerWidth > 767) return;
     if (insideTrack && !insideTrack.contains(e.target)) {
-      cards.forEach(c => {
-        c.classList.remove('info-open');
-        c.classList.remove('is-active');
-        c.classList.add('info-hidden');
-      });
+      cards.forEach(c => c.classList.remove('info-hidden'));
     }
   });
 }
@@ -388,7 +371,7 @@ function initBespokeForm() {
 
   const customForm = document.getElementById('customForm');
   if (customForm) {
-    const WHATSAPP_NUMBER = "919999999999";
+    const WHATSAPP_NUMBER = "917827961165";
     customForm.addEventListener('submit', function (e) {
       e.preventDefault();
       const name = document.getElementById('cf-name')?.value || '';

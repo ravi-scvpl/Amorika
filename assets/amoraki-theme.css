@@ -3201,4 +3201,25 @@ button[type="submit"]:hover,
   .moc-desktop-only {
     display: none !important;
   }
-}
+}
+
+/* ---------- Custom Color Adjustments ---------- */
+/* 1. Price 5490 font color to green (#2f3a1f) */
+.moc-price {
+  color: #2F3A1F !important;
+}
+
+/* 2. Journal section "Slow Reads" CTA font color to green (#2f3a1f) */
+.edit-link {
+  color: #2F3A1F !important;
+}
+
+/* 3. Bespoke Gifting - "Start a conversation" font color green (#2f3a1f) and "Share your requirements" font color copper (#8A4324) */
+.link-arrow {
+  color: #2F3A1F !important;
+}
+
+.link-plus {
+  color: #8A4324 !important;
+}
+

@@ -19,7 +19,7 @@
         {% if section.settings.button_text != blank %}
           {% assign button_href = section.settings.button_url %}
           {% if button_href == blank or button_href == '#' %}
-            {% assign button_href = '/blogs/news' %}
+            {% assign button_href = '/blogs/journal' %}
           {% endif %}
           <a href="{{ button_href }}" class="edit-link">
             {{ section.settings.button_text }}
@@ -54,10 +54,10 @@
           {% endfor %}
         {% elsif section.blocks.size > 0 %}
           {% for block in section.blocks %}
-            {% assign fallback_link = '/blogs/news/why-presence-outlasts-presents' %}
+            {% assign fallback_link = '/blogs/journal/why-presence-outlasts-presents' %}
             {% case forloop.index %}
-              {% when 2 %}{% assign fallback_link = '/blogs/news/the-art-of-slow-gifting' %}
-              {% when 3 %}{% assign fallback_link = '/blogs/news/beyond-the-occasion' %}
+              {% when 2 %}{% assign fallback_link = '/blogs/journal/the-art-of-slow-gifting' %}
+              {% when 3 %}{% assign fallback_link = '/blogs/journal/beyond-the-occasion' %}
             {% endcase %}
             <a href="{{ block.settings.link | default: fallback_link }}" class="edit-item" {{ block.shopify_attributes }}>
               {% if block.settings.image != blank %}
@@ -79,15 +79,15 @@
           {% endfor %}
         {% else %}
           <!-- Default Fallback Articles -->
-          <a href="/blogs/news/why-presence-outlasts-presents" class="edit-item">
+          <a href="/blogs/journal/why-presence-outlasts-presents" class="edit-item">
             <img class="edit-img" src="{{ 'journal-1.jpg' | asset_url }}" alt="Why Presence Outlasts Presents">
             <span class="edit-caption">Why Presence Outlasts Presents</span>
           </a>
-          <a href="/blogs/news/the-art-of-slow-gifting" class="edit-item">
+          <a href="/blogs/journal/the-art-of-slow-gifting" class="edit-item">
             <img class="edit-img" src="{{ 'journal-2.jpg' | asset_url }}" alt="The Art of Slow Gifting">
             <span class="edit-caption">The Art of Slow Gifting</span>
           </a>
-          <a href="/blogs/news/beyond-the-occasion" class="edit-item">
+          <a href="/blogs/journal/beyond-the-occasion" class="edit-item">
             <img class="edit-img" src="{{ 'journal-3.jpg' | asset_url }}" alt="Beyond the Occasion">
             <span class="edit-caption">Beyond the Occasion</span>
           </a>
@@ -167,21 +167,21 @@
           "type": "article_card",
           "settings": {
             "caption": "Why Presence Outlasts Presents",
-            "link": "/blogs/news/why-presence-outlasts-presents"
+            "link": "/blogs/journal/why-presence-outlasts-presents"
           }
         },
         {
           "type": "article_card",
           "settings": {
             "caption": "The Art of Slow Gifting",
-            "link": "/blogs/news/the-art-of-slow-gifting"
+            "link": "/blogs/journal/the-art-of-slow-gifting"
           }
         },
         {
           "type": "article_card",
           "settings": {
             "caption": "Beyond the Occasion",
-            "link": "/blogs/news/beyond-the-occasion"
+            "link": "/blogs/journal/beyond-the-occasion"
           }
         }
       ]

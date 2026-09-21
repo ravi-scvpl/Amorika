@@ -180,6 +180,20 @@
             </div>
           </div>
 
+          <!-- Personalised Order Note Box -->
+          <div class="cart-note-box" style="margin-bottom: 20px;">
+            <label for="CartNote" style="display: block; font-family: var(--font-sans); font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">
+              Would you like to say something too?
+            </label>
+            <textarea 
+              name="note" 
+              id="CartNote" 
+              rows="3" 
+              placeholder="Add a personalised note"
+              style="width: 100%; padding: 12px 14px; font-family: var(--font-sans); font-size: 13px; color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 6px; outline: none; resize: vertical; box-sizing: border-box; transition: border-color 0.2s ease;"
+            >{{ cart.note }}</textarea>
+          </div>
+
           {% render 'cart-recipient-fields' %}
 
           <button type="submit" name="checkout" class="btn btn--primary" style="width: 100%; padding: 14px 20px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--copper-deep); color: var(--white); border: none; border-radius: 4px; cursor: pointer; transition: background 0.3s ease; margin-bottom: 14px;">

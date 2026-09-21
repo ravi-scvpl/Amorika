@@ -48,6 +48,8 @@
           {% endif %}
         </a>
 
+        <a href="#inside-collection" class="moc-inside-link" style="color: #D96B27; font-weight: 500; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; display: inline-block; margin-bottom: 14px; letter-spacing: 0.03em;">Inside the collection</a>
+
         <div class="moc-price-block">
           {% if section.settings.price != blank %}
             <div class="moc-price">
@@ -106,13 +108,34 @@
 
     <!-- Inside the Hamper Carousel (Customizable Blocks) -->
     <div class="inside-block" id="inside-collection">
-      {% if section.settings.carousel_tag != blank %}
-        <span class="inside-eyebrow">{{ section.settings.carousel_tag }}</span>
-      {% endif %}
-      
-      {% if section.settings.carousel_headline != blank %}
-        <h3 class="inside-headline" style="color: #100F0F !important;">{{ section.settings.carousel_headline }}</h3>
-      {% endif %}
+      <div class="inside-header-row">
+        <div class="inside-header-left">
+          {% if section.settings.carousel_tag != blank %}
+            <span class="inside-eyebrow">{{ section.settings.carousel_tag }}</span>
+          {% endif %}
+          
+          {% if section.settings.carousel_headline != blank %}
+            <h3 class="inside-headline" style="color: #100F0F !important;">{{ section.settings.carousel_headline }}</h3>
+          {% endif %}
+        </div>
+
+        <div class="inside-header-cta moc-desktop-only">
+          {% if featured_prod != blank %}
+            <form action="/cart/add" method="post" class="moc-links-form" id="MocAddToCartFormCarouselDesktop" target="_top">
+              <input type="hidden" name="id" value="{{ featured_prod.selected_or_first_available_variant.id }}">
+              <button type="submit" class="btn btn--primary js-send-moment-cta" style="padding: 12px 26px;">
+                {{ section.settings.cta_label | default: 'Send a Moment of Care' }} &rarr;
+              </button>
+            </form>
+          {% else %}
+            <div class="moc-links">
+              <button type="button" class="btn btn--primary js-send-moment-cta" style="padding: 12px 26px;">
+                {{ section.settings.cta_label | default: 'Send a Moment of Care' }} &rarr;
+              </button>
+            </div>
+          {% endif %}
+        </div>
+      </div>
 
       <div class="inside-carousel">
         <button class="carousel-arrow carousel-arrow--prev" aria-label="Previous element">&lsaquo;</button>
@@ -197,6 +220,24 @@
 
         <!-- Mobile Carousel Dots Indicator -->
         <div class="carousel-dots" id="carouselDots" aria-label="Carousel navigation"></div>
+
+        {% comment %} CTA under intentions carousel (phone only) {% endcomment %}
+        <div class="moc-carousel-cta moc-mobile-only" style="margin-top: 24px; text-align: center;">
+          {% if featured_prod != blank %}
+            <form action="/cart/add" method="post" class="moc-links-form" id="MocAddToCartFormCarouselMobile" target="_top">
+              <input type="hidden" name="id" value="{{ featured_prod.selected_or_first_available_variant.id }}">
+              <button type="submit" class="btn btn--primary js-send-moment-cta" style="width: 100%; padding: 14px 28px;">
+                {{ section.settings.cta_label | default: 'Send a Moment of Care' }} &rarr;
+              </button>
+            </form>
+          {% else %}
+            <div class="moc-links">
+              <button type="button" class="btn btn--primary js-send-moment-cta" style="width: 100%; padding: 14px 28px;">
+                {{ section.settings.cta_label | default: 'Send a Moment of Care' }} &rarr;
+              </button>
+            </div>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>

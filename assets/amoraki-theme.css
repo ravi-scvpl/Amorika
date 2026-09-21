@@ -669,6 +669,7 @@ body:not(.template-index) .nav-header-cart {
   .hero-img--desktop {
     display: none;
   }
+
   .hero-img--mobile {
     display: block;
   }
@@ -927,9 +928,11 @@ body:not(.template-index) .nav-header-cart {
     grid-template-columns: 1fr;
     gap: 36px;
   }
+
   .moc-slider--desktop {
     display: none !important;
   }
+
   .moc-slider--mobile {
     display: block !important;
   }
@@ -2956,10 +2959,27 @@ button[type="submit"]:hover,
   margin-bottom: 1rem !important;
 }
 
-.legal-body h1, .shopify-policy__body h1 { font-size: clamp(26px, 3.5vw, 34px) !important; }
-.legal-body h2, .shopify-policy__body h2 { font-size: clamp(22px, 3vw, 28px) !important; border-bottom: 1px solid var(--line) !important; padding-bottom: 8px !important; }
-.legal-body h3, .shopify-policy__body h3 { font-size: clamp(19px, 2.5vw, 22px) !important; }
-.legal-body h4, .shopify-policy__body h4 { font-size: clamp(16px, 2vw, 18px) !important; }
+.legal-body h1,
+.shopify-policy__body h1 {
+  font-size: clamp(26px, 3.5vw, 34px) !important;
+}
+
+.legal-body h2,
+.shopify-policy__body h2 {
+  font-size: clamp(22px, 3vw, 28px) !important;
+  border-bottom: 1px solid var(--line) !important;
+  padding-bottom: 8px !important;
+}
+
+.legal-body h3,
+.shopify-policy__body h3 {
+  font-size: clamp(19px, 2.5vw, 22px) !important;
+}
+
+.legal-body h4,
+.shopify-policy__body h4 {
+  font-size: clamp(16px, 2vw, 18px) !important;
+}
 
 /* Transform section headers formatted as <p><strong>OVERVIEW...</strong> or <p><strong>SECTION...</strong> */
 .shopify-policy__body p strong:first-child,
@@ -3130,4 +3150,55 @@ button[type="submit"]:hover,
     padding: 20px 16px !important;
   }
 }
-
+
+/* ---------- Moment of Care Specific Mobile & Hyperlink Extensions ---------- */
+.moc-mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .moc-mobile-only {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 24px !important;
+  }
+}
+
+.moc-inside-link {
+  color: #8A4324 !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  text-decoration: underline !important;
+  text-underline-offset: 4px !important;
+  display: inline-block !important;
+  margin-bottom: 14px !important;
+  letter-spacing: 0.03em !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.moc-inside-link:hover {
+  opacity: 0.8 !important;
+}
+
+.inside-header-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  margin-bottom: 24px !important;
+}
+
+.inside-header-row .inside-headline {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+.moc-desktop-only {
+  display: block !important;
+}
+
+@media (max-width: 768px) {
+  .moc-desktop-only {
+    display: none !important;
+  }
+}
